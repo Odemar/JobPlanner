@@ -12,6 +12,10 @@ configuraties van de bestandenindeling van het project. Deze moeten niet naar Gi
 gekopieerd, dus klik onderaan op 'Version Control'. Hier staan de 'Unversioned Files' welke
 genegeerd moeten worden. Dit doe je door er rechts op te klikken en 'Ignore' te selecteren.
 De bestanden in de map '.idea' mogen allemaal genegeerd worden. Ook alle bestanden met een
-.iml type mogen genegeerd worden.
+.iml type mogen genegeerd worden. Voor het .iml bestand zal je merken dat dit niet direct
+verdwijnt, maar wees geduldig, na een 20-tal seconden is het verdwenen uit de 'Unversioned
+files' lijst.
 
-Video tutorial: https://www.youtube.com/watch?v=0s7YYjQEsfU
+### Werken met GitHub
+Om aanpassingen aan de bestanden op te slaan, klik dan op het groene vinkje rechtsboven,
+welke een representatie is voor 'Commit'.
