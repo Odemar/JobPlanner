@@ -42,5 +42,5 @@ Deze code moet dan in het pom.xml bestand tussen <dependencies> tags staan. Dit 
 van JFoenix, wat extra knoppen toevoegd om te gebruiken in de GUI.
 
 ![Alt text](
-        https://github.com/Odemar/JobPlanner/src/main/resources/images/vicro.png
+        /src/main/resources/images/vicro.png
       )
