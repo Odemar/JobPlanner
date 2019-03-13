@@ -39,7 +39,28 @@ De code kan er als volgt uitzien:
 </dependency>
 ````
 Deze code moet dan in het pom.xml bestand tussen <dependencies> tags staan. Dit is een voorbeeld
-van JFoenix, wat extra knoppen toevoegd om te gebruiken in de GUI.
+van JFoenix, wat extra knoppen toevoegd om te gebruiken in de GUI (en al is toegevoegd).
+
+Maven maakt ook een aantal nieuwe mappen aan om code, afbeeldingen,... in te zetten. Gebruik
+deze zeker, dit maakt alles ordelijker. In de map 'resources' kan je bv. extra mappen aanmaken
+om een bepaald soort bestanden in te zetten (.fxml, .sql, .jpg, ...).
+### Scene Builder
+Op het internet kan je een programma vinden genaamd 'JavaFX SceneBuilder'. Dit programma
+kan .fxml bestanden interpreteren en weergeven. Ook kan je met SceneBuilder objecten toevoegen,
+vergroten en verkleinen, allerlei eigenschappen ervan wijzigen,... En alle wijzigingen worden
+omgezet naar .fxml code, waarin je dan methode kan toewijzen die moeten worden uitgevoerd bij
+bepaalde interacties.
+
+Vanuit IntelliJ (of andere code editors als NetBeans) kan je een Scene Builder instellen om de
+.fxml bestanden mee te bewerken. Dit doe je door naar 'File -> Settings -> Languages & Frameworks -> JavaFX'
+te gaan en daar het pad van de executable in te geven. Nu kan je rechts klikken op een .fxml
+bestand en onderaan op 'Open in SceneBuilder' te klikken.
+
+### SQLite
+Er is een dependency toegevoegd die ervoor kan zorgen dat je met lokale databases kan werken,
+nl. SQLite JDBC.
+
+Tutorial: https://www.tutorialspoint.com/sqlite/sqlite_java.htm
 
 ![Alt text](
         /src/main/resources/images/vicro.png
