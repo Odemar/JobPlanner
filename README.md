@@ -40,3 +40,5 @@ De code kan er als volgt uitzien:
 ````
 Deze code moet dan in het pom.xml bestand tussen <dependencies> tags staan. Dit is een voorbeeld
 van JFoenix, wat extra knoppen toevoegd om te gebruiken in de GUI.
+
+![Alt text](/Afbeeldingen/vicro.png)
