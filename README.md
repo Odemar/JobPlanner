@@ -25,3 +25,16 @@ worden de veranderingen lokaal opgeslagen.
 Als je dan uiteindelijk tevreden bent met de veranderingen, kan je deze pushen naar de repository
 door naar 'VCS -> Git -> Push' te gaan. Je kan ook commit'en en push'en in 1 stap door in het
 commit venster op het dropdown pijltje naast 'Commit' te klikken en 'Commit & Push' te selecteren.
+
+### Maven
+Aan dit project is een Maven framework toegevoegd. Dit maakt het makkelijker om dependencies toe
+te voegen. Het enige dat je moet doen is de code voor een dependency in het pom.xml bestand zetten.
+De code kan er als volgt uitzien:
+````xml
+<!-- https://mvnrepository.com/artifact/com.jfoenix/jfoenix -->
+<dependency>
+    <groupId>com.jfoenix</groupId>
+    <artifactId>jfoenix</artifactId>
+    <version>1.4.0</version>
+</dependency>
+````
