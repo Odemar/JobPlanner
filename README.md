@@ -25,3 +25,5 @@ worden de veranderingen lokaal opgeslagen.
 Als je dan uiteindelijk tevreden bent met de veranderingen, kan je deze pushen naar de repository
 door naar 'VCS -> Git -> Push' te gaan. Je kan ook commit'en en push'en in 1 stap door in het
 commit venster op het dropdown pijltje naast 'Commit' te klikken en 'Commit & Push' te selecteren.
+
+test
