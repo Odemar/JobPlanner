@@ -16,6 +16,12 @@ De bestanden in de map '.idea' mogen allemaal genegeerd worden. Ook alle bestand
 verdwijnt, maar wees geduldig, na een 20-tal seconden is het verdwenen uit de 'Unversioned
 files' lijst.
 
-### Werken met GitHub
+### Werken met GitHub in IntelliJ
 Om aanpassingen aan de bestanden op te slaan, klik dan op het groene vinkje rechtsboven,
-welke een representatie is voor 'Commit'.
+welke een representatie is voor 'Commit'. Hierbij moet ook een korte en bondige boodschap bij
+worden gegeven die zegt wat er verandert is. Als dan de 'Commit' knop wordt aangeklikt,
+worden de veranderingen lokaal opgeslagen.
+
+Als je dan uiteindelijk tevreden bent met de veranderingen, kan je deze pushen naar de repository
+door naar 'VCS -> Git -> Push' te gaan. Je kan ook commit'en en push'en in 1 stap door in het
+commit venster op het dropdown pijltje naast 'Commit' te klikken en 'Commit & Push' te selecteren.
