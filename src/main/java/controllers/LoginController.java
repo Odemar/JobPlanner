@@ -28,14 +28,19 @@ public class LoginController {
 
         try {
             statement = c.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT pw FROM LOGIN WHERE uname=\""+uname.getText()+"\";");
+            ResultSet rs = statement.executeQuery("SELECT pw FROM LOGIN WHERE uname='"+uname.getText()+"';");
 
-            rs.next();
-            String testPW = rs.getString("pw");
+            String testPW = null;
+            if(rs.next()) {
+                testPW = rs.getString("pw");
+                System.out.println(testPW);
+            }
 
-            if(testPW != pw.getText())
+            if(!testPW.equals(pw.getText()))
                 System.out.println("Password does not match."+
                                     "\nTestPW: "+testPW);
+            else
+                System.out.println("You're logged in!");
 
             System.out.println("Username: " + uname.getText() + "\nPassword: " + pw.getText());
         }
