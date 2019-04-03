@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
@@ -9,17 +10,40 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="517.0" prefWidth="822.0" style="-fx-background-color: #ffface;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="37.0" prefWidth="600.0" style="-fx-background-color: #912400;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text fill="WHITE" layoutX="337.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Job Planner" wrappingWidth="147.13671875">
+            <Text fill="WHITE" layoutX="1.0" layoutY="17.51171875" strokeType="OUTSIDE" strokeWidth="0.0" text="Job Planner" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="822.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
                <font>
                   <Font name="Arial Black" size="22.0" />
                </font>
             </Text>
          </children>
       </AnchorPane>
+      <JFXButton buttonType="FLAT" layoutX="324.0" layoutY="387.0" prefHeight="61.0" prefWidth="175.0" style="-fx-background-color: #ff9d00;" text="Log in" textFill="#9a5700">
+         <font>
+            <Font name="Arial Black" size="20.0" />
+         </font></JFXButton>
+      <JFXTextField layoutX="412.0" layoutY="191.0" prefHeight="37.0" prefWidth="284.0" promptText="  Username" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b" unFocusColor="#4d4d4d00">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </JFXTextField>
+      <JFXPasswordField layoutX="412.0" layoutY="288.0" prefHeight="37.0" prefWidth="284.0" promptText="  Password" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b" unFocusColor="#4d4d4d00">
+         <font>
+            <Font name="SansSerif Bold" size="16.0" />
+         </font>
+      </JFXPasswordField>
+      <Label layoutX="295.0" layoutY="191.0" prefHeight="37.0" prefWidth="116.0" text="Username: " textAlignment="RIGHT">
+         <font>
+            <Font name="SansSerif Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="295.0" layoutY="288.0" prefHeight="37.0" prefWidth="116.0" text="Password:" textAlignment="RIGHT">
+         <font>
+            <Font name="SansSerif Bold" size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
