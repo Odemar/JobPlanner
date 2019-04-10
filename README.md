@@ -60,6 +60,16 @@ bestand en onderaan op 'Open in SceneBuilder' te klikken.
 Er is een dependency toegevoegd die ervoor kan zorgen dat je met lokale databases kan werken,
 nl. SQLite JDBC.
 
+Primary key toevoegen:
+
+CREATE TABLE table (id INTEGER PRIMARY KEY AUTOINCREMENT, uname TEXT NOT NULL, pw TEXT NOT NULL);
+
+Bij het invoegen van waarden in een tabel met een autoincrement kolom, moet je wel de kolommen specifiëren:
+
+INSERT INTO table (uname, pw) VALUES ("testUname", "testPW");
+
+De id nummers beginnen vanaf 1.
+
 Tutorial: https://www.tutorialspoint.com/sqlite/sqlite_java.htm
 
 ![Alt text](

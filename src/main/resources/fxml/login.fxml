@@ -12,44 +12,46 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="517.0" prefWidth="822.0" style="-fx-background-color: #ffface;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
-   <children>
-      <AnchorPane prefHeight="37.0" prefWidth="600.0" style="-fx-background-color: #912400;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <Text fill="WHITE" layoutX="1.0" layoutY="17.51171875" strokeType="OUTSIDE" strokeWidth="0.0" text="Job Planner" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="822.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
-               <font>
-                  <Font name="Arial Black" size="22.0" />
-               </font>
-            </Text>
-         </children>
-      </AnchorPane>
-      <JFXButton fx:id="loginButton" buttonType="FLAT" layoutX="215.0" layoutY="386.0" onAction="#handleLoginButton" prefHeight="61.0" prefWidth="393.0" style="-fx-background-color: #ff9d00;" text="Log in" textFill="#9a5700">
-         <font>
-            <Font name="Arial Black" size="20.0" />
-         </font></JFXButton>
-      <JFXTextField fx:id="uname" alignment="CENTER" layoutX="328.0" layoutY="192.0" prefHeight="37.0" prefWidth="284.0" promptText="  Username" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b" unFocusColor="#4d4d4d00">
-         <font>
-            <Font name="System Bold" size="16.0" />
-         </font>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </JFXTextField>
-      <JFXPasswordField fx:id="pw" alignment="CENTER" focusColor="#425ba600" layoutX="328.0" layoutY="289.0" prefHeight="37.0" prefWidth="284.0" promptText="  Password" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b" unFocusColor="#4d4d4d00">
-         <font>
-            <Font name="SansSerif Bold" size="16.0" />
-         </font>
-      </JFXPasswordField>
-      <Label layoutX="211.0" layoutY="192.0" prefHeight="37.0" prefWidth="116.0" text="Username: " textAlignment="RIGHT">
-         <font>
-            <Font name="SansSerif Bold" size="16.0" />
-         </font>
-      </Label>
-      <Label layoutX="211.0" layoutY="289.0" prefHeight="37.0" prefWidth="116.0" text="Password:" textAlignment="RIGHT">
-         <font>
-            <Font name="SansSerif Bold" size="16.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="286.0" layoutY="495.0" prefHeight="17.0" prefWidth="252.0" text="© KoenVanAken &amp; OdemarMartens" />
-   </children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+    <children>
+        <AnchorPane prefHeight="37.0" prefWidth="600.0" style="-fx-background-color: #912400;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Text fill="WHITE" layoutX="1.0" layoutY="17.51171875" strokeType="OUTSIDE" strokeWidth="0.0" text="Job Planner" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="822.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
+                    <font>
+                        <Font name="Arial Black" size="22.0" />
+                    </font>
+                </Text>
+            </children>
+        </AnchorPane>
+        <JFXButton fx:id="loginButton" buttonType="FLAT" layoutX="215.0" layoutY="386.0" onAction="#handleLoginButton" prefHeight="61.0" prefWidth="393.0" style="-fx-background-color: #ff9d00;" text="Log in" textFill="#9a5700">
+            <font>
+                <Font name="Arial Black" size="20.0" />
+            </font></JFXButton>
+        <JFXTextField fx:id="uname" alignment="CENTER" layoutX="328.0" layoutY="148.0" prefHeight="37.0" prefWidth="284.0" promptText="  Username" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b" unFocusColor="#4d4d4d00">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+        </JFXTextField>
+        <JFXPasswordField fx:id="pw" alignment="CENTER" focusColor="#425ba600" layoutX="328.0" layoutY="245.0" prefHeight="37.0" prefWidth="284.0" promptText="  Password" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b" unFocusColor="#4d4d4d00">
+            <font>
+                <Font name="SansSerif Bold" size="16.0" />
+            </font>
+        </JFXPasswordField>
+        <Label layoutX="211.0" layoutY="148.0" prefHeight="37.0" prefWidth="116.0" text="Username: " textAlignment="RIGHT">
+            <font>
+                <Font name="SansSerif Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label layoutX="211.0" layoutY="245.0" prefHeight="37.0" prefWidth="116.0" text="Password:" textAlignment="RIGHT">
+            <font>
+                <Font name="SansSerif Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label alignment="CENTER" layoutX="286.0" layoutY="495.0" prefHeight="17.0" prefWidth="252.0" text="© KoenVanAken &amp; OdemarMartens" />
+        <Label id="loginf" fx:id="loginf" alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="215.0" layoutY="339.0" prefHeight="31.0" prefWidth="393.0" text="" textAlignment="CENTER" textFill="RED" />
+    </children>
+
 </AnchorPane>
