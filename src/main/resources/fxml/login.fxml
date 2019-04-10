@@ -27,7 +27,7 @@
             <font>
                 <Font name="Arial Black" size="20.0" />
             </font></JFXButton>
-        <JFXTextField fx:id="uname" alignment="CENTER" layoutX="328.0" layoutY="148.0" prefHeight="37.0" prefWidth="284.0" promptText="  Username" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b" unFocusColor="#4d4d4d00">
+        <JFXTextField fx:id="uname" alignment="CENTER" layoutX="328.0" layoutY="148.0" onAction="#handleLoginButton" prefHeight="37.0" prefWidth="284.0" promptText="  Username" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b" unFocusColor="#4d4d4d00">
             <font>
                 <Font name="System Bold" size="16.0" />
             </font>
@@ -35,7 +35,7 @@
                 <Insets />
             </opaqueInsets>
         </JFXTextField>
-        <JFXPasswordField fx:id="pw" alignment="CENTER" focusColor="#425ba600" layoutX="328.0" layoutY="245.0" prefHeight="37.0" prefWidth="284.0" promptText="  Password" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b" unFocusColor="#4d4d4d00">
+        <JFXPasswordField fx:id="pw" alignment="CENTER" focusColor="#425ba600" layoutX="328.0" layoutY="245.0" onAction="#handleLoginButton" prefHeight="37.0" prefWidth="284.0" promptText="  Password" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b" unFocusColor="#4d4d4d00">
             <font>
                 <Font name="SansSerif Bold" size="16.0" />
             </font>
