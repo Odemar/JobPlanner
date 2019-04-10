@@ -123,7 +123,7 @@ public class LoginController {
                 rs = statement.executeQuery("SELECT id FROM LOGIN WHERE uname='" + uname.getText() + "';");
                 if (rs.next()) {
                     loginID = rs.getInt("id");
-                    System.out.println("LoginID: "+loginID);
+                    System.out.println("LoginID: " + loginID);
                 }
 
                 // gets the current open window and closes it

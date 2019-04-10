@@ -20,7 +20,7 @@ public class Main extends Application {
     private static Statement statement;
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage primaryStage) throws Exception {
 
         // open a login window and receive the userID
         int userID = new LoginController().display();
@@ -31,16 +31,14 @@ public class Main extends Application {
         // get the user rights, and sets the correct scene
         connectDB();
         int userType;
-        try{
+        try {
             statement = c.createStatement();
             ResultSet rs = statement.executeQuery("SELECT rights FROM LOGIN WHERE id='" + userID + "';");
-            if(rs.next()){
+            if (rs.next()) {
                 userType = rs.getInt("rights");
-            }
-            else
+            } else
                 userType = 0;
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             userType = 0;
         }
