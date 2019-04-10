@@ -21,6 +21,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+
+        // open a login window and receive the userID
         int userID = new LoginController().display();
 
         //Parent login = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
