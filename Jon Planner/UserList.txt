@@ -1,0 +1,2 @@
+0 admin admin odemar
+1 client client jon
