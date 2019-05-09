@@ -30,28 +30,29 @@ public class Main extends Application {
 
         // get the user rights, and sets the correct scene
         connectDB();
-        int userType;
-        try {
-            statement = c.createStatement();
-            ResultSet rs = statement.executeQuery("SELECT rights FROM LOGIN WHERE id='" + userID + "';");
-            if (rs.next()) {
-                userType = rs.getInt("rights");
-            } else
+            int userType;
+            try {
+                statement = c.createStatement();
+                ResultSet rs = statement.executeQuery("SELECT rights FROM LOGIN WHERE id='" + userID + "';");
+                if (rs.next()) {
+                    userType = rs.getInt("rights");
+                } else
                 userType = 0;
         } catch (Exception e) {
             e.printStackTrace();
             userType = 0;
         }
-        Parent homePageStaff = FXMLLoader.load(getClass().getResource("/fxml/homePageStaff.fxml"));
-        Parent homePageClient = FXMLLoader.load(getClass().getResource("/fxml/homePageClient.fxml"));
+
+        //Parent homePageStaff = FXMLLoader.load(getClass().getResource("/fxml/homePageStaff.fxml"));
+       // Parent homePageClient = FXMLLoader.load(getClass().getResource("/fxml/homePageClient.fxml"));
         Parent homePageAdmin = FXMLLoader.load(getClass().getResource("/fxml/homePageAdmin.fxml"));
         switch (userType) {
             case 0:
-                primaryStage.setScene(new Scene(homePageStaff));
+                primaryStage.setScene(new Scene(homePageAdmin));
                 break;
 
             default:
-                primaryStage.setScene(new Scene(homePageStaff));
+                primaryStage.setScene(new Scene(homePageAdmin));
                 break;
         }
 

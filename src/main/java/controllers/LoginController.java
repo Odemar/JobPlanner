@@ -14,7 +14,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
-import sample.Main;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -88,7 +88,7 @@ public class LoginController {
     /**
      * Method to handle the button to login.
      * In this method, the inputted credentials get checked with the details found in the database. If there's a match,
-     * the users
+     * the user can log in
      */
     private void handleLoginButton() {
 
