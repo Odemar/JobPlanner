@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserList {
-    ArrayList<User> userList;
+   public ArrayList<User> userList;
 
     public UserList() {
         userList = new ArrayList<User>();

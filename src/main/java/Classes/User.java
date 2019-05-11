@@ -46,8 +46,19 @@ public class User {
     public String getName() {
         return this.name;
     }
+
     public String getUserString() {
-        String values = type + " " + username + " " + password + " " + name;
+        String typeString = new String();
+        if (type == 0){
+            typeString = "Admin";
+        }
+        else if(type == 1){
+            typeString = "Client";
+        }
+        else{
+            typeString = "Staff";
+        }
+        String values = "Username = " + username  + ",Rights = " + typeString + ", Full Name = "  + name;
         return values;
     }
 
