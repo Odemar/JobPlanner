@@ -7,10 +7,10 @@ import javafx.scene.control.Button;
 
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
-import javafx.scene.layout.Pane;
+
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
-import javafx.scene.layout.StackPane;
+
 
 import java.io.FileNotFoundException;
 
@@ -34,6 +34,14 @@ public class AdminScreenController {
         else if(event.getSource()== btn_edit){
 
             System.out.println("test1");
+        }
+        else if(event.getSource()== btn_new){
+
+            System.out.println("test2");
+        }
+        else if(event.getSource()== btn_del){
+
+            System.out.println("test3");
         }
     }
 
