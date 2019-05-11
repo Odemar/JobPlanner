@@ -27,6 +27,7 @@ public class Main extends Application {
         //Parent homePageStaff = FXMLLoader.load(getClass().getResource("/fxml/homePageStaff.fxml"));
         //Parent homePageClient = FXMLLoader.load(getClass().getResource("/fxml/homePageClient.fxml"));
         Parent homePageAdmin = FXMLLoader.load(getClass().getResource("/fxml/homePageAdmin.fxml"));
+
         switch (loginType) {
             case 0:
                 primaryStage.setScene(new Scene(homePageAdmin));

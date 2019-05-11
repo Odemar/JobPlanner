@@ -8,7 +8,7 @@ public class User {
     String name;
 
     // type for Admin is 0, Client is 1, staff is 2
-    public void setUser(int type,String username,String password,String name) {
+    public User(int type,String username,String password,String name) {
         this.type = type;
         this.setUsername(username);
         this.setPassword(password);
@@ -48,17 +48,9 @@ public class User {
     }
 
     public String getUserString() {
-        String typeString = new String();
-        if (type == 0){
-            typeString = "Admin";
-        }
-        else if(type == 1){
-            typeString = "Client";
-        }
-        else{
-            typeString = "Staff";
-        }
-        String values = "Username = " + username  + ",Rights = " + typeString + ", Full Name = "  + name;
+
+
+        String values = type + " " + username  + " "  + password +  " "  + name;
         return values;
     }
 

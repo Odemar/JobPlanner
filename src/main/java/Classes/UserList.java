@@ -1,5 +1,7 @@
 package Classes;
 
+import javafx.collections.ObservableList;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -13,14 +15,14 @@ import java.util.Scanner;
 public class UserList {
    public ArrayList<User> userList;
 
-    public UserList() {
-        userList = new ArrayList<User>();
-    }
+
     // Method of reading in all the users from a text file into an array
     public void readFile(String filename) throws FileNotFoundException {
+
+        userList = new ArrayList<User>();
         File file = new File(filename);
         Scanner input = new Scanner(file);
-        while (input.hasNextLine()) {
+        while (input.hasNext()) {
             // read first 4 strings of line
 
             String type  = input.next();
@@ -29,8 +31,8 @@ public class UserList {
             String name = input.next() ;
 
 
-                User admin = new User();
-                admin.setUser(Integer.parseInt(type),username,password,name);
+                User admin = new User(Integer.parseInt(type),username,password,name);
+
                 userList.add(admin);
 
             }
@@ -41,7 +43,7 @@ public class UserList {
 
     // Method of updating the output file with the current arrayList. Invoked after a user is added or removed.
 
-    public void updateFile(String filename) throws IOException {
+    private void updateFile(String filename) throws IOException {
         File file = new File(filename);
         FileOutputStream fos = new FileOutputStream(file);
 
@@ -73,12 +75,8 @@ public class UserList {
         return false;
 
     }
-    public void printUserList() {
-        for(User user: userList) {
-            String userString = user.getUserString();
-            System.out.println(userString);
-        }
-    }
+
+
     public int getType(String username) {
         for(User user: userList) {
             if (user.getUsername().equals(username)){
