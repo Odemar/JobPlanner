@@ -4,27 +4,20 @@ package controllers;
 import Classes.Job;
 import Classes.User;
 import Classes.UserList;
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.ArrayList;
+
 
 
 public class AdminScreenController {
