@@ -73,7 +73,7 @@
                            </columns>
                         </TableView>
                         <Label layoutX="700.0" layoutY="20.0" text="Select Date" />
-                        <Button fx:id="btn_job" layoutX="750.0" layoutY="297.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Find Jobs" />
+                        <Button fx:id="btn_job" layoutX="750.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleButtonActionCalendar" prefHeight="25.0" prefWidth="91.0" text="Find Jobs" />
                      </children></AnchorPane>
             </content>
           </Tab>

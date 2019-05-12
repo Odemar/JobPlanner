@@ -4,6 +4,7 @@ package controllers;
 import Classes.Job;
 import Classes.User;
 import Classes.UserList;
+import Classes.JobList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -17,7 +18,9 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Date;
 
+import static java.sql.Date.valueOf;
 
 
 public class AdminScreenController {
@@ -81,9 +84,9 @@ public class AdminScreenController {
            ObservableList<User> userListxml =  FXCollections.observableArrayList(list.userList);
 
 
-            tbl_usertype.setCellValueFactory(new PropertyValueFactory<User,String>("type"));
-            tbl_username.setCellValueFactory(new PropertyValueFactory<User,String>("username"));
-            tbl_fullname.setCellValueFactory(new PropertyValueFactory<User,String>("name"));
+            tbl_usertype.setCellValueFactory(new PropertyValueFactory<>("type"));
+            tbl_username.setCellValueFactory(new PropertyValueFactory<>("username"));
+            tbl_fullname.setCellValueFactory(new PropertyValueFactory<>("name"));
            userView.setItems(userListxml);
 
 
@@ -171,13 +174,24 @@ public class AdminScreenController {
     /**
      * Handles all the button events from the Calendar tab
      */
-
+        // need to implement exception when no date is selected
+        // need to implement button/method to add user to selected job
+        // need to implement method to add a new job
     public void handleButtonActionCalendar(ActionEvent event) throws IOException{
         if(event.getSource()==btn_job){
-            ObservableList<User> userListxml =  FXCollections.observableArrayList(list.userList);
-          // get selected date and find jobs using getJobsDate
-             dateSelect.getValue();
+            jobView.getItems().clear();
+            ObservableList<Job> userListxml;
+            Date dateSelectValue = Date.valueOf(dateSelect.getValue());
+            JobList jobList = new JobList();
+            jobList.readFile("jobList.txt");
+            userListxml = jobList.getJobsDate(dateSelectValue);
 
+            tbl_client.setCellValueFactory(new PropertyValueFactory<>("client"));
+            tbl_event.setCellValueFactory(new PropertyValueFactory<>("eventName"));
+            tbl_loc.setCellValueFactory(new PropertyValueFactory<>("location"));
+            tbl_start.setCellValueFactory(new PropertyValueFactory<>("start"));
+            tbl_staff.setCellValueFactory(new PropertyValueFactory<>("staff"));
+            jobView.setItems(userListxml);
     }
 }}
 
