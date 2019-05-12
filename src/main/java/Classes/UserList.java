@@ -1,6 +1,6 @@
 package Classes;
 
-import javafx.collections.ObservableList;
+
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,13 +13,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserList {
-   public ArrayList<User> userList;
+   public final ArrayList<User> userList =new ArrayList<User>();
 
 
     // Method of reading in all the users from a text file into an array
     public void readFile(String filename) throws FileNotFoundException {
 
-        userList = new ArrayList<User>();
+
         File file = new File(filename);
         Scanner input = new Scanner(file);
         while (input.hasNext()) {
@@ -75,15 +75,26 @@ public class UserList {
         return false;
 
     }
+    public boolean isInList(String username) {
+        for (User user : userList) {
+            if (user.getUsername().equals(username))
+                return true;
+            }
+        return false;
 
-
-    public int getType(String username) {
-        for(User user: userList) {
-            if (user.getUsername().equals(username)){
-                return user.getType();
+    }
+        public void printList(){
+            for (User user : userList) {
+                System.out.println(user.getUserString());
             }
         }
-        return -1;
-    }
+        public int getType (String username){
+            for (User user : userList) {
+                if (user.getUsername().equals(username)) {
+                    return user.getType();
+                }
+            }
+            return -1;
+        }
 
 }

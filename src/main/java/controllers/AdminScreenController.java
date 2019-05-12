@@ -22,48 +22,65 @@ import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class AdminScreenController {
-    public final UserList list = new UserList();
+    private String typeString;
+    private int typeInt;
+    private ObservableList<String> typeBoxList = FXCollections.observableArrayList("Admin","Client","Staff");
+    public  UserList list;
     @FXML
     private Label label;
     @FXML
-    private TextField uname,fname;
+    private TextField uname,fname,typeBox;
     @FXML
     private PasswordField pw;
     @FXML
-    public TableView<User> tableView;
-
+    private TableView<User> userView;
+    @FXML
+    private DatePicker calendar;
     @FXML
     private TableColumn<User, String>  tbl_usertype,tbl_username,tbl_fullname;
 
     @FXML
     private Button btn_new,btn_edit,btn_del,btn_create,btn_cancel,btn_reload;
 
+//    @FXML
+//    private void initialize(){
+//        typeBox.setValue("Staff");
+//
+//    }
 
     @FXML
     private void handleButtonActionUser(ActionEvent event) throws IOException {
         Parent popup;
         Stage stage = new Stage();
+        list = new UserList();
+
         // refresh the table
        if(event.getSource()== btn_reload){
-            tableView.getItems().clear();
+
 
             try {
                 list.readFile("UserList.txt");
+
             } catch (FileNotFoundException e1) {
                 e1.printStackTrace();
-            }
+            }System.out.print(userView.getItems().size());
+           userView.getItems().clear();
+
+            System.out.print(userView.getItems().size());
            ObservableList<User> userListxml =  FXCollections.observableArrayList(list.userList);
+
+
             tbl_usertype.setCellValueFactory(new PropertyValueFactory<User,String>("type"));
             tbl_username.setCellValueFactory(new PropertyValueFactory<User,String>("username"));
             tbl_fullname.setCellValueFactory(new PropertyValueFactory<User,String>("name"));
+           userView.setItems(userListxml);
 
-           tableView.setItems(userListxml);
 
 
-                System.out.println("Reloaded list");
 
 
 
@@ -73,6 +90,7 @@ public class AdminScreenController {
      else if(event.getSource()== btn_new) {
 
            popup = FXMLLoader.load(getClass().getResource("/fxml/addUser.fxml"));
+
           stage.setScene(new Scene(popup));
           stage.initModality(Modality.APPLICATION_MODAL);
           stage.initOwner(btn_new.getScene().getWindow());
@@ -81,24 +99,39 @@ public class AdminScreenController {
       }
 
         // get data from fields and add them into the arraylist and file
-        else if(event.getSource()== btn_create){
-          System.out.println("test3");
-          String username = uname.getText();
-          String password = pw.getText();
-          String fullName = fname.getText();
-          if(username.equals("") || password.equals("") || fullName.equals("")){
-                label.setText("Please fill all the fields!");
-          }
+        else if(event.getSource()== btn_create) {
 
-          else {
-              User user = new User(1, username, password, fullName);
-              list.readFile("UserList.txt");
-              list.addUser(user);
-              stage = (Stage) btn_create.getScene().getWindow();
 
-              stage.close();
-          }
-        }
+           String username = uname.getText();
+           String password = pw.getText();
+           String fullName = fname.getText();
+           typeString = typeBox.getText();
+
+           if (username.equals("") || password.equals("") || fullName.equals("")) {
+               label.setText("Please fill all the fields!");
+           }
+           else if (list.isInList(username)) {
+               label.setText("Username already taken!");
+           } else
+               {
+
+               if (typeString.equals("Admin")) {
+                   typeInt = 0;
+               } else if (typeString.equals("Client")) {
+                   typeInt = 1;
+               } else {
+                   typeInt = 2;
+               }
+
+               User user = new User(typeInt, username, password, fullName);
+               list.readFile("UserList.txt");
+               list.addUser(user);
+               stage = (Stage) btn_create.getScene().getWindow();
+
+               stage.close();
+
+           }
+       }
         //close the add user menu
       else if(event.getSource()== btn_cancel){
           stage = (Stage) btn_create.getScene().getWindow();
@@ -108,27 +141,20 @@ public class AdminScreenController {
       }
 
           // deleting selected list item from the userList
-       if(event.getSource()== btn_del){
+       else if(event.getSource()== btn_del){
 
 
 
-           User userSelect = tableView.getSelectionModel().getSelectedItem();
-           tableView.getItems().remove(userSelect);
+           User userSelect = userView.getSelectionModel().getSelectedItem();
+           userView.getItems().remove(userSelect);
           list.removeUser(userSelect);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 }
+    }
+    public void calendarInit(){
+        calendar.setShowWeekNumbers(true);
+
     }
 }
