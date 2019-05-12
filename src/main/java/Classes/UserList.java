@@ -16,7 +16,7 @@ public class UserList {
     public ArrayList<User> userList;
 
     public UserList(){
-        userList = new ArrayList<User>();
+        userList = new ArrayList<>();
     }
 
     // Method of reading in all the users from a text file into an array
@@ -69,6 +69,8 @@ public class UserList {
     public void removeUser(User user) throws IOException {
         userList.remove(user);
         this.updateFile("UserList.txt");
+        System.out.println("Deletion succes");
+        printList();
     }
 
     // check if password combination is correct
@@ -116,4 +118,6 @@ public class UserList {
         return null;
 
     }
+
+
 }

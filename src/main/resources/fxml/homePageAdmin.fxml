@@ -43,7 +43,6 @@
                         <Button fx:id="btn_new" layoutX="734.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleButtonActionUser" prefHeight="25.0" prefWidth="86.0" text="New" />
                         <Button fx:id="btn_del" layoutX="734.0" layoutY="190.0" mnemonicParsing="false" onAction="#handleButtonActionUser" prefHeight="25.0" prefWidth="86.0" text="Delete" />
                         <Button fx:id="btn_edit" layoutX="734.0" layoutY="115.0" mnemonicParsing="false" onAction="#handleButtonActionUser" prefHeight="25.0" prefWidth="86.0" text="Edit" />
-                        <Button fx:id="btn_reload" layoutX="736.0" layoutY="265.0" mnemonicParsing="false" onAction="#handleButtonActionUser" prefHeight="25.0" prefWidth="86.0" text="Reload" />
                         <TableView fx:id="userView" editable="true" prefHeight="350.0" prefWidth="600.0">
                           <columns>
                             <TableColumn fx:id="tbl_usertype" prefWidth="150.0" text="UserType" />
@@ -54,6 +53,7 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
+                        <Button fx:id="btn_ref" layoutX="734.0" layoutY="275.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" text="Refresh" onAction="#handleButtonActionUser"/>
                      </children>
                   </AnchorPane>
             </content>

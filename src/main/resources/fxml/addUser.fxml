@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.control.ChoiceBox?>
 <AnchorPane prefHeight="356.0" prefWidth="346.0" style="-fx-background-color: #FFCF9E;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminScreenController">
    <children>
       <TextField fx:id="uname" layoutX="173.0" layoutY="38.0" />
@@ -19,6 +20,6 @@
       <Button fx:id="btn_cancel" layoutX="87.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleButtonActionUser" text="Cancel" />
       <Button fx:id="btn_create" layoutX="222.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleButtonActionUser" text="Create" />
       <Label fx:id="label" layoutX="86.0" layoutY="279.0" prefHeight="17.0" prefWidth="173.0" text="" textAlignment="CENTER" textFill="RED" />
-      <TextField fx:id="typeBox" layoutX="173.0" layoutY="245.0" />
+      <ChoiceBox fx:id="typeBox" layoutX="173.0" layoutY="254.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

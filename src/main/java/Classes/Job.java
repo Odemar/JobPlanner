@@ -10,17 +10,16 @@ public class Job {
     private ArrayList<String> staffListUserName;
 
 
-    public Job(Date date,String client,String eventName,String location,String start, String staffString,int maxStaff, int status,ArrayList<String> staffListUserName) {
+    public Job(Date date,String client,String eventName,String location,String start,int maxStaff, int status,ArrayList<String> staffListUserName) {
         this.status = status;
         this.date = date;
         this.client = client;
         this.eventName = eventName;
         this.location = location;
         this.start = start;
-        this.staffString = staffString; // to view current staff on table
         this.maxStaff = maxStaff;
         this.staffListUserName = staffListUserName;
-
+        updateStaff(); // to view current staff on table
 
     }
 
@@ -44,6 +43,9 @@ public class Job {
     private String getDateString(){
         String string = date.getDay() + " " + date.getMonth() + " " + date.getYear();
         return string;
+    }
+    public void updateStaff(){
+        this.staffString = staffListUserName.size() + "/" + maxStaff;
     }
 
 

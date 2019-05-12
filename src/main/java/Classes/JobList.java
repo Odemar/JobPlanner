@@ -12,7 +12,7 @@ public class JobList {
     ArrayList<Job> jobList;
 
     public JobList(){
-        jobList = new ArrayList<Job>();
+        jobList = new ArrayList<>();
     }
 
     public void readFile(String filename) throws FileNotFoundException {
@@ -27,17 +27,16 @@ public class JobList {
             String eventName = words[4];
             String location = words[5];
             String start = words[6];
-            String staffString = words[7];
-            int maxStaff = Integer.parseInt(words[8]);
-            int status = Integer.parseInt(words[9]);
+            int maxStaff = Integer.parseInt(words[7]);
+            int status = Integer.parseInt(words[8]);
             int maxCount = words.length-1;
-            ArrayList<String> staffListUsername = new ArrayList<String>();
-            for(int i = 10; i <= maxCount;i++){
+            ArrayList<String> staffListUsername = new ArrayList<>();
+            for(int i = 9; i <= maxCount;i++){
                 String username = words[i];
                 staffListUsername.add(username);
 
             }
-            Job newJob =new Job(date,client,eventName,location,start,staffString,maxStaff,status,staffListUsername);
+            Job newJob =new Job(date,client,eventName,location,start,maxStaff,status,staffListUsername);
             jobList.add(newJob);
 
         }
@@ -58,6 +57,16 @@ public class JobList {
         }
         bw.close();
     }
+    public void addJobToList(Job job) throws IOException{
+        jobList.add(job);
+        updateFile("jobList.txt");
+    }
+
+    public void removeJob(Job job) throws IOException{
+        jobList.remove(job);
+        updateFile("jobList.txt");
+    }
+
 
     public ObservableList<Job> getJobsDate(Date date){
         ObservableList<Job> jobDate = FXCollections.observableArrayList();
