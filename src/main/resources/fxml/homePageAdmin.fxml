@@ -36,7 +36,7 @@
         </AnchorPane>
       <TabPane layoutY="35.0" prefHeight="365.0" prefWidth="855.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Users">
+          <Tab onSelectionChanged="#refresh" text="Users">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -53,7 +53,7 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
-                        <Button fx:id="btn_ref" layoutX="734.0" layoutY="275.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" text="Refresh" onAction="#handleButtonActionUser"/>
+                        <Button fx:id="btn_ref" layoutX="734.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleButtonActionUser" prefHeight="25.0" prefWidth="86.0" text="Refresh" />
                      </children>
                   </AnchorPane>
             </content>
@@ -62,7 +62,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <DatePicker fx:id="dateSelect" layoutX="650.0" layoutY="50.0" />
+                        <DatePicker fx:id="dateSelect" layoutX="650.0" layoutY="50.0" onAction="#handleButtonActionCalendar" />
                         <TableView fx:id="jobView" editable="true" prefHeight="350.0" prefWidth="600.0">
                            <columns>
                               <TableColumn fx:id="tbl_client" prefWidth="150.0" text="Client" />
@@ -74,6 +74,7 @@
                         </TableView>
                         <Label layoutX="700.0" layoutY="20.0" text="Select Date" />
                         <Button fx:id="btn_job" layoutX="750.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleButtonActionCalendar" prefHeight="25.0" prefWidth="91.0" text="Find Jobs" />
+                        <Button fx:id="btn_newjob" layoutX="630.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleButtonActionCalendar" prefHeight="25.0" prefWidth="91.0" text="New Job" />
                      </children></AnchorPane>
             </content>
           </Tab>

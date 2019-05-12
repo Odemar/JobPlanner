@@ -2,6 +2,9 @@ package Classes;
 
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -119,5 +122,14 @@ public class UserList {
 
     }
 
-
+    public ObservableList<String> getAllClients(){
+        ArrayList<String> clientArrayList = new ArrayList<>();
+        for(User user: userList){
+            if(user.getType()==1){//if user is a client
+                clientArrayList.add(user.getUsername());
+            }
+        }
+        ObservableList<String> clientObservableList = FXCollections.observableArrayList(clientArrayList);
+        return clientObservableList;
+    }
 }

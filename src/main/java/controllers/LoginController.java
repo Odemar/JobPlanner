@@ -28,9 +28,9 @@ public class LoginController {
     private JFXPasswordField pw;
     @FXML
     private Label loginf;
-
+    private User user;
+    private int loginType;
     private Stage loginWindow = new Stage();
-    private User loginUser;
 
     // id of the user that will be transferred to the Main class
 
@@ -41,7 +41,7 @@ public class LoginController {
     /**
      * Method to display a login window above all other windows.
      */
-    public User display() {
+    public int display() {
         try {
             // gets the scene settings
             Parent login = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
@@ -72,11 +72,11 @@ public class LoginController {
             // waits for a user input
             loginWindow.showAndWait();
 
-            return loginUser;
+            return loginType;
 
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
+            return -1;
         }
     }
 
@@ -102,7 +102,7 @@ public class LoginController {
         if (userList.isValidPassword(username, password)) {
             // debug stuff
             System.out.println("You're logged in!");
-            loginUser = userList.getUser(username);
+            loginType = userList.getType(username);
             // removes the text on screen about the wrong credentials (if visible anyways)
             loginf.setText("");
             // gets the current open window and closes it

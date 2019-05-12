@@ -29,9 +29,9 @@ public class JobList {
             String start = words[6];
             int maxStaff = Integer.parseInt(words[7]);
             int status = Integer.parseInt(words[8]);
-            int maxCount = words.length-1;
+            int endOffLine = words.length-1;
             ArrayList<String> staffListUsername = new ArrayList<>();
-            for(int i = 9; i <= maxCount;i++){
+            for(int i = 9; i <= endOffLine;i++){
                 String username = words[i];
                 staffListUsername.add(username);
 
@@ -55,6 +55,7 @@ public class JobList {
             bw.newLine();
 
         }
+        System.out.println("Writing succesfull");
         bw.close();
     }
     public void addJobToList(Job job) throws IOException{
@@ -76,5 +77,7 @@ public class JobList {
         }
     return jobDate;
     }
+
+
 
 }

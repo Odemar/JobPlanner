@@ -37,7 +37,7 @@ public class Job {
         for (String string: staffListUserName){
             usernameListString = usernameListString +" " + string ;
         }
-        String string = dateString + " " + client + " " + eventName + " " + location + " " + start + " " + staffString + " " + maxStaff + " " + usernameListString;
+        String string = dateString + " " + client + " " + eventName + " " + location + " " + start + " " + maxStaff+ " " + status + " " + usernameListString;
         return string;
     }
     private String getDateString(){
