@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserList {
-   public final ArrayList<User> userList =new ArrayList<User>();
+    public final ArrayList<User> userList = new ArrayList<User>();
 
 
     // Method of reading in all the users from a text file into an array
@@ -25,17 +25,17 @@ public class UserList {
         while (input.hasNext()) {
             // read first 4 strings of line
 
-            String type  = input.next();
+            String type = input.next();
             String username = input.next();
             String password = input.next();
-            String name = input.next() ;
+            String name = input.next();
 
 
-                User admin = new User(Integer.parseInt(type),username,password,name);
+            User admin = new User(Integer.parseInt(type), username, password, name);
 
-                userList.add(admin);
+            userList.add(admin);
 
-            }
+        }
 
         input.close();
 
@@ -48,7 +48,7 @@ public class UserList {
         FileOutputStream fos = new FileOutputStream(file);
 
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
-        for(User user: userList) {
+        for (User user : userList) {
             String userString = user.getUserString();
             bw.write(userString);
             bw.newLine();
@@ -56,45 +56,61 @@ public class UserList {
         }
         bw.close();
     }
+
     // Add or remove methods
     public void addUser(User user) throws IOException {
         userList.add(user);
         this.updateFile("UserList.txt");
     }
+
     public void removeUser(User user) throws IOException {
         userList.remove(user);
         this.updateFile("UserList.txt");
     }
+
     // check if password combination is correct
-    public boolean isValidPassword(String username,String password) {
-        for(User user: userList) {
-            if (user.getUsername().equals(username)&& user.getPassword().equals(password)) {
+    public boolean isValidPassword(String username, String password) {
+        for (User user : userList) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
                 return true;
             }
         }
         return false;
 
     }
+
     public boolean isInList(String username) {
         for (User user : userList) {
             if (user.getUsername().equals(username))
                 return true;
-            }
+        }
         return false;
 
     }
-        public void printList(){
-            for (User user : userList) {
-                System.out.println(user.getUserString());
-            }
-        }
-        public int getType (String username){
-            for (User user : userList) {
-                if (user.getUsername().equals(username)) {
-                    return user.getType();
-                }
-            }
-            return -1;
-        }
 
+    public void printList() {
+        for (User user : userList) {
+            System.out.println(user.getUserString());
+        }
+    }
+
+    public int getType(String username) {
+        for (User user : userList) {
+            if (user.getUsername().equals(username)) {
+                return user.getType();
+            }
+        }
+        return -1;
+    }
+
+    public User getUser(String username) {
+        for (User user : userList) {
+            if (user.getUsername().equals(username)) {
+                return user;
+            }
+
+        }
+        return null;
+
+    }
 }
