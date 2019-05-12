@@ -47,7 +47,7 @@ public class User {
         return this.name;
     }
 
-    public String getUserString() {
+    public String toString() {
 
 
         String values = type + " " + username  + " "  + password +  " "  + name;

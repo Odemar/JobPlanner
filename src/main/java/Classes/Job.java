@@ -6,11 +6,12 @@ import java.util.Date;
 public class Job {
     public Date date;
     public String client,eventName,location,start,staffString;
-    public int maxStaff;
+    public int maxStaff,status; // status=0 for not accepted status = 1 for accepted
     public ArrayList<String> staffListUserName;
     public ArrayList<User> staffList;
 
-    public Job(Date date,String client,String eventName,String location,String start, String staffString,int maxStaff,ArrayList<String> staffListUserName) {
+    public Job(Date date,String client,String eventName,String location,String start, String staffString,int maxStaff, int status,ArrayList<String> staffListUserName) {
+        this.status = status;
         this.date = date;
         this.client = client;
         this.eventName = eventName;
@@ -35,13 +36,13 @@ public class Job {
         String usernameListString = "";
         String dateString = getDateString();
         for (User user: staffList){
-            usernameListString += user.getUsername();
+            usernameListString += user.getUsername()+ " ";
         }
-        String string = dateString + "" + client + "" + eventName + "" + location + "" + start + "" + staffString + "" + maxStaff + " " + usernameListString;
+        String string = dateString + " " + client + " " + eventName + " " + location + " " + start + " " + staffString + " " + maxStaff + " " + usernameListString;
         return string;
     }
     public String getDateString(){
-        String string = date.getDay() + " " + date.getMonth() + "" + date.getYear();
+        String string = date.getDay() + " " + date.getMonth() + " " + date.getYear();
         return string;
     }
 

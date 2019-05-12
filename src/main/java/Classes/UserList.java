@@ -13,8 +13,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserList {
-    public final ArrayList<User> userList = new ArrayList<User>();
+    public ArrayList<User> userList;
 
+    public UserList(){
+        userList = new ArrayList<User>();
+    }
 
     // Method of reading in all the users from a text file into an array
     public void readFile(String filename) throws FileNotFoundException {
@@ -49,7 +52,7 @@ public class UserList {
 
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
         for (User user : userList) {
-            String userString = user.getUserString();
+            String userString = user.toString();
             bw.write(userString);
             bw.newLine();
 
@@ -87,10 +90,10 @@ public class UserList {
         return false;
 
     }
-
+// debug method
     public void printList() {
         for (User user : userList) {
-            System.out.println(user.getUserString());
+            System.out.println(user.toString());
         }
     }
 

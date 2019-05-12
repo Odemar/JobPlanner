@@ -36,7 +36,7 @@
         </AnchorPane>
       <TabPane layoutY="35.0" prefHeight="365.0" prefWidth="855.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab  text="Users">
+          <Tab text="Users">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -62,17 +62,18 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <DatePicker fx:id="calendar" layoutX="650.0" layoutY="50.0" />
+                        <DatePicker fx:id="dateSelect" layoutX="650.0" layoutY="50.0" />
                         <TableView fx:id="jobView" editable="true" prefHeight="350.0" prefWidth="600.0">
                            <columns>
-                              <TableColumn fx:id="tbl_a" prefWidth="150.0" text="Client" />
-                              <TableColumn fx:id="tbl_b" prefWidth="150.0" text="EventName" />
-                              <TableColumn fx:id="tbl_c" prefWidth="150.0" text="Location" />
-                              <TableColumn prefWidth="75.0" text="Start" />
-                              <TableColumn prefWidth="75.0" text="Staff" />
+                              <TableColumn fx:id="tbl_client" prefWidth="150.0" text="Client" />
+                              <TableColumn fx:id="tbl_event" prefWidth="150.0" text="EventName" />
+                              <TableColumn fx:id="tbl_loc" prefWidth="150.0" text="Location" />
+                              <TableColumn fx:id="tbl_start" prefWidth="75.0" text="Start" />
+                              <TableColumn fx:id="tbl_staff" prefWidth="75.0" text="Staff" />
                            </columns>
                         </TableView>
                         <Label layoutX="700.0" layoutY="20.0" text="Select Date" />
+                        <Button fx:id="btn_job" layoutX="750.0" layoutY="297.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="91.0" text="Find Jobs" />
                      </children></AnchorPane>
             </content>
           </Tab>

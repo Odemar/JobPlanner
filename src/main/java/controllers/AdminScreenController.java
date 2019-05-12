@@ -1,6 +1,7 @@
 package controllers;
 
 
+import Classes.Job;
 import Classes.User;
 import Classes.UserList;
 import com.jfoenix.controls.JFXPasswordField;
@@ -22,10 +23,12 @@ import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 
 public class AdminScreenController {
+    //User tab fields
     private String typeString;
     private int typeInt;
     private ObservableList<String> typeBoxList = FXCollections.observableArrayList("Admin","Client","Staff");
@@ -38,20 +41,31 @@ public class AdminScreenController {
     private PasswordField pw;
     @FXML
     private TableView<User> userView;
-    @FXML
-    private DatePicker calendar;
+
     @FXML
     private TableColumn<User, String>  tbl_usertype,tbl_username,tbl_fullname;
 
     @FXML
     private Button btn_new,btn_edit,btn_del,btn_create,btn_cancel,btn_reload;
+    //Job tab fields
 
-//    @FXML
-//    private void initialize(){
-//        typeBox.setValue("Staff");
-//
-//    }
+    @FXML
+    private DatePicker dateSelect;
 
+    @FXML
+    private TableView<Job> jobView;
+    @FXML
+    private TableColumn<Job,String> tbl_client,tbl_staff,tbl_start,tbl_event,tbl_loc;
+
+    @FXML
+    private Button btn_job;
+
+
+    /**
+     *
+     * This method handles all the button events for the user tab
+     * @throws IOException
+     */
     @FXML
     private void handleButtonActionUser(ActionEvent event) throws IOException {
         Parent popup;
@@ -67,10 +81,10 @@ public class AdminScreenController {
 
             } catch (FileNotFoundException e1) {
                 e1.printStackTrace();
-            }System.out.print(userView.getItems().size());
+            }
            userView.getItems().clear();
 
-            System.out.print(userView.getItems().size());
+
            ObservableList<User> userListxml =  FXCollections.observableArrayList(list.userList);
 
 
@@ -157,7 +171,20 @@ public class AdminScreenController {
     }
 
     public void calendarInit(){
-        calendar.setShowWeekNumbers(true);
+        dateSelect.setShowWeekNumbers(true);
 
     }
-}
+
+    /**
+     * Handles all the button events from the Calendar tab
+     */
+
+    public void handleButtonActionCalendar(ActionEvent event) throws IOException{
+        if(event.getSource()==btn_job){
+            ObservableList<User> userListxml =  FXCollections.observableArrayList(list.userList);
+          // get selected date and find jobs using getJobsDate
+             dateSelect.getValue();
+
+    }
+}}
+
