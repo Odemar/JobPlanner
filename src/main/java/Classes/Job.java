@@ -41,12 +41,13 @@ public class Job {
         return string;
     }
     private String getDateString(){
-        String string = date.getDay() + " " + date.getMonth() + " " + date.getYear();
+        String string = date.getDate() + " " + date.getMonth() + " " + (date.getYear()-1900); // date
         return string;
     }
     public void updateStaff(){
         this.staffString = staffListUserName.size() + "/" + maxStaff;
     }
+
 
 
 }

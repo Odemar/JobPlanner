@@ -63,12 +63,6 @@ public class LoginController {
                 }
             });
 
-            // style of the window: UNDECORATED = no bar at the top to minimize, maximize or close it
-            loginWindow.initStyle(StageStyle.UNDECORATED);
-
-            // makes the window be on top of all other windows
-            loginWindow.setAlwaysOnTop(true);
-
             // waits for a user input
             loginWindow.showAndWait();
 

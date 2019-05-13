@@ -72,10 +72,18 @@ public class JobList {
     public ObservableList<Job> getJobsDate(Date date){
         ObservableList<Job> jobDate = FXCollections.observableArrayList();
         for(Job job: jobList){
-            date.equals(job.date);
-            jobDate.add(job);
+            if(date.equals(job.date)) {
+                System.out.println("Hello World");
+                    jobDate.add(job);
+            }
         }
     return jobDate;
+    }
+    //debug method
+    public void printList(){
+        for(Job job:jobList){
+            System.out.println(job.toString());
+        }
     }
 
 

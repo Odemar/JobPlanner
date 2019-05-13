@@ -37,9 +37,9 @@ public class UserList {
             String name = input.next();
 
 
-            User admin = new User(Integer.parseInt(type), username, password, name);
+            User user = new User(Integer.parseInt(type), username, password, name);
 
-            userList.add(admin);
+            userList.add(user);
 
         }
 
@@ -70,9 +70,13 @@ public class UserList {
     }
 
     public void removeUser(User user) throws IOException {
-        userList.remove(user);
+        printList();
+        //Doesnt want to remove user for some reason??
+        if(userList.remove(user)){
+            System.out.println("Deletion succes");
+        }
         this.updateFile("UserList.txt");
-        System.out.println("Deletion succes");
+
         printList();
     }
 

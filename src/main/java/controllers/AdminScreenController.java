@@ -52,7 +52,7 @@ public class AdminScreenController {
 
 
     //Job tab fields
-    private Date dateSelectValue =new Date(219,0,1);
+    private static Date dateSelectValue =new Date(2019,0,1);
     @FXML
     private DatePicker dateSelect;
     @FXML
@@ -81,7 +81,7 @@ public class AdminScreenController {
         }
         else if(popupInt==2){ //pop up init add job
 
-            list.readFile("userList.txt");
+            list.readFile("UserList.txt");
             clientBox.getItems().clear();
             clientBox.setItems(list.getAllClients());
         }
@@ -164,11 +164,11 @@ public class AdminScreenController {
        else if(event.getSource()== btn_del){
 
            User userSelect = userView.getSelectionModel().getSelectedItem();
-           //nothing selected
+           ;//nothing selected
            if (userSelect != null){
                System.out.println("Selected user: " + userSelect.toString()); //debug
                list.removeUser(userSelect);
-               refresh();
+
            }
 
 
@@ -184,15 +184,11 @@ public class AdminScreenController {
 
     }
 
-    public void refresh() {
+    public void refresh() throws IOException {
         list = new UserList();
         // refresh the table
-        try {
-            list.readFile("UserList.txt");
 
-        } catch (FileNotFoundException e1) {
-            e1.printStackTrace();
-        }
+        list.readFile("UserList.txt");
 
         ObservableList<User> userListxml =  FXCollections.observableArrayList(list.userList);
 
@@ -213,21 +209,24 @@ public class AdminScreenController {
 
         jobList = new JobList();
         jobList.readFile("jobList.txt");
+        tbl_client.setCellValueFactory(new PropertyValueFactory<>("client"));
+        tbl_event.setCellValueFactory(new PropertyValueFactory<>("eventName"));
+        tbl_loc.setCellValueFactory(new PropertyValueFactory<>("location"));
+        tbl_start.setCellValueFactory(new PropertyValueFactory<>("start"));
+        tbl_staff.setCellValueFactory(new PropertyValueFactory<>("staffString"));
         Parent popup;
         Stage stage = new Stage();
         if(event.getSource()==btn_job){
 
-            ObservableList<Job> userListxml;
+            ObservableList<Job> jobListxml;
             JobList jobList = new JobList();
             jobList.readFile("jobList.txt");
-            userListxml = jobList.getJobsDate(dateSelectValue);
+            jobListxml = jobList.getJobsDate(dateSelectValue);
+            System.out.println(jobListxml.size());
 
-            tbl_client.setCellValueFactory(new PropertyValueFactory<>("client"));
-            tbl_event.setCellValueFactory(new PropertyValueFactory<>("eventName"));
-            tbl_loc.setCellValueFactory(new PropertyValueFactory<>("location"));
-            tbl_start.setCellValueFactory(new PropertyValueFactory<>("start"));
-            tbl_staff.setCellValueFactory(new PropertyValueFactory<>("staff"));
-            jobView.setItems(userListxml);
+            jobView.setItems(jobListxml);
+            jobView.refresh();
+
     }
         else if(event.getSource()==btn_newjob){
             popupInt = 2; // going to open new window
@@ -263,9 +262,9 @@ public class AdminScreenController {
         }
         else if(event.getSource()== dateSelect){
             LocalDate localDate = (dateSelect.getValue());
-            System.out.println(localDate.getYear());
-            dateSelectValue = new Date(localDate.getYear(),localDate.getMonthValue(),localDate.getDayOfMonth());
 
+            dateSelectValue = new Date(localDate.getYear(),localDate.getMonthValue(),localDate.getDayOfMonth());
+            System.out.println("get time value "+dateSelectValue.getMonth());
         }
 
 }
