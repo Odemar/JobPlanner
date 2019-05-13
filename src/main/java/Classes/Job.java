@@ -5,7 +5,7 @@ import java.sql.Date;
 
 public class Job {
    public Date date;
-    private String client,eventName,location,start,staffString;
+    public String client,eventName,location,start,staffString;
     private int maxStaff,status; // status=0 for not accepted status = 1 for accepted
     private ArrayList<String> staffListUserName;
 
@@ -45,9 +45,27 @@ public class Job {
         return string;
     }
     public void updateStaff(){
+
         this.staffString = staffListUserName.size() + "/" + maxStaff;
     }
 
+    // tableview uses these getters to get data from our object
+    public String getClient(){
+        return client;
+    }
 
+    public String getEventName(){
+        return eventName;
+    }
+    public String getLocation(){
+        return location;
+    }
+    public String getMaxStaff(){
+        String staffString = staffListUserName.size() + "/" + maxStaff;
+        return staffString;
+    }
+    public String getStart(){
+        return start;
+    }
 
 }

@@ -25,7 +25,7 @@ public class UserList {
     // Method of reading in all the users from a text file into an array
     public void readFile(String filename) throws FileNotFoundException {
 
-
+        userList = new ArrayList<>();
         File file = new File(filename);
         Scanner input = new Scanner(file);
         while (input.hasNext()) {

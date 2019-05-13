@@ -68,7 +68,6 @@ public class AdminScreenController {
     @FXML
     private void initialize()throws IOException {
 
-        System.out.println(popupInt);
 
 
         if(popupInt==0){// init main screen
@@ -83,7 +82,9 @@ public class AdminScreenController {
 
             list.readFile("UserList.txt");
             clientBox.getItems().clear();
-            clientBox.setItems(list.getAllClients());
+            ObservableList<String> jobBox = list.getAllClients();
+            //System.out.println((jobBox.size()));
+            clientBox.setItems(jobBox);
         }
 
     }
@@ -202,30 +203,27 @@ public class AdminScreenController {
     /**
      * Handles all the button events from the Calendar tab
      */
-        // need to implement exception when no date is selected
-        // need to implement button/method to add user to selected job
-        // need to implement method to add a new job
+
+
     public void handleButtonActionCalendar(ActionEvent event) throws IOException{
 
         jobList = new JobList();
         jobList.readFile("jobList.txt");
-        tbl_client.setCellValueFactory(new PropertyValueFactory<>("client"));
-        tbl_event.setCellValueFactory(new PropertyValueFactory<>("eventName"));
-        tbl_loc.setCellValueFactory(new PropertyValueFactory<>("location"));
-        tbl_start.setCellValueFactory(new PropertyValueFactory<>("start"));
-        tbl_staff.setCellValueFactory(new PropertyValueFactory<>("staffString"));
+
         Parent popup;
         Stage stage = new Stage();
         if(event.getSource()==btn_job){
 
             ObservableList<Job> jobListxml;
-            JobList jobList = new JobList();
-            jobList.readFile("jobList.txt");
+            tbl_client.setCellValueFactory(new PropertyValueFactory<>("client"));
+            tbl_event.setCellValueFactory(new PropertyValueFactory<>("eventName"));
+            tbl_loc.setCellValueFactory(new PropertyValueFactory<>("location"));
+            tbl_start.setCellValueFactory(new PropertyValueFactory<>("start"));
+            tbl_staff.setCellValueFactory(new PropertyValueFactory<>("maxStaff"));
             jobListxml = jobList.getJobsDate(dateSelectValue);
-            System.out.println(jobListxml.size());
-
             jobView.setItems(jobListxml);
             jobView.refresh();
+
 
     }
         else if(event.getSource()==btn_newjob){
@@ -264,7 +262,7 @@ public class AdminScreenController {
             LocalDate localDate = (dateSelect.getValue());
 
             dateSelectValue = new Date(localDate.getYear(),localDate.getMonthValue(),localDate.getDayOfMonth());
-            System.out.println("get time value "+dateSelectValue.getMonth());
+            System.out.println("get month value "+dateSelectValue.getMonth());
         }
 
 }
