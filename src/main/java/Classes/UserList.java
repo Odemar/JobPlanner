@@ -70,11 +70,18 @@ public class UserList {
     }
 
     public void removeUser(User user) throws IOException {
-        printList();
-        //Doesnt want to remove user for some reason??
-        if(userList.remove(user)){
-            System.out.println("Deletion succes");
+        User deleteUser = user;
+        String username = user.getUsername();
+        //for some reason the array doesn't find the given user so instead i have to use this
+        // temporary solution
+        for(User userl :userList){
+            if (userl.getUsername().equals(username)){
+                deleteUser = userl;
+            }
+
         }
+        userList.remove(deleteUser);
+
         this.updateFile("UserList.txt");
 
         printList();

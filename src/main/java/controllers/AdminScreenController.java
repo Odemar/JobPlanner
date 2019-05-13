@@ -164,11 +164,11 @@ public class AdminScreenController {
        else if(event.getSource()== btn_del){
 
            User userSelect = userView.getSelectionModel().getSelectedItem();
-           ;//nothing selected
+           //nothing selected
            if (userSelect != null){
                System.out.println("Selected user: " + userSelect.toString()); //debug
                list.removeUser(userSelect);
-
+            refresh();
            }
 
 
