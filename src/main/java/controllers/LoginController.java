@@ -102,7 +102,7 @@ public class LoginController {
         // stores the input password in a variable
         String password = pw.getText();
         // makes an UserList of all the users it can find in the txt file
-        final UserList userList = new UserList("UserList.txt");
+        final UserList userList = new UserList("src/main/resources/txtfiles/UserList.txt");
 
         // if the passwords match, the window closes, else you get asked to try again
         if (userList.isValidPassword(username, password)) {

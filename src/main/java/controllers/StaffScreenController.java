@@ -92,7 +92,7 @@ public class StaffScreenController {
     @FXML
     public void refreshJobs() throws IOException{
 
-        jobList = new JobList("jobList.txt");
+        jobList = new JobList("src/main/resources/txtfiles/jobList.txt");
 
 
 
