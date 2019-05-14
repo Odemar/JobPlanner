@@ -143,4 +143,15 @@ public class UserList {
         ObservableList<String> clientObservableList = FXCollections.observableArrayList(clientArrayList);
         return clientObservableList;
     }
+    public ObservableList<String> getAvailableStaff(ArrayList<String> staffName){
+        ArrayList<String> staffArrayList = new ArrayList<>();
+        for(User user: userList){
+            if(user.getType()==2 && !staffName.contains(user.getUsername())){//if user is a staff and not already in the job
+                staffArrayList.add(user.getUsername());
+            }
+        }
+        ObservableList<String> staffObservableList = FXCollections.observableArrayList(staffArrayList);
+        return staffObservableList;
+
+    }
 }

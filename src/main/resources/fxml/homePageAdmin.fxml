@@ -38,7 +38,7 @@
         <tabs>
           <Tab onSelectionChanged="#refresh" text="Users">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" onMouseEntered="#refresh" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Button fx:id="btn_new" layoutX="734.0" layoutY="40.0" mnemonicParsing="false" onAction="#handleButtonActionUser" prefHeight="25.0" prefWidth="86.0" text="New" />
                         <Button fx:id="btn_del" layoutX="734.0" layoutY="190.0" mnemonicParsing="false" onAction="#handleButtonActionUser" prefHeight="25.0" prefWidth="86.0" text="Delete" />
@@ -53,17 +53,16 @@
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                         </TableView>
-                        <Button fx:id="btn_ref" layoutX="734.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleButtonActionUser" prefHeight="25.0" prefWidth="86.0" text="Refresh" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
           <Tab onSelectionChanged="#calendarInit" text="Calendar">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" onMouseEntered="#refreshCalendar" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <DatePicker fx:id="dateSelect" layoutX="650.0" layoutY="50.0" onAction="#handleButtonActionCalendar" />
-                        <TableView fx:id="jobView" editable="true" prefHeight="350.0" prefWidth="600.0">
+                        <TableView fx:id="jobView" editable="true" onMouseClicked="#jobSelectUpdate" prefHeight="350.0" prefWidth="600.0">
                            <columns>
                               <TableColumn fx:id="tbl_client" prefWidth="150.0" text="Client" />
                               <TableColumn fx:id="tbl_event" prefWidth="150.0" text="EventName" />
@@ -73,19 +72,29 @@
                            </columns>
                         </TableView>
                         <Label layoutX="700.0" layoutY="20.0" text="Select Date" />
-                        <Button fx:id="btn_job" layoutX="750.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleButtonActionCalendar" prefHeight="25.0" prefWidth="91.0" text="Find Jobs" />
-                        <Button fx:id="btn_newjob" layoutX="630.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleButtonActionCalendar" prefHeight="25.0" prefWidth="91.0" text="New Job" />
+                        <Button fx:id="btn_newjob" layoutX="622.0" layoutY="163.0" mnemonicParsing="false" onAction="#handleButtonActionCalendar" prefHeight="25.0" prefWidth="91.0" text="New Job" />
+                        <Button fx:id="btn_add_staff_job" layoutX="622.0" layoutY="248.0" mnemonicParsing="false" onAction="#handleButtonActionCalendar" prefHeight="25.0" prefWidth="91.0" text="Add Staff" />
+                        <Button fx:id="btn_del_staff_job" layoutX="738.0" layoutY="248.0" mnemonicParsing="false" onAction="#handleButtonActionCalendar" prefHeight="25.0" prefWidth="91.0" text="Delete Staff" />
+                        <Button fx:id="btn_del_job" layoutX="738.0" layoutY="163.0" mnemonicParsing="false" onAction="#handleButtonActionCalendar" prefHeight="25.0" prefWidth="91.0" text="Delete Job" />
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="Job List">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-              </content>
-            </Tab>
             <Tab text="New Requests">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="requestView" editable="true" prefHeight="350.0" prefWidth="600.0">
+                           <columns>
+                              <TableColumn fx:id="tbl_client_req" prefWidth="150.0" text="Client" />
+                              <TableColumn fx:id="tbl_event_req" prefWidth="150.0" text="EventName" />
+                              <TableColumn fx:id="tbl_loc_req" prefWidth="150.0" text="Location" />
+                              <TableColumn fx:id="tbl_start_req" prefWidth="75.0" text="Start" />
+                              <TableColumn fx:id="tbl_staff_req" prefWidth="75.0" text="Staff" />
+                           </columns>
+                        </TableView>
+                        <Button fx:id="btn_req_acc" layoutX="655.0" layoutY="144.0" mnemonicParsing="false" text="Accept" />
+                        <Button fx:id="btn_req_ref" layoutX="754.0" layoutY="144.0" mnemonicParsing="false" text="Refuse" />
+                     </children></AnchorPane>
               </content>
             </Tab>
         </tabs>

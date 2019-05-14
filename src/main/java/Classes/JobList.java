@@ -64,19 +64,32 @@ public class JobList {
     }
 
     public void removeJob(Job job) throws IOException{
-        jobList.remove(job);
+        Job deleteJob = job;
+        String eventName = job.getEventName();
+        //for some reason the array doesn't find the given user so instead i have to use this
+        // temporary solution
+        for(Job jobIt :jobList){
+            if (jobIt.getEventName().equals(eventName)){
+                deleteJob = jobIt;
+            }
+
+        }
+        jobList.remove(deleteJob);
         updateFile("jobList.txt");
     }
 
 
     public ObservableList<Job> getJobsDate(Date date){
         ObservableList<Job> jobDate = FXCollections.observableArrayList();
+
         for(Job job: jobList){
+
             if(date.equals(job.date)) {
-                System.out.println("Hello World");
+
                     jobDate.add(job);
             }
         }
+
     return jobDate;
     }
     //debug method
@@ -87,5 +100,19 @@ public class JobList {
     }
 
 
+    public void addStaffJob(String staffName,String eventName) throws IOException{
+        int i =0;
+        for(Job job:jobList){
+            if(job.getEventName().equals(eventName)){
+                job.addStaff(staffName);
+                jobList.set(i,job);
 
+            }
+
+            i++;
+        }
+        updateFile("jobList.txt");
+    }
 }
+
+

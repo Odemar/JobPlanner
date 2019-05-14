@@ -1,6 +1,6 @@
-
 package sample;
 
+import Classes.User;
 import controllers.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,15 +12,16 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-
+public static User loginData;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
 
         // open a login window and receive the userType
-        int loginType = new LoginController().display();
-
+        loginData = new LoginController().display();
+        System.out.print(loginData);
+        int type = loginData.getType();
         //Parent login = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
         primaryStage.setTitle("Job Planner");
 
@@ -31,7 +32,7 @@ public class Main extends Application {
         //Parent homePageClient = FXMLLoader.load(getClass().getResource("/fxml/homePageClient.fxml"));
         Parent homePageAdmin = FXMLLoader.load(getClass().getResource("/fxml/homePageAdmin.fxml"));
 
-        switch (loginType) {
+        switch (type) {
             case 0:
                 primaryStage.setScene(new Scene(homePageAdmin));
                 break;
@@ -53,3 +54,4 @@ public class Main extends Application {
 
 
 }
+
