@@ -8,6 +8,9 @@ import controllers.StaffScreenController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+import java.net.URL;
+
 public class Main extends Application {
 
     /**
@@ -67,6 +70,7 @@ public class Main extends Application {
      * @param args
      */
     public static void main(String[] args) {
+
         launch(args);
     }
 

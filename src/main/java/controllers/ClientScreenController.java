@@ -10,10 +10,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class ClientScreenController {
@@ -42,6 +44,7 @@ public class ClientScreenController {
 
         primaryStage.setScene(new Scene(homePageClient));
         primaryStage.setTitle("Job Planner");
+        primaryStage.getIcons().add(new Image("/images/logo.png"));
 
         // application closes when this window closes
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {

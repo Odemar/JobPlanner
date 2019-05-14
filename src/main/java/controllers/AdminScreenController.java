@@ -15,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -112,6 +113,8 @@ public class AdminScreenController {
 
         primaryStage.setScene(new Scene(homePageAdmin));
         primaryStage.setTitle("Job Planner");
+        primaryStage.getIcons().add(new Image("/images/logo.png"));
+
 
         // application closes when this window closes
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
