@@ -24,6 +24,7 @@ import sample.Main;
 import java.io.IOException;
 
 public class ClientScreenController {
+    public static int tableSelect = 0;
     public static JobList jobList;
     @FXML
     private JFXButton userInfo;
@@ -96,23 +97,31 @@ public class ClientScreenController {
 
         // refresh the table
 
-        ObservableList<Job> jobListxml = jobList.getJobsClient(Main.loginData);
+        ObservableList<Job> jobListxml;
         tbl_eventname.setCellValueFactory(new PropertyValueFactory<>("eventName"));
         tbl_location.setCellValueFactory(new PropertyValueFactory<>("location"));
         tbl_time.setCellValueFactory(new PropertyValueFactory<>("start"));
         tbl_staff.setCellValueFactory(new PropertyValueFactory<>("staffString"));
         tbl_date.setCellValueFactory(new PropertyValueFactory<>("dateStringTable"));
-        clientView.setItems(jobListxml);
+        if(tableSelect ==0){
+            jobListxml = jobList.getJobsClient(Main.loginData);
+            clientView.setItems(jobListxml);}
+
+        else{
+            JobList requestList = new JobList("requestList.txt");
+            jobListxml = requestList.getJobsClient(Main.loginData);
+            clientView.setItems(jobListxml);
+        }
         clientView.refresh();
 
     }
     @FXML
     private void showPlannedJobs(){
-
+    tableSelect=0;
     }
     @FXML
     private void showReqJobs(){
-
+    tableSelect=1;
     }
 
     @FXML
