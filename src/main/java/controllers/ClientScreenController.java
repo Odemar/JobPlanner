@@ -116,16 +116,21 @@ public class ClientScreenController {
 
     }
     @FXML
-    private void showPlannedJobs(){
+    private void showPlannedJobs() throws IOException{
+        clientView.setVisible(true);
         tableSelect=0;
+        refreshJobs();
     }
     @FXML
-    private void showReqJobs(){
+    private void showReqJobs() throws IOException{
+        clientView.setVisible(true);
         tableSelect=1;
+        refreshJobs();
     }
 
     @FXML
     private void requestJob(){
+        clientView.setVisible(false);
 
     }
 }

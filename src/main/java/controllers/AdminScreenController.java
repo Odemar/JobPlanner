@@ -480,13 +480,16 @@ public class AdminScreenController {
     private void showUserInfo() throws IOException {
 
         AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/fxml/drawer.fxml"));
+
         drawer.setSidePane(anchorPane);
         drawer.setOverLayVisible(false);
 
         if(drawer.isShown()){
             drawer.close();
+            drawer.setMaxSize(0, 559);
         }
         else {
+            drawer.setMaxSize(186, 559);
             drawer.open();
         }
     }

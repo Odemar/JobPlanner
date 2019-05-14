@@ -78,7 +78,7 @@
                 </JFXButton>
             </children>
         </AnchorPane>
-        <TableView fx:id="clientView" editable="true" layoutX="199.0" layoutY="43.0" onMouseEntered="#refreshJobs" prefHeight="539.0" prefWidth="648.0" style="-fx-background-color: #ffddbc;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="42.0">
+        <TableView fx:id="clientView" editable="true" layoutX="199.0" layoutY="43.0" onMouseEntered="#refreshJobs" prefHeight="459.0" prefWidth="653.0" style="-fx-background-color: #ffddbc;" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="42.0">
             <columns>
                 <TableColumn fx:id="tbl_eventname" editable="false" prefWidth="201.0" text="Event Name" />
                 <TableColumn fx:id="tbl_location" editable="false" prefWidth="198.0" text="Location" />
