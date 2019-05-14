@@ -55,7 +55,7 @@
                   <Font name="Arial Black" size="22.0" />
                </font>
             </Text>
-            <JFXButton fx:id="userInfo" graphicTextGap="0.0" layoutX="818.0" layoutY="4.0" onMouseClicked="#showUserInfo" prefHeight="14.0" text="">
+            <JFXButton fx:id="userInfo" graphicTextGap="0.0" layoutX="818.0" layoutY="4.0" onMouseClicked="#showUserInfo" prefHeight="14.0" text="" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="4.0">
                <graphic>
                   <ImageView fx:id="userInfo1" fitHeight="14.0" fitWidth="15.0" onMouseClicked="#showUserInfo" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -76,11 +76,11 @@
             <TableColumn fx:id="tbl_date" editable="false" prefWidth="105.0" text="Date" />
         </columns>
       </TableView>
-      <JFXDrawer fx:id="drawer" defaultDrawerSize="186.0" direction="RIGHT" layoutX="662.0" layoutY="32.0" overLayVisible="false" prefHeight="559.0" prefWidth="186.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0" />
       <JFXButton fx:id="btn_register" layoutX="440.0" layoutY="528.0" onAction="#actionEventHandler" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="Register" AnchorPane.bottomAnchor="24.0">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
       </JFXButton>
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="186.0" direction="RIGHT" layoutX="662.0" layoutY="32.0" overLayVisible="false" prefHeight="559.0" prefWidth="186.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0" />
    </children>
 </AnchorPane>

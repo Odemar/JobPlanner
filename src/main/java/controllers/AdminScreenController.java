@@ -4,6 +4,8 @@ import Classes.Job;
 import Classes.User;
 import Classes.UserList;
 import Classes.JobList;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDrawer;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -97,6 +100,13 @@ public class AdminScreenController {
     private TableColumn<Job,String> tbl_client_req,tbl_staff_req,tbl_start_req,tbl_event_req,tbl_loc_req,tbl_date_req;
     @FXML
     private Button btn_req_acc,btn_req_ref;
+
+    // log out button
+    @FXML
+    private JFXButton logOut;
+    // side bar right
+    @FXML
+    private JFXDrawer drawer;
 
     // currently logged in user
     private User user;
@@ -457,6 +467,28 @@ public class AdminScreenController {
                 jobList.addJobToList(jobSelect);
             }
         refreshRequest();
+    }
+
+    @FXML
+    private void logOut(){
+        // gets the current open window and closes it
+        Stage stage = (Stage) logOut.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void showUserInfo() throws IOException {
+
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/fxml/drawer.fxml"));
+        drawer.setSidePane(anchorPane);
+        drawer.setOverLayVisible(false);
+
+        if(drawer.isShown()){
+            drawer.close();
+        }
+        else {
+            drawer.open();
+        }
     }
 }
 
