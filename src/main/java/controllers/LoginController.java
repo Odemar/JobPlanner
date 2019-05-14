@@ -22,8 +22,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 
-
-=======
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -53,30 +51,30 @@ public class LoginController {
      */
     public User display() throws IOException {
 
-            // gets the scene settings
-            Parent login = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+        // gets the scene settings
+        Parent login = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
 
-            // blocks the user clicking in other windows
-            loginWindow.initModality(Modality.APPLICATION_MODAL);
+        // blocks the user clicking in other windows
+        loginWindow.initModality(Modality.APPLICATION_MODAL);
 
-            // scene that is displayed
-            loginWindow.setScene(new Scene(login));
+        // scene that is displayed
+        loginWindow.setScene(new Scene(login));
 
-            // title of the window
-            loginWindow.setTitle("JobPlanner Login");
+        // title of the window
+        loginWindow.setTitle("JobPlanner Login");
 
-            // if the login window gets closed, the whole application closes
-            loginWindow.setOnCloseRequest(new EventHandler<WindowEvent>() {
-                public void handle(WindowEvent event) {
-                    Platform.exit();
-                    System.exit(0);
-                }
-            });
+        // if the login window gets closed, the whole application closes
+        loginWindow.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent event) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
 
-            // waits for a user input
-            loginWindow.showAndWait();
+        // waits for a user input
+        loginWindow.showAndWait();
 
-            return loginUser;
+        return loginUser;
 
 
     }
@@ -89,13 +87,12 @@ public class LoginController {
      */
     private void handleLoginButton() throws IOException {
 
-
         String username = uname.getText();
         String password = pw.getText();
         final UserList userList = new UserList("UserList.txt");
 
 
-            userList.readFile();
+        userList.readFile();
 
 
         if (userList.isValidPassword(username, password)) {
@@ -118,4 +115,5 @@ public class LoginController {
         System.out.println("Username: " + uname.getText() + "\nPassword: " + pw.getText());
 
     }
+}
 

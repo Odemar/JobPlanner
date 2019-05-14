@@ -1,4 +1,4 @@
-package sample;
+package main;
 
 import Classes.User;
 import controllers.LoginController;
@@ -6,18 +6,19 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
-
 
 public class Main extends Application {
 
-public static User loginData;
+    public static User loginData;
 
+    /**
+     *
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
-
 
         // open a login window and receive the userType
         loginData = new LoginController().display();
@@ -49,7 +50,10 @@ public static User loginData;
         primaryStage.show();
     }
 
-
+    /**
+     * This method launches the application.
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
