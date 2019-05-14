@@ -9,8 +9,8 @@
         <module name="JobPlanner" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="JobPlanner" target="1.5" />
+    <bytecodeTargetLevel target="12">
+      <module name="JobPlanner" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

@@ -8,7 +8,7 @@ public class User {
     String name;
 
     // type for Admin is 0, Client is 1, staff is 2
-    public void setUser(int type,String username,String password,String name) {
+    public User(int type,String username,String password,String name) {
         this.type = type;
         this.setUsername(username);
         this.setPassword(password);
@@ -46,8 +46,11 @@ public class User {
     public String getName() {
         return this.name;
     }
-    public String getUserString() {
-        String values = type + " " + username + " " + password + " " + name;
+
+    public String toString() {
+
+
+        String values = type + " " + username  + " "  + password +  " "  + name;
         return values;
     }
 
