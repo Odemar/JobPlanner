@@ -87,18 +87,16 @@ public class LoginController {
      * In this method, the inputted credentials get checked with the details found in the database. If there's a match,
      * the user can log in
      */
-    private void handleLoginButton() {
+    private void handleLoginButton() throws IOException {
 
 
         String username = uname.getText();
         String password = pw.getText();
-        final UserList userList = new UserList();
+        final UserList userList = new UserList("UserList.txt");
 
-        try {
-            userList.readFile("UserList.txt");
-        } catch (FileNotFoundException e1) {
-            e1.printStackTrace();
-        }
+
+            userList.readFile();
+
 
         if (userList.isValidPassword(username, password)) {
             // debug stuff

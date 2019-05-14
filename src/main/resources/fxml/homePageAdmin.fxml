@@ -79,21 +79,22 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="New Requests">
+            <Tab onSelectionChanged="#refreshRequest" text="New Requests">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="requestView" editable="true" prefHeight="350.0" prefWidth="600.0">
+                        <TableView fx:id="requestView" editable="true" onMouseEntered="#refreshRequest" prefHeight="350.0" prefWidth="724.0">
                            <columns>
                               <TableColumn fx:id="tbl_client_req" prefWidth="150.0" text="Client" />
                               <TableColumn fx:id="tbl_event_req" prefWidth="150.0" text="EventName" />
                               <TableColumn fx:id="tbl_loc_req" prefWidth="150.0" text="Location" />
                               <TableColumn fx:id="tbl_start_req" prefWidth="75.0" text="Start" />
-                              <TableColumn fx:id="tbl_staff_req" prefWidth="75.0" text="Staff" />
+                              <TableColumn fx:id="tbl_staff_req" prefWidth="71.0" text="Staff" />
+                              <TableColumn fx:id="tbl_date_req" prefWidth="127.0" text="Date" />
                            </columns>
                         </TableView>
-                        <Button fx:id="btn_req_acc" layoutX="655.0" layoutY="144.0" mnemonicParsing="false" text="Accept" />
-                        <Button fx:id="btn_req_ref" layoutX="754.0" layoutY="144.0" mnemonicParsing="false" text="Refuse" />
+                        <Button fx:id="btn_req_acc" layoutX="747.0" layoutY="197.0" mnemonicParsing="false" onAction="#handleButtonOnActionRequest" prefHeight="25.0" prefWidth="62.0" text="Accept" />
+                        <Button fx:id="btn_req_ref" layoutX="745.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleButtonOnActionRequest" prefHeight="25.0" prefWidth="66.0" text="Deny" />
                      </children></AnchorPane>
               </content>
             </Tab>

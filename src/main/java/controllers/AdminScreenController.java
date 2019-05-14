@@ -51,7 +51,7 @@ public class AdminScreenController {
 
     //Calendar tab fields
     private static Date dateSelectValue =new Date(1,0,1); //default
-    private static Job jobSelect = new Job(dateSelectValue,"","","","",1,1,new ArrayList<>());
+    private static Job jobSelect = new Job(dateSelectValue,"","","","",1,new ArrayList<>());
     @FXML
     private DatePicker dateSelect;
     @FXML
@@ -59,11 +59,26 @@ public class AdminScreenController {
     @FXML
     private TableColumn<Job,String> tbl_client,tbl_staff,tbl_start,tbl_event,tbl_loc;
     @FXML
-    private Button btn_newjob,btn_createjob,btn_canceljob,btn_add_staff_job,btn_del_staff_job,btn_del_job, btn_staff_add_pop,btn_cancel_staff;
+    private Button btn_newjob,btn_createjob,btn_canceljob,btn_add_staff_job,
+            btn_del_staff_job,btn_del_job, btn_staff_add_pop,btn_cancel_staff,
+            btn_cancel_staff2,btn_del_staff_pop;
     @FXML
-    private ChoiceBox<String> clientBox,staffBox;
+    private ChoiceBox<String> clientBox,staffBox,staffBox2;
     @FXML
     private TextField tf_event,tf_loc,tf_time,tf_staff;
+
+
+
+    //Request tab fields
+    @FXML
+    private TableView<Job> requestView;
+    @FXML
+    private TableColumn<Job,String> tbl_client_req,tbl_staff_req,tbl_start_req,tbl_event_req,tbl_loc_req,tbl_date_req;
+    @FXML
+    private Button btn_req_acc,btn_req_ref;
+
+
+
     @FXML
     private void initialize()throws IOException {
 
@@ -78,15 +93,20 @@ public class AdminScreenController {
         }
         else if(popupInt==2){ //pop up init add job
 
-            list.readFile("UserList.txt");
+            list.readFile();
             ObservableList<String> clientBoxItems = list.getAllClients();
             //System.out.println((jobBox.size()));
             clientBox.setItems(clientBoxItems);
         }
-        else if(popupInt==3){// pop up for staffList
+        else if(popupInt==3){// pop up for staffList add
             ObservableList<String> staffBoxItems = list.getAvailableStaff(jobSelect.getStaff());
             staffBox.setItems(staffBoxItems);
             staffBox.getSelectionModel().selectFirst();
+        }
+        else if(popupInt==4){// pop up for staffList delete
+            ObservableList<String> staffBoxItems = FXCollections.observableArrayList(jobSelect.getStaff());
+            staffBox2.setItems(staffBoxItems);
+            staffBox2.getSelectionModel().selectFirst();
         }
 
     }
@@ -97,8 +117,7 @@ public class AdminScreenController {
      */
     @FXML
     private void handleButtonActionUser(ActionEvent event) throws IOException {
-        list = new UserList();
-        list.readFile("UserList.txt");
+        list = new UserList("UserList.txt");
         Parent popup;
         Stage stage = new Stage();
 
@@ -181,7 +200,7 @@ public class AdminScreenController {
 
 
 
-}
+        }
 
 
     }
@@ -198,8 +217,7 @@ public class AdminScreenController {
      */
     public void refreshCalendar() throws IOException{
         if(dateSelectValue!=null){
-        jobList = new JobList();
-        jobList.readFile("jobList.txt");
+        jobList = new JobList("jobList.txt");
 
         ObservableList<Job> jobListxml;
         tbl_client.setCellValueFactory(new PropertyValueFactory<>("client"));
@@ -214,10 +232,9 @@ public class AdminScreenController {
     }
 
     public void refresh() throws IOException {
-        list = new UserList();
+        list = new UserList("UserList.txt");
         // refresh the table
 
-        list.readFile("UserList.txt");
 
         ObservableList<User> userListxml =  FXCollections.observableArrayList(list.userList);
 
@@ -234,8 +251,8 @@ public class AdminScreenController {
 
 
     public void handleButtonActionCalendar(ActionEvent event) throws IOException{
-        jobList = new JobList();
-        jobList.readFile("jobList.txt");
+        jobList = new JobList("jobList.txt");
+        jobList.readFile();
 
         Parent popup;
         Stage stage = new Stage();
@@ -257,9 +274,8 @@ public class AdminScreenController {
             String location = tf_loc.getText();
             String startHour= tf_time.getText();
             int maxStaff = Integer.parseInt(tf_staff.getText());
-            int status =0;
             ArrayList<String> staffListUsername = new ArrayList<>();
-            Job newJob =new Job(dateSelectValue,client,eventName,location,startHour,maxStaff,status,staffListUsername);
+            Job newJob =new Job(dateSelectValue,client,eventName,location,startHour,maxStaff,staffListUsername);
             jobList.addJobToList(newJob);
             stage = (Stage) btn_createjob.getScene().getWindow();
             popupInt =0; //set value back to homescreen after closing
@@ -293,7 +309,7 @@ public class AdminScreenController {
         // add staff to job
         else if(event.getSource()== btn_add_staff_job) {
             //nothing selected
-            if (!jobSelect.getEventName().equals("")) {
+            if (!jobSelect.getEventName().equals("") && jobSelect.getStaff().size()<jobSelect.getMaxStaff()) {
                 popupInt = 3; // going to open new window
                 popup = FXMLLoader.load(getClass().getResource("/fxml/staffList.fxml"));
 
@@ -325,6 +341,34 @@ public class AdminScreenController {
             stage.close();
 
         }
+        else if(event.getSource()== btn_cancel_staff2){
+            stage = (Stage) btn_cancel_staff2.getScene().getWindow();
+            popupInt =0;
+            stage.close();
+
+        }
+        else if(event.getSource()== btn_del_staff_job) {
+            //nothing selected
+            if (!jobSelect.getEventName().equals("")) {
+                popupInt = 4; // going to open new window
+                popup = FXMLLoader.load(getClass().getResource("/fxml/staffList2.fxml"));
+
+                stage.setScene(new Scene(popup));
+                stage.setTitle("Select Staff");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.initOwner(btn_add_staff_job.getScene().getWindow());
+                stage.showAndWait();
+
+
+            }
+        }
+        else if (event.getSource()== btn_del_staff_pop){
+            jobList.delStaffJob(staffBox2.getValue(),jobSelect.getEventName());
+            stage = (Stage) btn_del_staff_pop.getScene().getWindow();
+            popupInt =0;
+            stage.close();
+        }
+
     }
 
     /**
@@ -333,6 +377,36 @@ public class AdminScreenController {
     public void jobSelectUpdate(){
         if(jobView.getSelectionModel().getSelectedItem() != null){
            jobSelect = jobView.getSelectionModel().getSelectedItem();}
+    }
+
+    public void refreshRequest() throws IOException{
+        jobList = new JobList("requestList.txt");
+        // refresh the table
+
+        ObservableList<Job> jobListxml;
+        tbl_client_req.setCellValueFactory(new PropertyValueFactory<>("client"));
+        tbl_event_req.setCellValueFactory(new PropertyValueFactory<>("eventName"));
+        tbl_loc_req.setCellValueFactory(new PropertyValueFactory<>("location"));
+        tbl_start_req.setCellValueFactory(new PropertyValueFactory<>("start"));
+        tbl_staff_req.setCellValueFactory(new PropertyValueFactory<>("staffString"));
+        tbl_date_req.setCellValueFactory(new PropertyValueFactory<>("dateStringTable"));
+
+
+        jobListxml = FXCollections.observableArrayList(jobList.jobList);
+        requestView.setItems(jobListxml);
+        requestView.refresh();}
+
+
+    public void handleButtonOnActionRequest(ActionEvent event)throws IOException{
+         JobList requestJobList = new JobList("requestList.txt");
+         jobList = new JobList("jobList.txt");
+         jobSelect = requestView.getSelectionModel().getSelectedItem();
+         requestJobList.removeJob(jobSelect);
+         //nothing selected
+        if (jobSelect != null && event.getSource()==btn_req_acc){
+                jobList.addJobToList(jobSelect);
+            }
+        refreshRequest();
     }
 }
 

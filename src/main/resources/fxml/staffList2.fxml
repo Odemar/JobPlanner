@@ -10,6 +10,6 @@
         <Text layoutX="61.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Staff" />
         <Button fx:id="btn_cancel_staff2" layoutX="88.0" layoutY="110.0" mnemonicParsing="false" onAction="#handleButtonActionUser" text="Cancel" />
         <Button fx:id="btn_del_staff_pop" layoutX="203.0" layoutY="110.0" mnemonicParsing="false" onAction="#handleButtonActionCalendar" text="Select" />
-        <ChoiceBox fx:id="staffBox" layoutX="153.0" layoutY="38.0" prefWidth="150.0" />
+        <ChoiceBox fx:id="staffBox2" layoutX="153.0" layoutY="38.0" prefWidth="150.0" />
     </children>
 </AnchorPane>
