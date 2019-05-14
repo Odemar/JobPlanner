@@ -1,13 +1,10 @@
-package main;
+package sample;
 
 import Classes.User;
 import controllers.AdminScreenController;
 import controllers.LoginController;
 import controllers.StaffScreenController;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -15,7 +12,7 @@ public class Main extends Application {
     /**
      * The user that has logged into the application.
      */
-    public User loginData;
+    public static User loginData;
 
     int exitcode = 1;
 

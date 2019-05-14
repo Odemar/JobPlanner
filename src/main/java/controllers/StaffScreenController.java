@@ -1,10 +1,13 @@
 package controllers;
 
 import Classes.Job;
+import Classes.JobList;
 import Classes.User;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,29 +15,35 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import sample.Main;
 
 import java.io.IOException;
 
 
 public class StaffScreenController {
-
+    public static JobList jobList;
     @FXML
     private JFXButton userInfo;
     @FXML
     private JFXDrawer drawer;
     @FXML
-    private Label uname;
-    @FXML
-    private Label name;
+    private TableView<Job> staffJobView;
+
     @FXML
     private JFXButton logOut;
     @FXML
     private JFXButton buttonMyJobs;
     @FXML
-    private TableColumn<Job, String> tbl_client, tbl_eventname, tbl_location, tbl_time, tbl_staff;
+    private TableColumn<Job, String> tbl_client, tbl_eventname, tbl_location, tbl_time, tbl_date;
+
+    @FXML
+    public void initialize(){
+    }
 
     // currently logged in user
     private User user;
@@ -69,6 +78,22 @@ public class StaffScreenController {
 
         return 1;
     }
+    @FXML
+    public void refreshJobs() throws IOException{
+        jobList = new JobList("jobList.txt");
+        // refresh the table
+
+        ObservableList<Job> jobListxml;
+        tbl_client.setCellValueFactory(new PropertyValueFactory<>("client"));
+        tbl_eventname.setCellValueFactory(new PropertyValueFactory<>("eventName"));
+        tbl_location.setCellValueFactory(new PropertyValueFactory<>("location"));
+        tbl_time.setCellValueFactory(new PropertyValueFactory<>("start"));
+        tbl_date.setCellValueFactory(new PropertyValueFactory<>("dateStringTable"));
+
+
+        jobListxml = jobList.getStaffJobs(Main.loginData);
+        staffJobView.setItems(jobListxml);
+        staffJobView.refresh();}
 
     @FXML
     private void showUserInfo() throws IOException {
@@ -103,9 +128,5 @@ public class StaffScreenController {
 
     }
 
-    @FXML
-    private void refreshJobs(){
-
-    }
 
 }
