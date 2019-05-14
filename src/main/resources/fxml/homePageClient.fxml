@@ -87,12 +87,12 @@
             <TableColumn fx:id="tbl_date" editable="false" prefWidth="100.0" text="Date" />
             </columns>
         </TableView>
-      <JFXButton fx:id="btn_view_staff" layoutX="641.0" layoutY="524.0" onAction="#onActionEventButtonHandler" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="View Staff">
+      <JFXButton fx:id="btn_view_staff" layoutX="641.0" layoutY="524.0" onAction="#showStaffJob" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="View Staff">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btn_cancel" layoutX="296.0" layoutY="524.0" onAction="#onActionEventButtonHandler" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="Cancel Job">
+      <JFXButton fx:id="btn_cancel" layoutX="296.0" layoutY="524.0" onAction="#deleteJob" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="Cancel Job">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
