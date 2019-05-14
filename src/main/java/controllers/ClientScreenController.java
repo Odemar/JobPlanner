@@ -1,23 +1,31 @@
 package controllers;
 
+import Classes.Job;
+import Classes.JobList;
 import Classes.User;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import sample.Main;
 
 import java.io.IOException;
 
 public class ClientScreenController {
-
+    public static int tableSelect = 0;
+    public static JobList jobList;
     @FXML
     private JFXButton userInfo;
     @FXML
@@ -28,6 +36,10 @@ public class ClientScreenController {
     private Label name;
     @FXML
     private JFXButton logOut;
+    @FXML
+    private TableView<Job> clientView;
+    @FXML
+    private TableColumn<Job, String> tbl_eventname, tbl_location, tbl_time, tbl_date, tbl_staff;
 
     // currently logged in user
     private User user;
@@ -35,8 +47,8 @@ public class ClientScreenController {
     // stage of the window
     private Stage primaryStage = new Stage();
 
-    public int display(User loggedIn) throws IOException {
-        user = loggedIn;
+    public int display() throws IOException {
+
 
         Parent homePageClient = FXMLLoader.load(getClass().getResource("/fxml/homePageClient.fxml"));
 
@@ -64,45 +76,56 @@ public class ClientScreenController {
         drawer.setSidePane(anchorPane);
         drawer.setOverLayVisible(false);
 
-        //uname = FXMLLoader.load(getClass().getResource("/fxml/drawer.fxml"));
-        //name = FXMLLoader.load(getClass().getResource("/fxml/drawer.fxml"));
-
-        //uname.setText("Username: ");//+user.getUsername());
-        //name.setText("Name: ");//+user.getName());
-
-        if(drawer.isShown()){
+        if (drawer.isShown()) {
             drawer.close();
-        }
-        else {
+        } else {
             drawer.open();
         }
     }
 
     @FXML
-    private void logOut(){
+    private void logOut() {
         // gets the current open window and closes it
         Stage stage = (Stage) logOut.getScene().getWindow();
         stage.close();
     }
-
     @FXML
-    private void showJobs(){
+    private void refreshJobs() throws IOException {
 
+        jobList = new JobList("jobList.txt");
+
+
+        // refresh the table
+
+        ObservableList<Job> jobListxml;
+        tbl_eventname.setCellValueFactory(new PropertyValueFactory<>("eventName"));
+        tbl_location.setCellValueFactory(new PropertyValueFactory<>("location"));
+        tbl_time.setCellValueFactory(new PropertyValueFactory<>("start"));
+        tbl_staff.setCellValueFactory(new PropertyValueFactory<>("staffString"));
+        tbl_date.setCellValueFactory(new PropertyValueFactory<>("dateStringTable"));
+        if(tableSelect ==0){
+            jobListxml = jobList.getJobsClient(Main.loginData);
+            clientView.setItems(jobListxml);}
+
+        else{
+            JobList requestList = new JobList("requestList.txt");
+            jobListxml = requestList.getJobsClient(Main.loginData);
+            clientView.setItems(jobListxml);
+        }
+        clientView.refresh();
+
+    }
+    @FXML
+    private void showPlannedJobs(){
+        tableSelect=0;
+    }
+    @FXML
+    private void showReqJobs(){
+        tableSelect=1;
     }
 
     @FXML
     private void requestJob(){
 
     }
-
-    @FXML
-    private void showReqJobs(){
-
-    }
-
-    @FXML
-    private void refreshJobs(){
-
-    }
-
 }
