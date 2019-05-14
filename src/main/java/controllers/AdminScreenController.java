@@ -419,7 +419,7 @@ public class AdminScreenController {
     }
 
     /**
-     * Updates the value of the jobselection on mouseclick, so the selected value from the table can be accesed
+     * Updates the value of the jobselection on mouseclick, so the selected value from the table can be accessed
      */
     public void jobSelectUpdate(){
         if(jobView.getSelectionModel().getSelectedItem() != null){
