@@ -20,7 +20,7 @@ public class UserList {
     // name of the file to read users from
     private String filename;
 
-    public UserList(String filename) throws FileNotFoundException{
+    public UserList(String filename) throws FileNotFoundException {
         this.filename = filename;
         readFile();
     }
@@ -31,20 +31,23 @@ public class UserList {
         userList = new ArrayList<>();
         File file = new File(filename);
         Scanner input = new Scanner(file);
-        while (input.hasNext()) {
-            // read first 4 strings of line
 
+        while (input.hasNext()) {
+
+            // read first 4 strings of line
             String type = input.next();
             String username = input.next();
             String password = input.next();
             String name = input.next();
 
+            // make a user with the read details
             User user = new User(Integer.parseInt(type), username, password, name);
 
+            // add the user to the list
             userList.add(user);
-
         }
 
+        // close the scanner
         input.close();
 
     }
@@ -76,8 +79,8 @@ public class UserList {
         String username = user.getUsername();
         //for some reason the array doesn't find the given user so instead i have to use this
         // temporary solution
-        for(User userl :userList){
-            if (userl.getUsername().equals(username)){
+        for (User userl : userList) {
+            if (userl.getUsername().equals(username)) {
                 deleteUser = userl;
             }
 
@@ -93,8 +96,9 @@ public class UserList {
      * Searches the user based on the input username. Then compares the input password to the one from the user. If
      * the passwords match, the method returns 'true'.
      * Used by 'LoginController'.
-     * @param username  The input username at the start of the application.
-     * @param password  The input password at the start of the application.
+     *
+     * @param username The input username at the start of the application.
+     * @param password The input password at the start of the application.
      * @return true if the passwords match
      */
     public boolean isValidPassword(String username, String password) {
@@ -115,7 +119,8 @@ public class UserList {
         return false;
 
     }
-// debug method
+
+    // debug method
     public void printList() {
         for (User user : userList) {
             System.out.println(user.toString());
@@ -142,20 +147,21 @@ public class UserList {
 
     }
 
-    public ObservableList<String> getAllClients(){
+    public ObservableList<String> getAllClients() {
         ArrayList<String> clientArrayList = new ArrayList<>();
-        for(User user: userList){
-            if(user.getType()==1){//if user is a client
+        for (User user : userList) {
+            if (user.getType() == 1) {//if user is a client
                 clientArrayList.add(user.getUsername());
             }
         }
         ObservableList<String> clientObservableList = FXCollections.observableArrayList(clientArrayList);
         return clientObservableList;
     }
-    public ObservableList<String> getAvailableStaff(ArrayList<String> staffName){
+
+    public ObservableList<String> getAvailableStaff(ArrayList<String> staffName) {
         ArrayList<String> staffArrayList = new ArrayList<>();
-        for(User user: userList){
-            if(user.getType()==2 && !staffName.contains(user.getUsername())){//if user is a staff and not already in the job
+        for (User user : userList) {
+            if (user.getType() == 2 && !staffName.contains(user.getUsername())) {//if user is a staff and not already in the job
                 staffArrayList.add(user.getUsername());
             }
         }

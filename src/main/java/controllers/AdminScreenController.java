@@ -1,6 +1,5 @@
 package controllers;
 
-
 import Classes.Job;
 import Classes.User;
 import Classes.UserList;
@@ -21,14 +20,33 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-
 public class AdminScreenController {
 
-    private static int popupInt = 0; // Indicator for initialize if its on the main program or a pop up
+
+    //<editor-fold desc="Variables">
+    /**
+     * Indicator for initialize if its on the main program or a pop up
+     */
+    private static int popupInt = 0;
+    /**
+     *
+     */
     private String typeString;
+    /**
+     *
+     */
     private int typeInt;
+    /**
+     *
+     */
     private final ObservableList<String> typeBoxList = FXCollections.observableArrayList("Admin","Client","Staff");
+    /**
+     *
+     */
     public static UserList list;
+    /**
+     *
+     */
     public static JobList jobList;
 
 
@@ -47,7 +65,6 @@ public class AdminScreenController {
     private TableColumn<User, String>  tbl_usertype,tbl_username,tbl_fullname;
     @FXML
     private Button btn_new,btn_edit,btn_del,btn_create,btn_cancel;
-
 
     //Calendar tab fields
     private static Date dateSelectValue =new Date(1,0,1); //default
@@ -68,7 +85,6 @@ public class AdminScreenController {
     private TextField tf_event,tf_loc,tf_time,tf_staff;
 
 
-
     //Request tab fields
     @FXML
     private TableView<Job> requestView;
@@ -76,13 +92,11 @@ public class AdminScreenController {
     private TableColumn<Job,String> tbl_client_req,tbl_staff_req,tbl_start_req,tbl_event_req,tbl_loc_req,tbl_date_req;
     @FXML
     private Button btn_req_acc,btn_req_ref;
-
+    //</editor-fold>
 
 
     @FXML
-    private void initialize()throws IOException {
-
-
+    private void initialize() throws IOException {
 
         if(popupInt==0){// init main screen
         }

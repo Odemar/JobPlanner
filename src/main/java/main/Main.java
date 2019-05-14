@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    /**
+     * The user that has logged into the application.
+     */
     public static User loginData;
 
     /**

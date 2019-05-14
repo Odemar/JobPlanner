@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
-
 <?import javafx.scene.control.ChoiceBox?>
-<AnchorPane prefHeight="356.0" prefWidth="346.0" style="-fx-background-color: #FFCF9E;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminScreenController">
+
+<AnchorPane prefHeight="356.0" prefWidth="361.0" style="-fx-background-color: #FFCF9E;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminScreenController">
    <children>
       <TextField fx:id="uname" layoutX="173.0" layoutY="38.0" />
-      <TextField fx:id="fname" layoutX="173.0" layoutY="174.0" />
       <PasswordField fx:id="pw" layoutX="173.0" layoutY="105.0" />
+      <TextField fx:id="fname" layoutX="173.0" layoutY="174.0" />
+      <ChoiceBox fx:id="typeBox" layoutX="173.0" layoutY="254.0" prefWidth="150.0" />
       <Text layoutX="61.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
       <Text layoutX="63.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
       <Text layoutX="61.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name" />
@@ -20,6 +25,5 @@
       <Button fx:id="btn_cancel" layoutX="87.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleButtonActionUser" text="Cancel" />
       <Button fx:id="btn_create" layoutX="222.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleButtonActionUser" text="Create" />
       <Label fx:id="label" layoutX="86.0" layoutY="279.0" prefHeight="17.0" prefWidth="173.0" text="" textAlignment="CENTER" textFill="RED" />
-      <ChoiceBox fx:id="typeBox" layoutX="173.0" layoutY="254.0" prefWidth="150.0" />
    </children>
 </AnchorPane>
