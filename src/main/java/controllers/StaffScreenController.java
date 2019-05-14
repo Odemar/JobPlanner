@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import sample.Main;
 
 import java.io.IOException;
 
@@ -23,14 +24,15 @@ public class StaffScreenController {
     private JFXButton userInfo;
     @FXML
     private JFXDrawer drawer;
-    @FXML
-    private Label uname;
-    @FXML
-    private Label name;
+
     @FXML
     private JFXButton logOut;
     @FXML
     private JFXButton buttonMyJobs;
+
+    @FXML
+    public void initialize(){
+    }
 
     // currently logged in user
     private User user;
