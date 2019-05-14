@@ -9,13 +9,17 @@ import java.sql.Date;
 import java.util.Scanner;
 
 public class JobList {
-    ArrayList<Job> jobList;
+    public ArrayList<Job> jobList;
+    private String filename;
 
-    public JobList(){
-        jobList = new ArrayList<>();
+    public JobList(String filename) throws FileNotFoundException{
+
+        this.filename=filename;
+        readFile();
     }
 
-    public void readFile(String filename) throws FileNotFoundException {
+    public void readFile() throws FileNotFoundException {
+        jobList = new ArrayList<>();
         File file = new File(filename);
         Scanner input = new Scanner(file);
 
@@ -28,15 +32,14 @@ public class JobList {
             String location = words[5];
             String start = words[6];
             int maxStaff = Integer.parseInt(words[7]);
-            int status = Integer.parseInt(words[8]);
             int endOffLine = words.length-1;
             ArrayList<String> staffListUsername = new ArrayList<>();
-            for(int i = 9; i <= endOffLine;i++){
+            for(int i = 8; i <= endOffLine;i++){
                 String username = words[i];
                 staffListUsername.add(username);
 
             }
-            Job newJob =new Job(date,client,eventName,location,start,maxStaff,status,staffListUsername);
+            Job newJob =new Job(date,client,eventName,location,start,maxStaff,staffListUsername);
             jobList.add(newJob);
 
         }
@@ -44,7 +47,7 @@ public class JobList {
 
     }
 
-    public void updateFile(String filename) throws IOException{
+    public void updateFile() throws IOException{
         File file = new File(filename);
         FileOutputStream fos = new FileOutputStream(file);
 
@@ -60,7 +63,7 @@ public class JobList {
     }
     public void addJobToList(Job job) throws IOException{
         jobList.add(job);
-        updateFile("jobList.txt");
+        updateFile();
     }
 
     public void removeJob(Job job) throws IOException{
@@ -75,7 +78,7 @@ public class JobList {
 
         }
         jobList.remove(deleteJob);
-        updateFile("jobList.txt");
+        updateFile();
     }
 
 
@@ -111,7 +114,7 @@ public class JobList {
 
             i++;
         }
-        updateFile("jobList.txt");
+        updateFile();
     }
     public void delStaffJob(String staffName,String eventName) throws IOException{
         int i =0;
@@ -124,7 +127,7 @@ public class JobList {
 
             i++;
         }
-        updateFile("jobList.txt");
+        updateFile();
     }
 }
 

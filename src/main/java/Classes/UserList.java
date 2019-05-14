@@ -17,13 +17,15 @@ import java.util.Scanner;
 
 public class UserList {
     public ArrayList<User> userList;
+    private String filename;
 
-    public UserList(){
-        userList = new ArrayList<>();
+    public UserList(String filename) throws FileNotFoundException{
+        this.filename = filename;
+        readFile();
     }
 
     // Method of reading in all the users from a text file into an array
-    public void readFile(String filename) throws FileNotFoundException {
+    public void readFile() throws FileNotFoundException {
 
         userList = new ArrayList<>();
         File file = new File(filename);
@@ -35,7 +37,6 @@ public class UserList {
             String username = input.next();
             String password = input.next();
             String name = input.next();
-
 
             User user = new User(Integer.parseInt(type), username, password, name);
 
@@ -49,7 +50,7 @@ public class UserList {
 
     // Method of updating the output file with the current arrayList. Invoked after a user is added or removed.
 
-    private void updateFile(String filename) throws IOException {
+    private void updateFile() throws IOException {
         File file = new File(filename);
         FileOutputStream fos = new FileOutputStream(file);
 
@@ -66,7 +67,7 @@ public class UserList {
     // Add or remove methods
     public void addUser(User user) throws IOException {
         userList.add(user);
-        this.updateFile("UserList.txt");
+        this.updateFile();
     }
 
     public void removeUser(User user) throws IOException {
@@ -82,7 +83,7 @@ public class UserList {
         }
         userList.remove(deleteUser);
 
-        this.updateFile("UserList.txt");
+        this.updateFile();
 
         printList();
     }

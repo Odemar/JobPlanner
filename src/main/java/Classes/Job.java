@@ -5,13 +5,13 @@ import java.sql.Date;
 
 public class Job {
    public Date date;
-    public String client,eventName,location,start,staffString;
-    private int maxStaff,status; // status=0 for not accepted status = 1 for accepted
+    public String client,eventName,location,start,staffString,dateStringTable;
+    private int maxStaff; // status=0 for not accepted status = 1 for accepted
     private ArrayList<String> staffListUserName;
 
 
-    public Job(Date date,String client,String eventName,String location,String start,int maxStaff, int status,ArrayList<String> staffListUserName) {
-        this.status = status;
+    public Job(Date date,String client,String eventName,String location,String start,int maxStaff,ArrayList<String> staffListUserName) {
+
         this.date = date;
         this.client = client;
         this.eventName = eventName;
@@ -21,6 +21,11 @@ public class Job {
         this.staffListUserName = staffListUserName;
         updateStaff(); // to view current staff on table
 
+    }
+    // returns a string for use in request table
+    public String getDateStringTable(){
+        dateStringTable = date.getDate() + "/" + date.getMonth() + "/" + (date.getYear()+1900);
+        return dateStringTable;
     }
 
     public void addStaff(String username){
@@ -41,7 +46,7 @@ public class Job {
         for (String string: staffListUserName){
             usernameListString = usernameListString +" " + string ;
         }
-        String string = dateString + " " + client + " " + eventName + " " + location + " " + start + " " + maxStaff+ " " + status + " " + usernameListString;
+        String string = dateString + " " + client + " " + eventName + " " + location + " " + start + " " + maxStaff+ " " + usernameListString;
         return string;
     }
     private String getDateString(){
