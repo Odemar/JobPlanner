@@ -1,4 +1,4 @@
-package main;
+package sample;
 
 import Classes.User;
 import controllers.AdminScreenController;

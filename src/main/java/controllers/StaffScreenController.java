@@ -105,9 +105,6 @@ public class StaffScreenController {
 
         if(tableSelect ==0){
             jobListxml = jobList.getStaffJobs(Main.loginData);}
-        else if(tableSelect ==1 && dateSelectValue==new Date(1,0,1)){
-            jobListxml = FXCollections.observableArrayList(jobList.jobList);
-        }
         else{
             ArrayList<Job> jobArray = new ArrayList<>();
             jobListxml = jobList.getJobsDate(dateSelectValue);
@@ -160,11 +157,18 @@ public class StaffScreenController {
         refreshJobs();
     }
     @FXML
-    private void calendarValue(ActionEvent event){
+    private void actionEventHandler(ActionEvent event)throws IOException{
         if(event.getSource()==dateSelect){
-        LocalDate localDate = (dateSelect.getValue());
-
-        dateSelectValue = new Date(localDate.getYear()-1900,localDate.getMonthValue(),localDate.getDayOfMonth());
-    }}
-
+            LocalDate localDate = (dateSelect.getValue());
+            dateSelectValue = new Date(localDate.getYear()-1900,localDate.getMonthValue(),localDate.getDayOfMonth());}
+        else if(event.getSource()==btn_register){
+            jobList.addStaffJob(Main.loginData.getUsername(),staffJobView.getSelectionModel().getSelectedItem().getEventName());
+            refreshJobs();
+            }
+    }
 }
+
+
+
+
+
