@@ -19,7 +19,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import main.Main;
+import sample.Main;
 
 import java.io.IOException;
 

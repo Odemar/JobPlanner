@@ -1,4 +1,4 @@
-package main;
+package sample;
 
 import Classes.User;
 import controllers.AdminScreenController;
@@ -7,9 +7,6 @@ import controllers.LoginController;
 import controllers.StaffScreenController;
 import javafx.application.Application;
 import javafx.stage.Stage;
-
-import javax.swing.*;
-import java.net.URL;
 
 public class Main extends Application {
 
