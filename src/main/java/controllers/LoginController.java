@@ -82,8 +82,6 @@ public class LoginController {
         loginWindow.showAndWait();
 
         return loginUser;
-
-
     }
 
     @FXML

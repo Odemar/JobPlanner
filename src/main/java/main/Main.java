@@ -1,7 +1,9 @@
 package main;
 
 import Classes.User;
+import controllers.AdminScreenController;
 import controllers.LoginController;
+import controllers.StaffScreenController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,7 +15,9 @@ public class Main extends Application {
     /**
      * The user that has logged into the application.
      */
-    public static User loginData;
+    public User loginData;
+
+    int exitcode = 1;
 
     /**
      *
@@ -23,34 +27,37 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        // open a login window and receive the userType
-        loginData = new LoginController().display();
-        System.out.print(loginData);
-        int type = loginData.getType();
-        //Parent login = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
-        primaryStage.setTitle("Job Planner");
+        while(exitcode!=0) {
+            // open a login window and receive the userType
+            loginData = new LoginController().display();
+            System.out.print(loginData);
+            int type = loginData.getType();
+            //Parent login = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+            primaryStage.setTitle("Job Planner");
 
 
+            //Parent homePageClient = FXMLLoader.load(getClass().getResource("/fxml/homePageClient.fxml"));
 
+            switch (type) {
+                case 0:
+                    exitcode = new AdminScreenController().display(loginData);
+                    //primaryStage.setScene(new Scene(login, 822, 517));
+                    //primaryStage.show();
+                    break;
 
-        //Parent homePageStaff = FXMLLoader.load(getClass().getResource("/fxml/homePageStaff.fxml"));
-        //Parent homePageClient = FXMLLoader.load(getClass().getResource("/fxml/homePageClient.fxml"));
-        Parent homePageAdmin = FXMLLoader.load(getClass().getResource("/fxml/homePageAdmin.fxml"));
+                case 2:
+                    exitcode = new StaffScreenController().display(loginData);
+                    //if (exitcode == 0)
+                    //    loginData = new LoginController().display();
+                    break;
 
-        switch (type) {
-            case 0:
-                primaryStage.setScene(new Scene(homePageAdmin));
-                break;
+                default:
+                    //primaryStage.setScene(new Scene(homePageAdmin));
 
-
-            default:
-                primaryStage.setScene(new Scene(homePageAdmin));
-
-                break;
+                    break;
+            }
         }
 
-        //primaryStage.setScene(new Scene(login, 822, 517));
-        primaryStage.show();
     }
 
     /**
@@ -59,6 +66,10 @@ public class Main extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public User getUserData(){
+        return loginData;
     }
 
 

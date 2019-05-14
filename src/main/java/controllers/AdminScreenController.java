@@ -4,8 +4,10 @@ import Classes.Job;
 import Classes.User;
 import Classes.UserList;
 import Classes.JobList;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,6 +17,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -92,8 +96,35 @@ public class AdminScreenController {
     private TableColumn<Job,String> tbl_client_req,tbl_staff_req,tbl_start_req,tbl_event_req,tbl_loc_req,tbl_date_req;
     @FXML
     private Button btn_req_acc,btn_req_ref;
+
+    // currently logged in user
+    private User user;
+
+    // stage of the window
+    private Stage primaryStage = new Stage();
     //</editor-fold>
 
+    public int display(User loggedIn) throws IOException {
+        user = loggedIn;
+
+        Parent homePageAdmin = FXMLLoader.load(getClass().getResource("/fxml/homePageAdmin.fxml"));
+
+        primaryStage.setScene(new Scene(homePageAdmin));
+        primaryStage.setTitle("Job Planner");
+
+        // application closes when this window closes
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent event) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
+
+        // wait for the user to log out
+        primaryStage.showAndWait();
+
+        return 1;
+    }
 
     @FXML
     private void initialize() throws IOException {
