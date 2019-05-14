@@ -7,3 +7,4 @@
 11 5 119 TestClient3 request3 Knokke 09:00 18  s
 11 5 119 TestClient2 request1 Antwerpen 17:00 8 
 11 5 119 TestClien1 request2 Brussel 21:00 6 
+1 0 1 Client1 Test UAntwerpen 21:00 40 
