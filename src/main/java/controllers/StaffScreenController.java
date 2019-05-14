@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -72,6 +73,8 @@ public class StaffScreenController {
 
         primaryStage.setScene(new Scene(homePageStaff));
         primaryStage.setTitle("Job Planner");
+        primaryStage.getIcons().add(new Image("/images/logo.png"));
+
 
         // application closes when this window closes
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
