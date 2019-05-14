@@ -1,11 +1,7 @@
-8 5 119 TestClient2 Party1 Hoboken 10:00 10  Banaan s
-8 5 119 TestClient2 Wedding Antwerpen 17:00 5  s
-8 5 119 TestClient2 Party2 Antwerpen 17:00 5  s
+8 5 119 TestClient2 Party1 Hoboken 10:00 10 
+8 5 119 TestClient2 Wedding Antwerpen 17:00 5 
+8 5 119 TestClient2 Party2 Antwerpen 17:00 5 
 9 5 119 TestClient2 Match Antwerpen 17:00 8 
-9 5 119 TestClient3 Mcdonalds Boom 17:00 10  s
+9 5 119 TestClient3 Mcdonalds Boom 17:00 10 
 9 5 119 TestClient4 Bar Mechelen 17:00 3 
-11 5 119 TestClient3 request3 Knokke 09:00 18  s
-11 5 119 TestClient2 request1 Antwerpen 17:00 8  s
-11 5 119 TestClien1 request2 Brussel 21:00 6 
-11 5 119 c Test4 Thuis 21:00 40 
-12 5 119 c party duitsland 11:00 22  Banaan Staff3
+11 5 119 TestClient3 request3 Knokke 09:00 18 
