@@ -12,6 +12,31 @@
 
 <AnchorPane prefHeight="591.0" prefWidth="855.0" style="-fx-background-color: #ffface;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StaffScreenController">
    <children>
+      <AnchorPane layoutX="-5.0" layoutY="32.0" prefHeight="568.0" prefWidth="186.0" style="-fx-background-color: #ffcf99;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="32.0">
+         <children>
+            <Label alignment="CENTER" layoutX="45.0" layoutY="534.0" prefHeight="17.0" prefWidth="96.0" text="Log Out" textAlignment="CENTER" textFill="#4d4d4d">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="logOut" layoutX="67.0" layoutY="485.0" onAction="#logOut" text="">
+               <graphic>
+                  <ImageView fx:id="logOutImage" fitHeight="41.0" fitWidth="38.0" onDragDetected="#logOut" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/off.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="buttonMyJobs" layoutX="12.0" layoutY="14.0" onAction="#showJobs" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="My Jobs" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect></AnchorPane>
       <AnchorPane maxHeight="32.0" minHeight="32.0" prefHeight="32.0" prefWidth="612.0" style="-fx-background-color: #912400;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="14.0" fitWidth="15.0" layoutX="797.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="10.0">
@@ -35,28 +60,12 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="-5.0" layoutY="32.0" prefHeight="568.0" prefWidth="186.0" style="-fx-background-color: #ffcf99;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="32.0">
-         <children>
-            <Label alignment="CENTER" layoutX="45.0" layoutY="534.0" prefHeight="17.0" prefWidth="96.0" text="Log Out" textAlignment="CENTER" textFill="#4d4d4d">
-               <font>
-                  <Font name="Arial Black" size="12.0" />
-               </font>
-            </Label>
-            <JFXButton fx:id="logOut" layoutX="67.0" layoutY="485.0" onAction="#logOut" text="">
-               <graphic>
-                  <ImageView fx:id="logOutImage" fitHeight="41.0" fitWidth="38.0" onDragDetected="#logOut" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/off.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </JFXButton>
-            <JFXButton fx:id="buttonMyJobs" layoutX="12.0" layoutY="14.0" onAction="#showJobs" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="My Jobs" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0">
-               <font>
-                  <Font name="Arial Black" size="18.0" />
-               </font>
-            </JFXButton>
-         </children></AnchorPane>
-      <JFXDrawer fx:id="drawer" defaultDrawerSize="186.0" direction="RIGHT" layoutX="662.0" layoutY="32.0" prefHeight="559.0" prefWidth="186.0" style="-fx-background-color: #ffface;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0" />
+      <TableView layoutX="199.0" layoutY="43.0" prefHeight="539.0" prefWidth="648.0" style="-fx-background-color: #ffddbc;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="42.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="186.0" direction="RIGHT" layoutX="662.0" layoutY="32.0" overLayVisible="false" prefHeight="559.0" prefWidth="186.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0" />
    </children>
 </AnchorPane>

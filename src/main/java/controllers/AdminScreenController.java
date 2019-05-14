@@ -263,18 +263,19 @@ public class AdminScreenController {
      */
     public void refreshCalendar() throws IOException{
         if(dateSelectValue!=null){
-        jobList = new JobList("jobList.txt");
+            jobList = new JobList("jobList.txt");
 
-        ObservableList<Job> jobListxml;
-        tbl_client.setCellValueFactory(new PropertyValueFactory<>("client"));
-        tbl_event.setCellValueFactory(new PropertyValueFactory<>("eventName"));
-        tbl_loc.setCellValueFactory(new PropertyValueFactory<>("location"));
-        tbl_start.setCellValueFactory(new PropertyValueFactory<>("start"));
-        tbl_staff.setCellValueFactory(new PropertyValueFactory<>("staffString"));
+            ObservableList<Job> jobListxml;
+            tbl_client.setCellValueFactory(new PropertyValueFactory<>("client"));
+            tbl_event.setCellValueFactory(new PropertyValueFactory<>("eventName"));
+            tbl_loc.setCellValueFactory(new PropertyValueFactory<>("location"));
+            tbl_start.setCellValueFactory(new PropertyValueFactory<>("start"));
+            tbl_staff.setCellValueFactory(new PropertyValueFactory<>("staffString"));
 
-        jobListxml = jobList.getJobsDate(dateSelectValue);
-        jobView.setItems(jobListxml);
-        jobView.refresh();}
+            jobListxml = jobList.getJobsDate(dateSelectValue);
+            jobView.setItems(jobListxml);
+            jobView.refresh();
+        }
     }
 
     public void refresh() throws IOException {

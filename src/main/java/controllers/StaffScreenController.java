@@ -71,6 +71,7 @@ public class StaffScreenController {
 
         AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/fxml/drawer.fxml"));
         drawer.setSidePane(anchorPane);
+        drawer.setOverLayVisible(false);
 
         //uname = FXMLLoader.load(getClass().getResource("/fxml/drawer.fxml"));
         //name = FXMLLoader.load(getClass().getResource("/fxml/drawer.fxml"));
