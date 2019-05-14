@@ -76,9 +76,12 @@ public class ClientScreenController {
         drawer.setSidePane(anchorPane);
         drawer.setOverLayVisible(false);
 
-        if (drawer.isShown()) {
+        if(drawer.isShown()){
             drawer.close();
-        } else {
+            drawer.setMaxSize(0, 559);
+        }
+        else {
+            drawer.setMaxSize(186, 559);
             drawer.open();
         }
     }
