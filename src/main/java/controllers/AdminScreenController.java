@@ -109,15 +109,14 @@ public class AdminScreenController {
     private JFXDrawer drawer;
 
     // currently logged in user
-    private User user;
+
 
     // stage of the window
     private Stage primaryStage = new Stage();
     //</editor-fold>
 
     // needed to be able to go back to the login window if logging out
-    public int display(User loggedIn) throws IOException {
-        user = loggedIn;
+    public int display() throws IOException {
 
         Parent homePageAdmin = FXMLLoader.load(getClass().getResource("/fxml/homePageAdmin.fxml"));
 

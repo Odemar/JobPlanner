@@ -62,12 +62,12 @@ public class StaffScreenController {
 
     /**
      * Method that displays the window with the rights of the staff.
-     * @param loggedIn
+     * @param
      * @return
      * @throws IOException
      */
-    public int display(User loggedIn) throws IOException {
-        user = loggedIn;
+    public int display() throws IOException {
+
 
         Parent homePageStaff = FXMLLoader.load(getClass().getResource("/fxml/homePageStaff.fxml"));
 
