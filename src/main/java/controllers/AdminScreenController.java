@@ -299,8 +299,8 @@ public class AdminScreenController {
      * Handles all the button events from the Calendar tab
      */
 
-
-    public void handleButtonActionCalendar(ActionEvent event) throws IOException{
+    @FXML
+    private void handleButtonActionCalendar(ActionEvent event) throws IOException{
         jobList = new JobList("jobList.txt");
         jobList.readFile();
 
@@ -446,8 +446,8 @@ public class AdminScreenController {
         requestView.setItems(jobListxml);
         requestView.refresh();}
 
-
-    public void handleButtonOnActionRequest(ActionEvent event)throws IOException{
+    @FXML
+    private void handleButtonOnActionRequest(ActionEvent event)throws IOException{
          JobList requestJobList = new JobList("requestList.txt");
          jobList = new JobList("jobList.txt");
          jobSelect = requestView.getSelectionModel().getSelectedItem();
