@@ -1,7 +1,8 @@
-package sample;
+package main;
 
 import Classes.User;
 import controllers.AdminScreenController;
+import controllers.ClientScreenController;
 import controllers.LoginController;
 import controllers.StaffScreenController;
 import javafx.application.Application;
@@ -40,6 +41,10 @@ public class Main extends Application {
                     exitcode = new AdminScreenController().display(loginData);
                     //primaryStage.setScene(new Scene(login, 822, 517));
                     //primaryStage.show();
+                    break;
+
+                case 1:
+                    exitcode = new ClientScreenController().display(loginData);
                     break;
 
                 case 2:

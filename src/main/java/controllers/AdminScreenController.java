@@ -29,7 +29,7 @@ public class AdminScreenController {
 
     //<editor-fold desc="Variables">
     /**
-     * Indicator for initialize if its on the sample program or a pop up
+     * Indicator for initialize if its on the main program or a pop up
      */
     private static int popupInt = 0;
     /**
@@ -130,7 +130,7 @@ public class AdminScreenController {
     @FXML
     private void initialize() throws IOException {
 
-        if(popupInt==0){// init sample screen
+        if(popupInt==0){// init main screen
         }
 
         else if(popupInt==1){ // pop up init add user
@@ -211,7 +211,7 @@ public class AdminScreenController {
                list.addUser(user);
 
                stage = (Stage) btn_create.getScene().getWindow();
-                popupInt = 0; //getting back to sample prg
+                popupInt = 0; //getting back to main prg
 
                stage.close();
 
