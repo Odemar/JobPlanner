@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -23,9 +24,13 @@ import javafx.stage.WindowEvent;
 import sample.Main;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 
 
 public class StaffScreenController {
+    private static Date dateSelectValue =new Date(1,0,1); //default
+    private static int tableSelect =0; // 0 for my jobs and 1 when looking for jobs
     public static JobList jobList;
     @FXML
     private JFXButton userInfo;
@@ -33,13 +38,15 @@ public class StaffScreenController {
     private JFXDrawer drawer;
     @FXML
     private TableView<Job> staffJobView;
+    @FXML
+    private DatePicker dateSelect;
 
     @FXML
     private JFXButton logOut;
     @FXML
     private JFXButton buttonMyJobs;
     @FXML
-    private TableColumn<Job, String> tbl_client, tbl_eventname, tbl_location, tbl_time, tbl_date;
+    private TableColumn<Job, String> tbl_client, tbl_eventname, tbl_location, tbl_time, tbl_date,tbl_staff;
 
     @FXML
     public void initialize(){
@@ -80,7 +87,8 @@ public class StaffScreenController {
     }
     @FXML
     public void refreshJobs() throws IOException{
-        jobList = new JobList("jobList.txt");
+        if(tableSelect==0){
+        jobList = new JobList("jobList.txt");}
         // refresh the table
 
         ObservableList<Job> jobListxml;
@@ -88,6 +96,7 @@ public class StaffScreenController {
         tbl_eventname.setCellValueFactory(new PropertyValueFactory<>("eventName"));
         tbl_location.setCellValueFactory(new PropertyValueFactory<>("location"));
         tbl_time.setCellValueFactory(new PropertyValueFactory<>("start"));
+        tbl_time.setCellValueFactory(new PropertyValueFactory<>("staffString"));
         tbl_date.setCellValueFactory(new PropertyValueFactory<>("dateStringTable"));
 
 
@@ -101,12 +110,6 @@ public class StaffScreenController {
         AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/fxml/drawer.fxml"));
         drawer.setSidePane(anchorPane);
         drawer.setOverLayVisible(false);
-
-        //uname = FXMLLoader.load(getClass().getResource("/fxml/drawer.fxml"));
-        //name = FXMLLoader.load(getClass().getResource("/fxml/drawer.fxml"));
-
-        //uname.setText("Username: ");//+user.getUsername());
-        //name.setText("Name: ");//+user.getName());
 
         if(drawer.isShown()){
             drawer.close();
@@ -127,6 +130,15 @@ public class StaffScreenController {
     private void showJobs(){
 
     }
+    @FXML
+    private void showOpenJobs(){
 
+    }
+    @FXML
+    private void calendarValue(){
+        LocalDate localDate = (dateSelect.getValue());
+
+        dateSelectValue = new Date(localDate.getYear()-1900,localDate.getMonthValue(),localDate.getDayOfMonth());
+    }
 
 }
