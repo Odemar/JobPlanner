@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +26,7 @@ import java.io.IOException;
 
 public class ClientScreenController {
     public static int tableSelect = 0;
-    public static JobList jobList;
+    public static JobList jobList,requestList;
     @FXML
     private JFXButton userInfo;
     @FXML
@@ -35,7 +36,7 @@ public class ClientScreenController {
     @FXML
     private Label name;
     @FXML
-    private JFXButton logOut;
+    private JFXButton logOut,btn_cancel,btn_view_staff;
     @FXML
     private TableView<Job> clientView;
     @FXML
@@ -95,7 +96,7 @@ public class ClientScreenController {
     @FXML
     private void refreshJobs() throws IOException {
 
-        jobList = new JobList("jobList.txt");
+
 
 
         // refresh the table
@@ -107,11 +108,12 @@ public class ClientScreenController {
         tbl_staff.setCellValueFactory(new PropertyValueFactory<>("staffString"));
         tbl_date.setCellValueFactory(new PropertyValueFactory<>("dateStringTable"));
         if(tableSelect ==0){
+            jobList = new JobList("jobList.txt");
             jobListxml = jobList.getJobsClient(Main.loginData);
             clientView.setItems(jobListxml);}
 
         else{
-            JobList requestList = new JobList("requestList.txt");
+            requestList = new JobList("requestList.txt");
             jobListxml = requestList.getJobsClient(Main.loginData);
             clientView.setItems(jobListxml);
         }
@@ -120,12 +122,16 @@ public class ClientScreenController {
     }
     @FXML
     private void showPlannedJobs() throws IOException{
+        btn_view_staff.setVisible(true);
+        btn_cancel.setVisible(true);
         clientView.setVisible(true);
         tableSelect=0;
         refreshJobs();
     }
     @FXML
     private void showReqJobs() throws IOException{
+        btn_view_staff.setVisible(true);
+        btn_cancel.setVisible(false);
         clientView.setVisible(true);
         tableSelect=1;
         refreshJobs();
@@ -134,6 +140,26 @@ public class ClientScreenController {
     @FXML
     private void requestJob(){
         clientView.setVisible(false);
+        btn_cancel.setVisible((false));
+        btn_view_staff.setVisible(false);
+
+
+    }
+    @FXML
+    private void onActionEventButtonHandler(ActionEvent event) throws IOException{
+        if(event.getSource()==btn_view_staff);
+
+        //TODO
+        else if(event.getSource() == btn_cancel){
+            Job job = clientView.getSelectionModel().getSelectedItem();
+            if(tableSelect==0&& clientView.getSelectionModel().getSelectedItem() != null){
+                jobList.removeJob(job);
+            }
+            else{
+
+            }
+            refreshJobs();
+        }
 
     }
 }
