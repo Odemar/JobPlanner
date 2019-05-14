@@ -8,6 +8,7 @@ import com.jfoenix.controls.JFXDrawer;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +27,7 @@ import sample.Main;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 
 public class StaffScreenController {
@@ -42,9 +44,8 @@ public class StaffScreenController {
     private DatePicker dateSelect;
 
     @FXML
-    private JFXButton logOut;
-    @FXML
-    private JFXButton buttonMyJobs;
+    private JFXButton logOut,btn_register;
+
     @FXML
     private TableColumn<Job, String> tbl_client, tbl_eventname, tbl_location, tbl_time, tbl_date,tbl_staff;
 
@@ -87,8 +88,11 @@ public class StaffScreenController {
     }
     @FXML
     public void refreshJobs() throws IOException{
-        if(tableSelect==0){
-        jobList = new JobList("jobList.txt");}
+
+        jobList = new JobList("jobList.txt");
+
+
+
         // refresh the table
 
         ObservableList<Job> jobListxml;
@@ -96,13 +100,29 @@ public class StaffScreenController {
         tbl_eventname.setCellValueFactory(new PropertyValueFactory<>("eventName"));
         tbl_location.setCellValueFactory(new PropertyValueFactory<>("location"));
         tbl_time.setCellValueFactory(new PropertyValueFactory<>("start"));
-        tbl_time.setCellValueFactory(new PropertyValueFactory<>("staffString"));
+        tbl_staff.setCellValueFactory(new PropertyValueFactory<>("staffString"));
         tbl_date.setCellValueFactory(new PropertyValueFactory<>("dateStringTable"));
 
-
-        jobListxml = jobList.getStaffJobs(Main.loginData);
+        if(tableSelect ==0){
+            jobListxml = jobList.getStaffJobs(Main.loginData);}
+        else if(tableSelect ==1 && dateSelectValue==new Date(1,0,1)){
+            jobListxml = FXCollections.observableArrayList(jobList.jobList);
+        }
+        else{
+            ArrayList<Job> jobArray = new ArrayList<>();
+            jobListxml = jobList.getJobsDate(dateSelectValue);
+            for(Job job :jobListxml){
+                if(job.getStaff().contains(Main.loginData.getUsername())){
+                    jobArray.add(job);
+                }
+            }
+            for(Job job:jobArray){
+                jobListxml.remove(job);
+            }
+        }
         staffJobView.setItems(jobListxml);
-        staffJobView.refresh();}
+        staffJobView.refresh();
+    }
 
     @FXML
     private void showUserInfo() throws IOException {
@@ -127,18 +147,24 @@ public class StaffScreenController {
     }
 
     @FXML
-    private void showJobs(){
+    private void showJobs() throws IOException{
+        tableSelect = 0;
+        btn_register.setVisible(false);
+        refreshJobs();
 
     }
     @FXML
-    private void showOpenJobs(){
-
+    private void showOpenJobs() throws IOException{
+        tableSelect = 1;
+        btn_register.setVisible(true);
+        refreshJobs();
     }
     @FXML
-    private void calendarValue(){
+    private void calendarValue(ActionEvent event){
+        if(event.getSource()==dateSelect){
         LocalDate localDate = (dateSelect.getValue());
 
         dateSelectValue = new Date(localDate.getYear()-1900,localDate.getMonthValue(),localDate.getDayOfMonth());
-    }
+    }}
 
 }
