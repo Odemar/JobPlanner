@@ -8,3 +8,6 @@
 11 5 119 TestClient2 request1 Antwerpen 17:00 8  s
 11 5 119 TestClien1 request2 Brussel 21:00 6 
 11 5 119 c Test4 Thuis 21:00 40 
+11 5 119 c Test1 UAntwerpen 21:00 40 
+11 5 119 c Test2 Hoboken 21:00 40 
+11 5 119 c KaasEten Reet 8:00 2 

@@ -108,12 +108,12 @@ public class ClientScreenController {
         tbl_staff.setCellValueFactory(new PropertyValueFactory<>("staffString"));
         tbl_date.setCellValueFactory(new PropertyValueFactory<>("dateStringTable"));
         if(tableSelect ==0){
-            jobList = new JobList("jobList.txt");
+            jobList = new JobList("src/main/resources/txtfiles/jobList.txt");
             jobListxml = jobList.getJobsClient(Main.loginData);
             clientView.setItems(jobListxml);}
 
         else{
-            requestList = new JobList("requestList.txt");
+            requestList = new JobList("src/main/resources/txtfiles/requestList.txt");
             jobListxml = requestList.getJobsClient(Main.loginData);
             clientView.setItems(jobListxml);
         }
