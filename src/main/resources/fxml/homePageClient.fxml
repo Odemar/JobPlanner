@@ -13,6 +13,57 @@
 
 <AnchorPane prefHeight="591.0" prefWidth="855.0" style="-fx-background-color: #ffface;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ClientScreenController">
     <children>
+        <AnchorPane fx:id="anchr_addJob" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffface;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
+         <children>
+            <DatePicker fx:id="datepkr_date" layoutX="383.0" layoutY="295.0" prefHeight="40.0" prefWidth="211.0" AnchorPane.topAnchor="310.0" />
+            <Label layoutX="71.0" layoutY="317.0" text="Select Date:" AnchorPane.topAnchor="317.0">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbl_eventname" layoutX="71.0" layoutY="77.0" text="Event name:" AnchorPane.topAnchor="77.0">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="eventname" layoutX="383.0" layoutY="73.0" prefHeight="40.0" prefWidth="211.0" promptText="   eventname" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b;" unFocusColor="#4d4d4d00" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="70.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="71.0" layoutY="137.0" text="Location:" AnchorPane.topAnchor="137.0">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txt_location" layoutX="382.0" layoutY="126.0" prefHeight="40.0" prefWidth="211.0" promptText="   location" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b;" unFocusColor="#4d4d4d00" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="130.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="71.0" layoutY="257.0" text="Starting time:" AnchorPane.topAnchor="257.0">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="choiceb_starttime" layoutX="383.0" layoutY="240.0" prefHeight="40.0" prefWidth="211.0" AnchorPane.topAnchor="250.0" />
+            <JFXTextField fx:id="txt_mxstaff" layoutX="383.0" layoutY="181.0" prefHeight="40.0" prefWidth="211.0" promptText="   max staff" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b;" unFocusColor="#4d4d4d00" AnchorPane.topAnchor="190.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="71.0" layoutY="197.0" text="Max. staff needed:" AnchorPane.topAnchor="197.0">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btn_sendReq" layoutX="213.0" layoutY="443.0" prefHeight="49.0" prefWidth="239.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="Send Request" AnchorPane.bottomAnchor="70.0" AnchorPane.rightAnchor="213.0">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
         <JFXDrawer fx:id="drawer" defaultDrawerSize="186.0" direction="RIGHT" layoutX="662.0" layoutY="32.0" overLayVisible="false" prefHeight="559.0" prefWidth="0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0" />
         <AnchorPane layoutX="-5.0" layoutY="32.0" prefHeight="568.0" prefWidth="186.0" style="-fx-background-color: #ffcf99;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="32.0">
             <children>
