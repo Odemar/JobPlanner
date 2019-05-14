@@ -73,5 +73,5 @@ De id nummers beginnen vanaf 1.
 Tutorial: https://www.tutorialspoint.com/sqlite/sqlite_java.htm
 
 ![Alt text](
-        /src/main/resources/images/vicro.png
+        /src/sample/resources/images/vicro.png
       )

@@ -1,12 +1,15 @@
 package controllers;
 
-
 import Classes.Job;
 import Classes.User;
 import Classes.UserList;
 import Classes.JobList;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDrawer;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,21 +17,44 @@ import javafx.scene.control.*;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-
 public class AdminScreenController {
 
-    private static int popupInt = 0; // Indicator for initialize if its on the main program or a pop up
+
+    //<editor-fold desc="Variables">
+    /**
+     * Indicator for initialize if its on the sample program or a pop up
+     */
+    private static int popupInt = 0;
+    /**
+     *
+     */
     private String typeString;
+    /**
+     *
+     */
     private int typeInt;
+    /**
+     *
+     */
     private final ObservableList<String> typeBoxList = FXCollections.observableArrayList("Admin","Client","Staff");
+    /**
+     *
+     */
     public static UserList list;
+    /**
+     *
+     */
     public static JobList jobList;
 
 
@@ -47,7 +73,6 @@ public class AdminScreenController {
     private TableColumn<User, String>  tbl_usertype,tbl_username,tbl_fullname;
     @FXML
     private Button btn_new,btn_edit,btn_del,btn_create,btn_cancel;
-
 
     //Calendar tab fields
     private static Date dateSelectValue =new Date(1,0,1); //default
@@ -68,7 +93,6 @@ public class AdminScreenController {
     private TextField tf_event,tf_loc,tf_time,tf_staff;
 
 
-
     //Request tab fields
     @FXML
     private TableView<Job> requestView;
@@ -77,14 +101,48 @@ public class AdminScreenController {
     @FXML
     private Button btn_req_acc,btn_req_ref;
 
+    // log out button
+    @FXML
+    private JFXButton logOut;
+    // side bar right
+    @FXML
+    private JFXDrawer drawer;
 
+    // currently logged in user
+
+
+    // stage of the window
+    private Stage primaryStage = new Stage();
+    //</editor-fold>
+
+    // needed to be able to go back to the login window if logging out
+    public int display() throws IOException {
+
+        Parent homePageAdmin = FXMLLoader.load(getClass().getResource("/fxml/homePageAdmin.fxml"));
+
+        primaryStage.setScene(new Scene(homePageAdmin));
+        primaryStage.setTitle("Job Planner");
+        primaryStage.getIcons().add(new Image("/images/logo.png"));
+
+
+        // application closes when this window closes
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent event) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
+
+        // wait for the user to log out
+        primaryStage.showAndWait();
+
+        return 1;
+    }
 
     @FXML
-    private void initialize()throws IOException {
+    private void initialize() throws IOException {
 
-
-
-        if(popupInt==0){// init main screen
+        if(popupInt==0){// init sample screen
         }
 
         else if(popupInt==1){ // pop up init add user
@@ -165,7 +223,7 @@ public class AdminScreenController {
                list.addUser(user);
 
                stage = (Stage) btn_create.getScene().getWindow();
-                popupInt = 0; //getting back to main prg
+                popupInt = 0; //getting back to sample prg
 
                stage.close();
 
@@ -217,18 +275,19 @@ public class AdminScreenController {
      */
     public void refreshCalendar() throws IOException{
         if(dateSelectValue!=null){
-        jobList = new JobList("jobList.txt");
+            jobList = new JobList("jobList.txt");
 
-        ObservableList<Job> jobListxml;
-        tbl_client.setCellValueFactory(new PropertyValueFactory<>("client"));
-        tbl_event.setCellValueFactory(new PropertyValueFactory<>("eventName"));
-        tbl_loc.setCellValueFactory(new PropertyValueFactory<>("location"));
-        tbl_start.setCellValueFactory(new PropertyValueFactory<>("start"));
-        tbl_staff.setCellValueFactory(new PropertyValueFactory<>("staffString"));
+            ObservableList<Job> jobListxml;
+            tbl_client.setCellValueFactory(new PropertyValueFactory<>("client"));
+            tbl_event.setCellValueFactory(new PropertyValueFactory<>("eventName"));
+            tbl_loc.setCellValueFactory(new PropertyValueFactory<>("location"));
+            tbl_start.setCellValueFactory(new PropertyValueFactory<>("start"));
+            tbl_staff.setCellValueFactory(new PropertyValueFactory<>("staffString"));
 
-        jobListxml = jobList.getJobsDate(dateSelectValue);
-        jobView.setItems(jobListxml);
-        jobView.refresh();}
+            jobListxml = jobList.getJobsDate(dateSelectValue);
+            jobView.setItems(jobListxml);
+            jobView.refresh();
+        }
     }
 
     public void refresh() throws IOException {
@@ -249,8 +308,8 @@ public class AdminScreenController {
      * Handles all the button events from the Calendar tab
      */
 
-
-    public void handleButtonActionCalendar(ActionEvent event) throws IOException{
+    @FXML
+    private void handleButtonActionCalendar(ActionEvent event) throws IOException{
         jobList = new JobList("jobList.txt");
         jobList.readFile();
 
@@ -372,7 +431,7 @@ public class AdminScreenController {
     }
 
     /**
-     * Updates the value of the jobselection on mouseclick, so the selected value from the table can be accesed
+     * Updates the value of the jobselection on mouseclick, so the selected value from the table can be accessed
      */
     public void jobSelectUpdate(){
         if(jobView.getSelectionModel().getSelectedItem() != null){
@@ -396,8 +455,8 @@ public class AdminScreenController {
         requestView.setItems(jobListxml);
         requestView.refresh();}
 
-
-    public void handleButtonOnActionRequest(ActionEvent event)throws IOException{
+    @FXML
+    private void handleButtonOnActionRequest(ActionEvent event)throws IOException{
          JobList requestJobList = new JobList("requestList.txt");
          jobList = new JobList("jobList.txt");
          jobSelect = requestView.getSelectionModel().getSelectedItem();
@@ -407,6 +466,31 @@ public class AdminScreenController {
                 jobList.addJobToList(jobSelect);
             }
         refreshRequest();
+    }
+
+    @FXML
+    private void logOut(){
+        // gets the current open window and closes it
+        Stage stage = (Stage) logOut.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void showUserInfo() throws IOException {
+
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/fxml/drawer.fxml"));
+
+        drawer.setSidePane(anchorPane);
+        drawer.setOverLayVisible(false);
+
+        if(drawer.isShown()){
+            drawer.close();
+            drawer.setMaxSize(0, 559);
+        }
+        else {
+            drawer.setMaxSize(186, 559);
+            drawer.open();
+        }
     }
 }
 

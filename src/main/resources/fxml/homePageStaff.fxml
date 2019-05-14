@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.image.*?>
@@ -9,17 +10,42 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="591.0" prefWidth="855.0" style="-fx-background-color: #ffface;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomePageController">
+<AnchorPane prefHeight="591.0" prefWidth="855.0" style="-fx-background-color: #ffface;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StaffScreenController">
    <children>
+      <AnchorPane layoutX="-5.0" layoutY="32.0" prefHeight="568.0" prefWidth="186.0" style="-fx-background-color: #ffcf99;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="32.0">
+         <children>
+            <JFXButton fx:id="btn_job_view" layoutX="12.0" layoutY="14.0" onAction="#showJobs" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="My Jobs" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btn_find_view" layoutX="12.0" layoutY="126.0" onAction="#showOpenJobs" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="Find Jobs">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+            </JFXButton>
+            <DatePicker fx:id="dateSelect" layoutX="12.0" layoutY="177.0" onAction="#actionEventHandler" prefHeight="25.0" prefWidth="162.0" />
+            <Label alignment="CENTER" layoutX="45.0" layoutY="517.0" prefHeight="17.0" prefWidth="96.0" text="Log Out" textAlignment="CENTER" textFill="#4d4d4d" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="45.0">
+               <font>
+                  <Font name="Arial Black" size="12.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="logOut" layoutX="67.0" layoutY="461.0" onAction="#logOut" text="" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="67.0">
+               <graphic>
+                  <ImageView fx:id="logOutImage" fitHeight="41.0" fitWidth="38.0" onDragDetected="#logOut" pickOnBounds="true" preserveRatio="true" x="40.0">
+                     <image>
+                        <Image url="@../images/off.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect></AnchorPane>
       <AnchorPane maxHeight="32.0" minHeight="32.0" prefHeight="32.0" prefWidth="612.0" style="-fx-background-color: #912400;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="14.0" fitWidth="15.0" layoutX="826.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="10.0">
-               <image>
-                  <Image url="@../images/user.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="14.0" fitWidth="15.0" layoutX="802.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="10.0">
+            <ImageView fitHeight="14.0" fitWidth="15.0" layoutX="797.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="10.0">
                <image>
                   <Image url="@../images/bell.png" />
                </image>
@@ -29,8 +55,32 @@
                   <Font name="Arial Black" size="22.0" />
                </font>
             </Text>
+            <JFXButton fx:id="userInfo" graphicTextGap="0.0" layoutX="818.0" layoutY="4.0" onMouseClicked="#showUserInfo" prefHeight="14.0" text="" AnchorPane.bottomAnchor="4.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="4.0">
+               <graphic>
+                  <ImageView fx:id="userInfo1" fitHeight="14.0" fitWidth="15.0" onMouseClicked="#showUserInfo" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/user.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="-5.0" layoutY="32.0" prefHeight="568.0" prefWidth="186.0" style="-fx-background-color: #ffcf99;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="32.0" />
+      <TableView fx:id="staffJobView" editable="true" layoutX="199.0" layoutY="43.0" onMouseEntered="#refreshJobs" prefHeight="469.0" prefWidth="649.0" style="-fx-background-color: #ffddbc;" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="42.0">
+        <columns>
+          <TableColumn fx:id="tbl_client" editable="false" prefWidth="121.0" sortable="false" text="Client" />
+          <TableColumn fx:id="tbl_eventname" editable="false" prefWidth="140.0" sortable="false" text="Eventname" />
+            <TableColumn fx:id="tbl_location" editable="false" prefWidth="139.0" sortable="false" text="Location" />
+            <TableColumn fx:id="tbl_staff" minWidth="20.0" prefWidth="76.0" text="Staff" />
+            <TableColumn fx:id="tbl_time" editable="false" prefWidth="67.0" sortable="false" text="Time" />
+            <TableColumn fx:id="tbl_date" editable="false" prefWidth="105.0" text="Date" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="btn_register" layoutX="440.0" layoutY="528.0" onAction="#actionEventHandler" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="Register" AnchorPane.bottomAnchor="24.0">
+         <font>
+            <Font name="Arial Black" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="186.0" direction="RIGHT" layoutX="662.0" layoutY="32.0" overLayVisible="false" prefHeight="559.0" prefWidth="0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0" />
    </children>
 </AnchorPane>

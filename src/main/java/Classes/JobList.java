@@ -8,12 +8,17 @@ import java.util.ArrayList;
 import java.sql.Date;
 import java.util.Scanner;
 
+/**
+ *
+ */
 public class JobList {
+
+    // arraylist of all jobs
     public ArrayList<Job> jobList;
+    // name of the file where the data of the all the jobs is stored in (default: jobList.txt)
     private String filename;
 
     public JobList(String filename) throws FileNotFoundException{
-
         this.filename=filename;
         readFile();
     }
@@ -128,6 +133,26 @@ public class JobList {
             i++;
         }
         updateFile();
+    }
+
+    public ObservableList<Job> getStaffJobs(User staff){
+        ArrayList<Job> jobArrayList = new ArrayList<>();
+        for(Job job:jobList){
+            if(job.getStaff().contains(staff.getUsername())){
+                jobArrayList.add(job);
+            }
+        }
+        return FXCollections.observableArrayList(jobArrayList);
+    }
+
+    public ObservableList<Job> getJobsClient(User client){
+        ArrayList<Job> jobArrayList = new ArrayList<>();
+        for(Job job:jobList){
+            if(job.getClient().equals(client.getUsername())){
+                jobArrayList.add(job);
+            }
+        }
+        return FXCollections.observableArrayList(jobArrayList);
     }
 }
 

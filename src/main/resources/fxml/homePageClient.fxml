@@ -1,30 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.text.Font?>
-
-
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controllers.HomePageController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="591.0" prefWidth="855.0" style="-fx-background-color: #ffface;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ClientScreenController">
     <children>
+        <TableView fx:id="clientView" editable="true" layoutX="199.0" layoutY="43.0" onMouseEntered="#refreshJobs" prefHeight="459.0" prefWidth="653.0" style="-fx-background-color: #ffddbc;" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="42.0">
+            <columns>
+                <TableColumn fx:id="tbl_eventname" editable="false" prefWidth="201.0" text="Event Name" />
+                <TableColumn fx:id="tbl_location" editable="false" prefWidth="198.0" text="Location" />
+                <TableColumn fx:id="tbl_staff" editable="false" prefWidth="77.0" text="Staff" />
+                <TableColumn fx:id="tbl_time" editable="false" prefWidth="72.0" sortable="false" text="Time" />
+            <TableColumn fx:id="tbl_date" editable="false" prefWidth="100.0" text="Date" />
+            </columns>
+        </TableView>
+        <AnchorPane fx:id="anchr_addJob" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffface;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
+         <children>
+            <DatePicker fx:id="dateSelect" layoutX="383.0" layoutY="295.0" prefHeight="40.0" prefWidth="211.0" AnchorPane.topAnchor="310.0" />
+            <Label layoutX="71.0" layoutY="317.0" text="Select Date:" AnchorPane.topAnchor="317.0">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbl_eventname" layoutX="71.0" layoutY="77.0" text="Event name:" AnchorPane.topAnchor="77.0">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txt_eventname" layoutX="383.0" layoutY="73.0" prefHeight="40.0" prefWidth="211.0" promptText="   eventname" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b;" unFocusColor="#4d4d4d00" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="70.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="71.0" layoutY="137.0" text="Location:" AnchorPane.topAnchor="137.0">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="txt_location" layoutX="382.0" layoutY="126.0" prefHeight="40.0" prefWidth="211.0" promptText="   location" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b;" unFocusColor="#4d4d4d00" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="130.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="71.0" layoutY="257.0" text="Starting time:" AnchorPane.topAnchor="257.0">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="cb_start" layoutX="383.0" layoutY="240.0" prefHeight="40.0" prefWidth="211.0" AnchorPane.topAnchor="250.0" />
+            <JFXTextField fx:id="txt_mxstaff" layoutX="383.0" layoutY="181.0" prefHeight="40.0" prefWidth="211.0" promptText="   max staff" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b;" unFocusColor="#4d4d4d00" AnchorPane.topAnchor="190.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXTextField>
+            <Label layoutX="71.0" layoutY="197.0" text="Max. staff needed:" AnchorPane.topAnchor="197.0">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="btn_sendReq" layoutX="213.0" layoutY="443.0" onAction="#onActionEventButtonHandler" prefHeight="49.0" prefWidth="239.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="Send Request" AnchorPane.bottomAnchor="70.0" AnchorPane.rightAnchor="213.0">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+            </JFXButton>
+            <Label fx:id="lb_result" layoutX="264.0" layoutY="386.0" text="Request sent!" textFill="#e80505" AnchorPane.bottomAnchor="146.0" AnchorPane.rightAnchor="264.0">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+        <JFXDrawer fx:id="drawer" defaultDrawerSize="186.0" direction="RIGHT" layoutX="662.0" layoutY="32.0" overLayVisible="false" prefHeight="559.0" prefWidth="0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0" />
+        <AnchorPane layoutX="-5.0" layoutY="32.0" prefHeight="568.0" prefWidth="186.0" style="-fx-background-color: #ffcf99;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="32.0">
+            <children>
+                <Label alignment="CENTER" layoutX="45.0" layoutY="534.0" prefHeight="17.0" prefWidth="96.0" text="Log Out" textAlignment="CENTER" textFill="#4d4d4d">
+                    <font>
+                        <Font name="Arial Black" size="12.0" />
+                    </font>
+                </Label>
+                <JFXButton fx:id="logOut" layoutX="67.0" layoutY="485.0" onAction="#logOut" style="-fx-background-color: #ffcf99;" text="">
+               <graphic>
+                        <ImageView fx:id="logOutImage" fitHeight="41.0" fitWidth="38.0" onDragDetected="#logOut" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/off.png" />
+                            </image>
+                        </ImageView>
+               </graphic></JFXButton>
+                <JFXButton fx:id="btn_planned" layoutX="12.0" layoutY="22.0" onAction="#showPlannedJobs" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="Planned Jobs" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="22.0">
+                    <font>
+                        <Font name="Arial Black" size="18.0" />
+                    </font>
+                </JFXButton>
+            <JFXButton fx:id="buttonAddJob" layoutX="12.0" layoutY="199.0" onAction="#requestJob" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="  Add Job" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="199.0">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/add.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+            <JFXButton fx:id="buttonReqJobs" layoutX="12.0" layoutY="111.0" onAction="#showReqJobs" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="Requested Jobs" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="111.0">
+               <font>
+                  <Font name="Arial Black" size="14.0" />
+               </font>
+            </JFXButton>
+            </children>
+            <effect>
+                <DropShadow />
+            </effect></AnchorPane>
         <AnchorPane maxHeight="32.0" minHeight="32.0" prefHeight="32.0" prefWidth="612.0" style="-fx-background-color: #912400;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <ImageView fitHeight="14.0" fitWidth="15.0" layoutX="826.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="10.0">
-                    <image>
-                        <Image url="@../images/user.png" />
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="14.0" fitWidth="15.0" layoutX="802.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="10.0">
+                <ImageView fitHeight="14.0" fitWidth="15.0" layoutX="797.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="44.0" AnchorPane.topAnchor="10.0">
                     <image>
                         <Image url="@../images/bell.png" />
                     </image>
@@ -34,8 +132,26 @@
                         <Font name="Arial Black" size="22.0" />
                     </font>
                 </Text>
+                <JFXButton fx:id="userInfo" graphicTextGap="0.0" layoutX="818.0" layoutY="4.0" onMouseClicked="#showUserInfo" prefHeight="14.0" text="">
+                    <graphic>
+                        <ImageView fx:id="userInfo1" fitHeight="14.0" fitWidth="15.0" onMouseClicked="#showUserInfo" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/user.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                </JFXButton>
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="-5.0" layoutY="32.0" prefHeight="568.0" prefWidth="186.0" style="-fx-background-color: #ffcf99;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="32.0" />
+      <JFXButton fx:id="btn_view_staff" layoutX="641.0" layoutY="524.0" onAction="#onActionEventButtonHandler" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="View Staff">
+         <font>
+            <Font name="Arial Black" size="18.0" />
+         </font>
+      </JFXButton>
+      <JFXButton fx:id="btn_cancel" layoutX="296.0" layoutY="524.0" onAction="#onActionEventButtonHandler" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="Cancel Job">
+         <font>
+            <Font name="Arial Black" size="18.0" />
+         </font>
+      </JFXButton>
     </children>
 </AnchorPane>
