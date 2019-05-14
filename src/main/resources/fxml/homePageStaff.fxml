@@ -60,10 +60,13 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <TableView layoutX="199.0" layoutY="43.0" prefHeight="539.0" prefWidth="648.0" style="-fx-background-color: #ffddbc;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="42.0">
+      <TableView layoutX="199.0" layoutY="43.0" onMouseEntered="#refreshJobs" prefHeight="539.0" prefWidth="648.0" style="-fx-background-color: #ffddbc;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="42.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="tbl_client" prefWidth="150.0" text="Client" />
+          <TableColumn fx:id="tbl_eventname" prefWidth="150.0" text="Eventname" />
+            <TableColumn fx:id="tbl_location" prefWidth="150.0" text="Location" />
+            <TableColumn fx:id="tbl_time" prefWidth="105.0" text="Time" />
+            <TableColumn fx:id="tbl_staff" prefWidth="105.0" text="Staff" />
         </columns>
       </TableView>
       <JFXDrawer fx:id="drawer" defaultDrawerSize="186.0" direction="RIGHT" layoutX="662.0" layoutY="32.0" overLayVisible="false" prefHeight="559.0" prefWidth="186.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0" />

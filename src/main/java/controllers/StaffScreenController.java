@@ -1,5 +1,6 @@
 package controllers;
 
+import Classes.Job;
 import Classes.User;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
@@ -10,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -29,6 +31,8 @@ public class StaffScreenController {
     private JFXButton logOut;
     @FXML
     private JFXButton buttonMyJobs;
+    @FXML
+    private TableColumn<Job, String> tbl_client, tbl_eventname, tbl_location, tbl_time, tbl_staff;
 
     @FXML
     public void initialize(){
@@ -98,6 +102,11 @@ public class StaffScreenController {
 
     @FXML
     private void showJobs(){
+
+    }
+
+    @FXML
+    private void refreshJobs(){
 
     }
 
