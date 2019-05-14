@@ -2,7 +2,7 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import sample.Main;
+import main.Main;
 
 
 
