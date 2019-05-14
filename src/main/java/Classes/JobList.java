@@ -113,6 +113,19 @@ public class JobList {
         }
         updateFile("jobList.txt");
     }
+    public void delStaffJob(String staffName,String eventName) throws IOException{
+        int i =0;
+        for(Job job:jobList){
+            if(job.getEventName().equals(eventName)){
+                job.removeStaff(staffName);
+                jobList.set(i,job);
+
+            }
+
+            i++;
+        }
+        updateFile("jobList.txt");
+    }
 }
 
 

@@ -59,9 +59,11 @@ public class AdminScreenController {
     @FXML
     private TableColumn<Job,String> tbl_client,tbl_staff,tbl_start,tbl_event,tbl_loc;
     @FXML
-    private Button btn_newjob,btn_createjob,btn_canceljob,btn_add_staff_job,btn_del_staff_job,btn_del_job, btn_staff_add_pop,btn_cancel_staff;
+    private Button btn_newjob,btn_createjob,btn_canceljob,btn_add_staff_job,
+            btn_del_staff_job,btn_del_job, btn_staff_add_pop,btn_cancel_staff,
+            btn_cancel_staff2,btn_del_staff_pop;
     @FXML
-    private ChoiceBox<String> clientBox,staffBox;
+    private ChoiceBox<String> clientBox,staffBox,staffBox2;
     @FXML
     private TextField tf_event,tf_loc,tf_time,tf_staff;
     @FXML
@@ -83,10 +85,15 @@ public class AdminScreenController {
             //System.out.println((jobBox.size()));
             clientBox.setItems(clientBoxItems);
         }
-        else if(popupInt==3){// pop up for staffList
+        else if(popupInt==3){// pop up for staffList add
             ObservableList<String> staffBoxItems = list.getAvailableStaff(jobSelect.getStaff());
             staffBox.setItems(staffBoxItems);
             staffBox.getSelectionModel().selectFirst();
+        }
+        else if(popupInt==4){// pop up for staffList delete
+            ObservableList<String> staffBoxItems = FXCollections.observableArrayList(jobSelect.getStaff());
+            staffBox2.setItems(staffBoxItems);
+            staffBox2.getSelectionModel().selectFirst();
         }
 
     }
@@ -293,7 +300,7 @@ public class AdminScreenController {
         // add staff to job
         else if(event.getSource()== btn_add_staff_job) {
             //nothing selected
-            if (!jobSelect.getEventName().equals("")) {
+            if (!jobSelect.getEventName().equals("") && jobSelect.getStaff().size()<jobSelect.getMaxStaff()) {
                 popupInt = 3; // going to open new window
                 popup = FXMLLoader.load(getClass().getResource("/fxml/staffList.fxml"));
 
@@ -325,6 +332,34 @@ public class AdminScreenController {
             stage.close();
 
         }
+        else if(event.getSource()== btn_cancel_staff2){
+            stage = (Stage) btn_cancel_staff2.getScene().getWindow();
+            popupInt =0;
+            stage.close();
+
+        }
+        else if(event.getSource()== btn_del_staff_job) {
+            //nothing selected
+            if (!jobSelect.getEventName().equals("")) {
+                popupInt = 4; // going to open new window
+                popup = FXMLLoader.load(getClass().getResource("/fxml/staffList2.fxml"));
+
+                stage.setScene(new Scene(popup));
+                stage.setTitle("Select Staff");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.initOwner(btn_add_staff_job.getScene().getWindow());
+                stage.showAndWait();
+
+
+            }
+        }
+        else if (event.getSource()== btn_del_staff_pop){
+            jobList.delStaffJob(staffBox2.getValue(),jobSelect.getEventName());
+            stage = (Stage) btn_del_staff_pop.getScene().getWindow();
+            popupInt =0;
+            stage.close();
+        }
+
     }
 
     /**

@@ -58,6 +58,9 @@ public class Job {
     public String getClient(){
         return client;
     }
+    public int getMaxStaff(){
+        return maxStaff;
+    }
 
     public String getEventName(){
         return eventName;
