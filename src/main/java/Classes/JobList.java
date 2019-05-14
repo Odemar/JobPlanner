@@ -137,15 +137,23 @@ public class JobList {
 
     public ObservableList<Job> getStaffJobs(User staff){
         ArrayList<Job> jobArrayList = new ArrayList<>();
-        String username = staff.getUsername();
         for(Job job:jobList){
-            if(job.getStaff().contains(username)){
+            if(job.getStaff().contains(staff.getUsername())){
                 jobArrayList.add(job);
             }
         }
         return FXCollections.observableArrayList(jobArrayList);
     }
 
+    public ObservableList<Job> getJobsClient(User client){
+        ArrayList<Job> jobArrayList = new ArrayList<>();
+        for(Job job:jobList){
+            if(job.getClient().equals(client.getUsername())){
+                jobArrayList.add(job);
+            }
+        }
+        return FXCollections.observableArrayList(jobArrayList);
+    }
 }
 
 

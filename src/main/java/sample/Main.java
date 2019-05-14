@@ -44,7 +44,7 @@ public class Main extends Application {
                     break;
 
                 case 1:
-                    exitcode = new ClientScreenController().display(loginData);
+                    exitcode = new ClientScreenController().display();
                     break;
 
                 case 2:
