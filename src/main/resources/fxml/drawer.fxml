@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="559.0" prefWidth="186.0" style="-fx-background-color: #ffcf99;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StaffScreenController">
+   <children>
+      <ImageView fitHeight="166.0" fitWidth="186.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#showUserInfo" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/user.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="uname" layoutX="14.0" layoutY="189.0" prefHeight="30.0" prefWidth="158.0" text="Username: " />
+      <Label fx:id="name" layoutX="14.0" layoutY="230.0" prefHeight="30.0" prefWidth="158.0" text="Name:" />
+   </children>
+</AnchorPane>
