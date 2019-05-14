@@ -28,6 +28,8 @@ public class ClientScreenController {
     public static int tableSelect = 0;
     public static JobList jobList,requestList;
     @FXML
+    private AnchorPane anchr_addJob;
+    @FXML
     private JFXButton userInfo;
     @FXML
     private JFXDrawer drawer;
@@ -42,8 +44,8 @@ public class ClientScreenController {
     @FXML
     private TableColumn<Job, String> tbl_eventname, tbl_location, tbl_time, tbl_date, tbl_staff;
 
-    // currently logged in user
-    private User user;
+
+
 
     // stage of the window
     private Stage primaryStage = new Stage();
@@ -122,6 +124,7 @@ public class ClientScreenController {
     }
     @FXML
     private void showPlannedJobs() throws IOException{
+        anchr_addJob.setVisible(false);
         btn_view_staff.setVisible(true);
         btn_cancel.setVisible(true);
         clientView.setVisible(true);
@@ -130,6 +133,7 @@ public class ClientScreenController {
     }
     @FXML
     private void showReqJobs() throws IOException{
+        anchr_addJob.setVisible(false);
         btn_view_staff.setVisible(true);
         btn_cancel.setVisible(false);
         clientView.setVisible(true);
@@ -139,6 +143,7 @@ public class ClientScreenController {
 
     @FXML
     private void requestJob(){
+        anchr_addJob.setVisible(true);
         clientView.setVisible(false);
         btn_cancel.setVisible((false));
         btn_view_staff.setVisible(false);

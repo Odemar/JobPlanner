@@ -13,6 +13,15 @@
 
 <AnchorPane prefHeight="591.0" prefWidth="855.0" style="-fx-background-color: #ffface;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ClientScreenController">
     <children>
+        <TableView fx:id="clientView" editable="true" layoutX="199.0" layoutY="43.0" onMouseEntered="#refreshJobs" prefHeight="459.0" prefWidth="653.0" style="-fx-background-color: #ffddbc;" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="42.0">
+            <columns>
+                <TableColumn fx:id="tbl_eventname" editable="false" prefWidth="201.0" text="Event Name" />
+                <TableColumn fx:id="tbl_location" editable="false" prefWidth="198.0" text="Location" />
+                <TableColumn fx:id="tbl_staff" editable="false" prefWidth="77.0" text="Staff" />
+                <TableColumn fx:id="tbl_time" editable="false" prefWidth="72.0" sortable="false" text="Time" />
+            <TableColumn fx:id="tbl_date" editable="false" prefWidth="100.0" text="Date" />
+            </columns>
+        </TableView>
         <AnchorPane fx:id="anchr_addJob" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffface;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
          <children>
             <DatePicker fx:id="datepkr_date" layoutX="383.0" layoutY="295.0" prefHeight="40.0" prefWidth="211.0" AnchorPane.topAnchor="310.0" />
@@ -129,15 +138,6 @@
                 </JFXButton>
             </children>
         </AnchorPane>
-        <TableView fx:id="clientView" editable="true" layoutX="199.0" layoutY="43.0" onMouseEntered="#refreshJobs" prefHeight="459.0" prefWidth="653.0" style="-fx-background-color: #ffddbc;" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="42.0">
-            <columns>
-                <TableColumn fx:id="tbl_eventname" editable="false" prefWidth="201.0" text="Event Name" />
-                <TableColumn fx:id="tbl_location" editable="false" prefWidth="198.0" text="Location" />
-                <TableColumn fx:id="tbl_staff" editable="false" prefWidth="77.0" text="Staff" />
-                <TableColumn fx:id="tbl_time" editable="false" prefWidth="72.0" sortable="false" text="Time" />
-            <TableColumn fx:id="tbl_date" editable="false" prefWidth="100.0" text="Date" />
-            </columns>
-        </TableView>
       <JFXButton fx:id="btn_view_staff" layoutX="641.0" layoutY="524.0" onAction="#onActionEventButtonHandler" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="View Staff">
          <font>
             <Font name="Arial Black" size="18.0" />

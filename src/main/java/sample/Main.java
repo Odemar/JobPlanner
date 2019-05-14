@@ -38,7 +38,7 @@ public class Main extends Application {
 
             switch (type) {
                 case 0:
-                    exitcode = new AdminScreenController().display(loginData);
+                    exitcode = new AdminScreenController().display();
                     //primaryStage.setScene(new Scene(login, 822, 517));
                     //primaryStage.show();
                     break;
@@ -48,7 +48,7 @@ public class Main extends Application {
                     break;
 
                 case 2:
-                    exitcode = new StaffScreenController().display(loginData);
+                    exitcode = new StaffScreenController().display();
                     //if (exitcode == 0)
                     //    loginData = new LoginController().display();
                     break;
