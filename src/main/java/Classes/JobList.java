@@ -8,12 +8,17 @@ import java.util.ArrayList;
 import java.sql.Date;
 import java.util.Scanner;
 
+/**
+ *
+ */
 public class JobList {
+
+    // arraylist of all jobs
     public ArrayList<Job> jobList;
+    // name of the file where the data of the all the jobs is stored in (default: jobList.txt)
     private String filename;
 
     public JobList(String filename) throws FileNotFoundException{
-
         this.filename=filename;
         readFile();
     }

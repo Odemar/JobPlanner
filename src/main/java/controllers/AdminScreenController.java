@@ -1,12 +1,13 @@
 package controllers;
 
-
 import Classes.Job;
 import Classes.User;
 import Classes.UserList;
 import Classes.JobList;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,19 +17,40 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-
 public class AdminScreenController {
 
-    private static int popupInt = 0; // Indicator for initialize if its on the main program or a pop up
+
+    //<editor-fold desc="Variables">
+    /**
+     * Indicator for initialize if its on the main program or a pop up
+     */
+    private static int popupInt = 0;
+    /**
+     *
+     */
     private String typeString;
+    /**
+     *
+     */
     private int typeInt;
+    /**
+     *
+     */
     private final ObservableList<String> typeBoxList = FXCollections.observableArrayList("Admin","Client","Staff");
+    /**
+     *
+     */
     public static UserList list;
+    /**
+     *
+     */
     public static JobList jobList;
 
 
@@ -47,7 +69,6 @@ public class AdminScreenController {
     private TableColumn<User, String>  tbl_usertype,tbl_username,tbl_fullname;
     @FXML
     private Button btn_new,btn_edit,btn_del,btn_create,btn_cancel;
-
 
     //Calendar tab fields
     private static Date dateSelectValue =new Date(1,0,1); //default
@@ -68,7 +89,6 @@ public class AdminScreenController {
     private TextField tf_event,tf_loc,tf_time,tf_staff;
 
 
-
     //Request tab fields
     @FXML
     private TableView<Job> requestView;
@@ -77,12 +97,38 @@ public class AdminScreenController {
     @FXML
     private Button btn_req_acc,btn_req_ref;
 
+    // currently logged in user
+    private User user;
 
+    // stage of the window
+    private Stage primaryStage = new Stage();
+    //</editor-fold>
+
+    // needed to be able to go back to the login window if logging out
+    public int display(User loggedIn) throws IOException {
+        user = loggedIn;
+
+        Parent homePageAdmin = FXMLLoader.load(getClass().getResource("/fxml/homePageAdmin.fxml"));
+
+        primaryStage.setScene(new Scene(homePageAdmin));
+        primaryStage.setTitle("Job Planner");
+
+        // application closes when this window closes
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent event) {
+                Platform.exit();
+                System.exit(0);
+            }
+        });
+
+        // wait for the user to log out
+        primaryStage.showAndWait();
+
+        return 1;
+    }
 
     @FXML
-    private void initialize()throws IOException {
-
-
+    private void initialize() throws IOException {
 
         if(popupInt==0){// init main screen
         }
@@ -217,18 +263,19 @@ public class AdminScreenController {
      */
     public void refreshCalendar() throws IOException{
         if(dateSelectValue!=null){
-        jobList = new JobList("jobList.txt");
+            jobList = new JobList("jobList.txt");
 
-        ObservableList<Job> jobListxml;
-        tbl_client.setCellValueFactory(new PropertyValueFactory<>("client"));
-        tbl_event.setCellValueFactory(new PropertyValueFactory<>("eventName"));
-        tbl_loc.setCellValueFactory(new PropertyValueFactory<>("location"));
-        tbl_start.setCellValueFactory(new PropertyValueFactory<>("start"));
-        tbl_staff.setCellValueFactory(new PropertyValueFactory<>("staffString"));
+            ObservableList<Job> jobListxml;
+            tbl_client.setCellValueFactory(new PropertyValueFactory<>("client"));
+            tbl_event.setCellValueFactory(new PropertyValueFactory<>("eventName"));
+            tbl_loc.setCellValueFactory(new PropertyValueFactory<>("location"));
+            tbl_start.setCellValueFactory(new PropertyValueFactory<>("start"));
+            tbl_staff.setCellValueFactory(new PropertyValueFactory<>("staffString"));
 
-        jobListxml = jobList.getJobsDate(dateSelectValue);
-        jobView.setItems(jobListxml);
-        jobView.refresh();}
+            jobListxml = jobList.getJobsDate(dateSelectValue);
+            jobView.setItems(jobListxml);
+            jobView.refresh();
+        }
     }
 
     public void refresh() throws IOException {
