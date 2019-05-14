@@ -480,6 +480,7 @@ public class AdminScreenController {
     private void showUserInfo() throws IOException {
 
         AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/fxml/drawer.fxml"));
+
         drawer.setSidePane(anchorPane);
         drawer.setOverLayVisible(false);
 

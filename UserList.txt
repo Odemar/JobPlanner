@@ -3,7 +3,6 @@
 0 admin_koen admin Koen_Van_Aken
 1 Client1 client Client1
 1 Client2 client Client2
-1 Client3 client Client3
 1 Client4 client Client4
 1 Client5 client Client5
 1 Client6 client Client6

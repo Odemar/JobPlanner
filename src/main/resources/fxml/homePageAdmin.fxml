@@ -132,6 +132,6 @@
             </Tab>
         </tabs>
       </TabPane>
-      <JFXDrawer fx:id="drawer" defaultDrawerSize="186.0" direction="RIGHT" layoutX="672.0" layoutY="42.0" overLayVisible="false" prefHeight="559.0" prefWidth="186.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0" />
+      <JFXDrawer fx:id="drawer" defaultDrawerSize="186.0" direction="RIGHT" layoutX="672.0" layoutY="42.0" overLayVisible="false" prefHeight="559.0" prefWidth="0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0" />
     </children>
 </AnchorPane>

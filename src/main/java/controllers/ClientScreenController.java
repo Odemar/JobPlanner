@@ -76,9 +76,12 @@ public class ClientScreenController {
         drawer.setSidePane(anchorPane);
         drawer.setOverLayVisible(false);
 
-        if (drawer.isShown()) {
+        if(drawer.isShown()){
             drawer.close();
-        } else {
+            drawer.setMaxSize(0, 559);
+        }
+        else {
+            drawer.setMaxSize(186, 559);
             drawer.open();
         }
     }
@@ -116,16 +119,21 @@ public class ClientScreenController {
 
     }
     @FXML
-    private void showPlannedJobs(){
+    private void showPlannedJobs() throws IOException{
+        clientView.setVisible(true);
         tableSelect=0;
+        refreshJobs();
     }
     @FXML
-    private void showReqJobs(){
+    private void showReqJobs() throws IOException{
+        clientView.setVisible(true);
         tableSelect=1;
+        refreshJobs();
     }
 
     @FXML
     private void requestJob(){
+        clientView.setVisible(false);
 
     }
 }
