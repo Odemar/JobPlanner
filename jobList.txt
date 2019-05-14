@@ -1,7 +1,0 @@
-8 5 119 TestClient2 Party1 Hoboken 10:00 10 
-8 5 119 TestClient2 Wedding Antwerpen 17:00 5 
-8 5 119 TestClient2 Party2 Antwerpen 17:00 5 
-9 5 119 TestClient2 Match Antwerpen 17:00 8 
-9 5 119 TestClient3 Mcdonalds Boom 17:00 10 
-9 5 119 TestClient4 Bar Mechelen 17:00 3 
-11 5 119 TestClient3 request3 Knokke 09:00 18 
