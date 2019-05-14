@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -69,6 +70,10 @@ public class LoginController {
 
         // title of the window
         loginWindow.setTitle("JobPlanner Login");
+
+        // icon of the window
+        loginWindow.getIcons().add(new Image("/images/logo.png"));
+
 
         // if the login window gets closed, the whole application closes
         loginWindow.setOnCloseRequest(new EventHandler<WindowEvent>() {
