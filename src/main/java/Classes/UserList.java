@@ -14,7 +14,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserList {
+
+    // list of users read from a certain file
     public ArrayList<User> userList;
+    // name of the file to read users from
     private String filename;
 
     public UserList(String filename) throws FileNotFoundException{
@@ -86,7 +89,14 @@ public class UserList {
         printList();
     }
 
-    // check if password combination is correct
+    /**
+     * Searches the user based on the input username. Then compares the input password to the one from the user. If
+     * the passwords match, the method returns 'true'.
+     * Used by 'LoginController'.
+     * @param username  The input username at the start of the application.
+     * @param password  The input password at the start of the application.
+     * @return true if the passwords match
+     */
     public boolean isValidPassword(String username, String password) {
         for (User user : userList) {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
