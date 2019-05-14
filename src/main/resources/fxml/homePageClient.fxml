@@ -14,7 +14,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controllers.HomePageController"
+            fx:controller="controllers.ClientScreenController"
             prefHeight="400.0" prefWidth="600.0">
     <children>
         <AnchorPane maxHeight="32.0" minHeight="32.0" prefHeight="32.0" prefWidth="612.0" style="-fx-background-color: #912400;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

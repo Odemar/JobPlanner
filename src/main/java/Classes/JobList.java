@@ -134,6 +134,18 @@ public class JobList {
         }
         updateFile();
     }
+
+    public ObservableList<Job> getStaffJobs(User staff){
+        ArrayList<Job> jobArrayList = new ArrayList<>();
+        String username = staff.getUsername();
+        for(Job job:jobList){
+            if(job.getStaff().contains(username)){
+                jobArrayList.add(job);
+            }
+        }
+        return FXCollections.observableArrayList(jobArrayList);
+    }
+
 }
 
 

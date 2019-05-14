@@ -60,13 +60,13 @@
             </JFXButton>
          </children>
       </AnchorPane>
-      <TableView layoutX="199.0" layoutY="43.0" onMouseEntered="#refreshJobs" prefHeight="539.0" prefWidth="648.0" style="-fx-background-color: #ffddbc;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="42.0">
+      <TableView fx:id="staffJobView" layoutX="199.0" layoutY="43.0" onMouseEntered="#refreshJobs" prefHeight="539.0" prefWidth="648.0" style="-fx-background-color: #ffddbc;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="196.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="42.0">
         <columns>
-          <TableColumn fx:id="tbl_client" prefWidth="150.0" text="Client" />
-          <TableColumn fx:id="tbl_eventname" prefWidth="150.0" text="Eventname" />
-            <TableColumn fx:id="tbl_location" prefWidth="150.0" text="Location" />
-            <TableColumn fx:id="tbl_time" prefWidth="105.0" text="Time" />
-            <TableColumn fx:id="tbl_staff" prefWidth="105.0" text="Staff" />
+          <TableColumn fx:id="tbl_client" prefWidth="138.0" text="Client" />
+          <TableColumn fx:id="tbl_eventname" prefWidth="149.0" text="Eventname" />
+            <TableColumn fx:id="tbl_location" prefWidth="147.0" text="Location" />
+            <TableColumn fx:id="tbl_time" prefWidth="75.0" text="Time" />
+            <TableColumn fx:id="tbl_date" prefWidth="139.0" text="Date" />
         </columns>
       </TableView>
       <JFXDrawer fx:id="drawer" defaultDrawerSize="186.0" direction="RIGHT" layoutX="662.0" layoutY="32.0" overLayVisible="false" prefHeight="559.0" prefWidth="186.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0" />
