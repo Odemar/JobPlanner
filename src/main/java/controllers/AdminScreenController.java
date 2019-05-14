@@ -485,8 +485,10 @@ public class AdminScreenController {
 
         if(drawer.isShown()){
             drawer.close();
+            drawer.setMaxSize(0, 559);
         }
         else {
+            drawer.setMaxSize(186, 559);
             drawer.open();
         }
     }
