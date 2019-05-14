@@ -29,6 +29,8 @@ public class StaffScreenController {
     private Label name;
     @FXML
     private JFXButton logOut;
+    @FXML
+    private JFXButton buttonMyJobs;
 
     // currently logged in user
     private User user;
@@ -89,6 +91,11 @@ public class StaffScreenController {
         // gets the current open window and closes it
         Stage stage = (Stage) logOut.getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void showJobs(){
+
     }
 
 }

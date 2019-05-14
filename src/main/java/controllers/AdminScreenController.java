@@ -104,6 +104,7 @@ public class AdminScreenController {
     private Stage primaryStage = new Stage();
     //</editor-fold>
 
+    // needed to be able to go back to the login window if logging out
     public int display(User loggedIn) throws IOException {
         user = loggedIn;
 

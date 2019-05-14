@@ -51,6 +51,11 @@
                   </ImageView>
                </graphic>
             </JFXButton>
+            <JFXButton fx:id="buttonMyJobs" layoutX="12.0" layoutY="14.0" onAction="#showJobs" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="My Jobs" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="12.0">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+            </JFXButton>
          </children></AnchorPane>
       <JFXDrawer fx:id="drawer" defaultDrawerSize="186.0" direction="RIGHT" layoutX="662.0" layoutY="32.0" prefHeight="559.0" prefWidth="186.0" style="-fx-background-color: #ffface;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0" />
    </children>
