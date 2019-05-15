@@ -102,12 +102,12 @@ public class LoginController {
         // stores the input password in a variable
         String password = pw.getText();
         // makes an UserList of all the users it can find in the txt file
-        final UserList userList = new UserList("txtfiles/UserList.txt");
+        final UserList userList = new UserList("D:/JavaProject/JobPlanner/txtfiles/UserList.txt");
 
         // if the passwords match, the window closes, else you get asked to try again
         if (userList.isValidPassword(username, password)) {
             // debug stuff
-            System.out.println("You're logged in!");
+            //System.out.println("You're logged in!");
             loginUser = userList.getUser(username);
 
             // removes the text on screen about the wrong credentials (if visible anyways)
@@ -119,15 +119,15 @@ public class LoginController {
 
         } else {
             // debug stuff
-            System.out.println("Password does not match." +
-                    "\nTestPW: " + password);
+            //System.out.println("Password does not match." +
+            //        "\nTestPW: " + password);
 
             // displays text on screen that the credentials are wrong
             loginf.setText("Wrong Password! Try again.");
         }
 
         // debug stuff
-        System.out.println("Username: " + uname.getText() + "\nPassword: " + pw.getText());
+        //System.out.println("Username: " + uname.getText() + "\nPassword: " + pw.getText());
 
     }
 }

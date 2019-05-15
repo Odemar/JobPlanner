@@ -63,7 +63,7 @@ public class JobList {
             bw.newLine();
 
         }
-        System.out.println("Writing succesfull");
+        //System.out.println("Writing succesfull");
         bw.close();
     }
     public void addJobToList(Job job) throws IOException{
@@ -103,7 +103,7 @@ public class JobList {
     //debug method
     public void printList(){
         for(Job job:jobList){
-            System.out.println(job.toString());
+            //System.out.println(job.toString());
         }
     }
 

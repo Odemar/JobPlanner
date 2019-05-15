@@ -175,7 +175,7 @@ public class AdminScreenController {
      */
     @FXML
     private void handleButtonActionUser(ActionEvent event) throws IOException {
-        list = new UserList("txtfiles/UserList.txt");
+        list = new UserList("D:/JavaProject/JobPlanner/txtfiles/UserList.txt");
         Parent popup;
         Stage stage = new Stage();
 
@@ -250,7 +250,7 @@ public class AdminScreenController {
            User userSelect = userView.getSelectionModel().getSelectedItem();
            //nothing selected
            if (userSelect != null){
-               System.out.println("Selected user: " + userSelect.toString()); //debug
+               //System.out.println("Selected user: " + userSelect.toString()); //debug
                list.removeUser(userSelect);
             refresh();
            }
@@ -272,7 +272,7 @@ public class AdminScreenController {
      */
     public void refreshCalendar() throws IOException{
         if(dateSelectValue!=null){
-            jobList = new JobList("txtfiles/jobList.txt");
+            jobList = new JobList("D:/JavaProject/JobPlanner/txtfiles/jobList.txt");
 
             ObservableList<Job> jobListxml;
             tbl_client.setCellValueFactory(new PropertyValueFactory<>("client"));
@@ -288,7 +288,7 @@ public class AdminScreenController {
     }
 
     public void refresh() throws IOException {
-        list = new UserList("txtfiles/UserList.txt");
+        list = new UserList("D:/JavaProject/JobPlanner/txtfiles/UserList.txt");
         // refresh the table
 
 
@@ -307,7 +307,7 @@ public class AdminScreenController {
 
     @FXML
     private void handleButtonActionCalendar(ActionEvent event) throws IOException{
-        jobList = new JobList("txtfiles/jobList.txt");
+        jobList = new JobList("D:/JavaProject/JobPlanner/txtfiles/jobList.txt");
         jobList.readFile();
 
         Parent popup;
@@ -355,7 +355,7 @@ public class AdminScreenController {
 
             //nothing selected
             if (jobSelect != null){
-                System.out.println("Selected user: " + jobSelect.toString()); //debug
+                //System.out.println("Selected user: " + jobSelect.toString()); //debug
                 jobList.removeJob(jobSelect);
                 refreshCalendar();
 
@@ -436,7 +436,7 @@ public class AdminScreenController {
     }
 
     public void refreshRequest() throws IOException{
-        jobList = new JobList("txtfiles/requestList.txt");
+        jobList = new JobList("D:/JavaProject/JobPlanner/txtfiles/requestList.txt");
         // refresh the table
 
         ObservableList<Job> jobListxml;
@@ -454,8 +454,8 @@ public class AdminScreenController {
 
     @FXML
     private void handleButtonOnActionRequest(ActionEvent event)throws IOException{
-         JobList requestJobList = new JobList("txtfiles/requestList.txt");
-         jobList = new JobList("txtfiles/jobList.txt");
+         JobList requestJobList = new JobList("D:/JavaProject/JobPlanner/txtfiles/requestList.txt");
+         jobList = new JobList("D:/JavaProject/JobPlanner/txtfiles/jobList.txt");
          jobSelect = requestView.getSelectionModel().getSelectedItem();
          requestJobList.removeJob(jobSelect);
          //nothing selected
