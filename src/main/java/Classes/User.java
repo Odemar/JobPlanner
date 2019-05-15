@@ -13,12 +13,19 @@ public class User {
     String password;
     // name
     String name;
+    // email
+    String mail;
+    // cell phone number
+    int cell;
 
-    public User(int type,String username,String password,String name) {
+
+    public User(int type,String username,String password,String name, String mail, int cell) {
         this.type = type;
         this.setUsername(username);
         this.setPassword(password);
         this.setName(name);
+        this.setMail(mail);
+        this.setCell(cell);
     }
 
     /**
@@ -88,10 +95,23 @@ public class User {
      */
     @Override
     public String toString() {
-        String values = type + " " + username  + " "  + password +  " "  + name;
+        String values = type + " " + username  + " "  + password +  " "  + name + " " + mail + " " + cell;
         return values;
     }
 
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
 
+    public void setCell(int cell) {
+        this.cell = cell;
+    }
 
+    public String getMail() {
+        return mail;
+    }
+
+    public int getCell() {
+        return cell;
+    }
 }

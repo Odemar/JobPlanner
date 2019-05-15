@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="559.0" prefWidth="186.0" style="-fx-background-color: #ffcf99;" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DrawerController">
+<AnchorPane prefHeight="559.0" prefWidth="186.0" style="-fx-background-color: #ffcf99;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DrawerController">
    <children>
-      <ImageView fitHeight="166.0" fitWidth="186.0" layoutX="10.0" layoutY="10.0"  pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="166.0" fitWidth="186.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/user.png" />
          </image>
       </ImageView>
-      <Label fx:id="lb_uname" layoutX="14.0" layoutY="189.0" prefHeight="30.0" prefWidth="158.0" text="Username: " />
-      <Label fx:id="lb_name" layoutX="14.0" layoutY="230.0" prefHeight="30.0" prefWidth="158.0" text="Name:" />
+      <Label fx:id="lb_uname" layoutX="14.0" layoutY="189.0" prefHeight="30.0" prefWidth="158.0" text="Username: " AnchorPane.topAnchor="190.0" />
+      <Label fx:id="lb_name" layoutX="14.0" layoutY="230.0" prefHeight="30.0" prefWidth="158.0" text="Name:" AnchorPane.topAnchor="230.0" />
+      <Label fx:id="lb_cell" layoutX="14.0" layoutY="321.0" prefHeight="30.0" prefWidth="158.0" text="Name:" AnchorPane.topAnchor="310.0" />
+      <Label fx:id="lb_mail" layoutX="14.0" layoutY="280.0" prefHeight="30.0" prefWidth="158.0" text="Username: " AnchorPane.topAnchor="270.0" />
    </children>
 </AnchorPane>

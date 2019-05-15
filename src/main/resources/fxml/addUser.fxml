@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -14,16 +15,20 @@
 
 <AnchorPane prefHeight="356.0" prefWidth="361.0" style="-fx-background-color: #FFCF9E;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AdminScreenController">
    <children>
-      <TextField fx:id="uname" layoutX="173.0" layoutY="38.0" />
-      <PasswordField fx:id="pw" layoutX="173.0" layoutY="105.0" />
-      <TextField fx:id="fname" layoutX="173.0" layoutY="174.0" />
-      <ChoiceBox fx:id="typeBox" layoutX="173.0" layoutY="254.0" prefWidth="150.0" />
-      <Text layoutX="61.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
-      <Text layoutX="63.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-      <Text layoutX="61.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name" />
-      <Text layoutX="63.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Type" />
-      <Button fx:id="btn_cancel" layoutX="87.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleButtonActionUser" text="Cancel" />
-      <Button fx:id="btn_create" layoutX="222.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleButtonActionUser" text="Create" />
-      <Label fx:id="label" layoutX="86.0" layoutY="279.0" prefHeight="17.0" prefWidth="173.0" text="" textAlignment="CENTER" textFill="RED" />
+      <Text layoutX="59.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Type" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="24.0" />
+      <ChoiceBox fx:id="typeBox" layoutX="171.0" layoutY="19.0" prefHeight="10.0" prefWidth="150.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="20.0" />
+      <Text layoutX="59.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="64.0" />
+      <TextField fx:id="uname" layoutX="173.0" layoutY="38.0" prefHeight="10.0" prefWidth="150.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="60.0" />
+      <Text layoutX="63.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="104.0" />
+      <PasswordField fx:id="pw" layoutX="173.0" layoutY="105.0" prefHeight="10.0" prefWidth="150.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="100.0" />
+      <Text layoutX="61.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="144.0" />
+      <TextField fx:id="fname" layoutX="173.0" layoutY="174.0" prefHeight="10.0" prefWidth="150.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="140.0" />
+      <Text layoutX="60.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="184.0" />
+      <TextField fx:id="email" layoutX="172.0" layoutY="180.0" prefHeight="10.0" prefWidth="150.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="180.0" />
+      <Text layoutX="60.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone number:" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="224.0" />
+      <TextField fx:id="cellnumber" layoutX="171.0" layoutY="221.0" prefHeight="10.0" prefWidth="150.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="220.0" />
+      <Button fx:id="btn_cancel" layoutX="87.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleButtonActionUser" text="Cancel" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="85.0" />
+      <Button fx:id="btn_create" layoutX="222.0" layoutY="302.0" mnemonicParsing="false" onAction="#handleButtonActionUser" text="Create" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="85.0" />
+      <Label fx:id="label" alignment="CENTER" contentDisplay="CENTER" layoutX="66.0" layoutY="273.0" prefHeight="17.0" prefWidth="229.0" text="" textAlignment="CENTER" textFill="#f50000" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="66.0" />
    </children>
 </AnchorPane>

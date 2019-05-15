@@ -44,9 +44,7 @@ public class AdminScreenController {
      *
      */
     private int typeInt;
-    /**
-     *
-     */
+
     private final ObservableList<String> typeBoxList = FXCollections.observableArrayList("Admin","Client","Staff");
     /**
      *
@@ -62,7 +60,7 @@ public class AdminScreenController {
     @FXML
     private Label label;
     @FXML
-    private TextField uname,fname;
+    private TextField uname,fname,email,cellnumber;
     @FXML
     private PasswordField pw;
     @FXML
@@ -199,14 +197,20 @@ public class AdminScreenController {
            String username = uname.getText();
            String password = pw.getText();
            String fullName = fname.getText();
+           String mail = email.getText();
+           String cell = cellnumber.getText();
            typeString = typeBox.getValue();
 
-           if (username.equals("") || password.equals("") || fullName.equals("")) {
-               label.setText("Please fill all the fields!");
+           if (username.equals("") || password.equals("") || fullName.equals("") || mail.equals("") || cell.equals("")) {
+               label.setText("Please fill in all the fields!");
            }
            else if (list.isInList(username)) {
                label.setText("Username already taken!");
-           } else
+           }
+           else if(username.contains(" ") || password.contains(" ") || fullName.contains(" ") || mail.contains(" ") || cell.contains(" ")){
+                label.setText("None of the fields may contain spaces!");
+           }
+           else
                {
 
                if (typeString.equals("Admin")) {
@@ -217,8 +221,7 @@ public class AdminScreenController {
                    typeInt = 2;
                }
 
-               User user = new User(typeInt, username, password, fullName);
-
+               User user = new User(typeInt, username, password, fullName, mail, Integer.parseInt(cell));
 
                list.addUser(user);
 
