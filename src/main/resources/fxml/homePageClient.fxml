@@ -35,7 +35,7 @@
                   <Font name="Arial Black" size="18.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="txt_eventname" layoutX="383.0" layoutY="73.0" prefHeight="40.0" prefWidth="211.0" promptText="   eventname" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b;" unFocusColor="#4d4d4d00" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="70.0">
+            <JFXTextField fx:id="txt_eventname" alignment="CENTER" layoutX="383.0" layoutY="73.0" prefHeight="40.0" prefWidth="211.0" promptText="eventname" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b;" unFocusColor="#4d4d4d00" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="70.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -45,7 +45,7 @@
                   <Font name="Arial Black" size="18.0" />
                </font>
             </Label>
-            <JFXTextField fx:id="txt_location" layoutX="382.0" layoutY="126.0" prefHeight="40.0" prefWidth="211.0" promptText="   location" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b;" unFocusColor="#4d4d4d00" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="130.0">
+            <JFXTextField fx:id="txt_location" alignment="CENTER" layoutX="382.0" layoutY="126.0" prefHeight="40.0" prefWidth="211.0" promptText="location" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b;" unFocusColor="#4d4d4d00" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="130.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -56,7 +56,7 @@
                </font>
             </Label>
             <ChoiceBox fx:id="cb_start" layoutX="383.0" layoutY="240.0" prefHeight="40.0" prefWidth="211.0" AnchorPane.topAnchor="250.0" />
-            <JFXTextField fx:id="txt_mxstaff" layoutX="383.0" layoutY="181.0" prefHeight="40.0" prefWidth="211.0" promptText="   max staff" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b;" unFocusColor="#4d4d4d00" AnchorPane.topAnchor="190.0">
+            <JFXTextField fx:id="txt_mxstaff" alignment="CENTER" layoutX="383.0" layoutY="181.0" prefHeight="40.0" prefWidth="211.0" promptText="max staff" style="-fx-background-color: #ffdca5; -fx-prompt-text-fill: #ffb96b;" unFocusColor="#4d4d4d00" AnchorPane.topAnchor="190.0">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -78,7 +78,6 @@
             </Label>
          </children>
       </AnchorPane>
-        <JFXDrawer fx:id="drawer" defaultDrawerSize="186.0" direction="RIGHT" layoutX="662.0" layoutY="32.0" overLayVisible="false" prefHeight="559.0" prefWidth="0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0" />
         <AnchorPane layoutX="-5.0" layoutY="32.0" prefHeight="568.0" prefWidth="186.0" style="-fx-background-color: #ffcf99;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="32.0">
             <children>
                 <Label alignment="CENTER" layoutX="45.0" layoutY="534.0" prefHeight="17.0" prefWidth="96.0" text="Log Out" textAlignment="CENTER" textFill="#4d4d4d">
@@ -143,15 +142,16 @@
                 </JFXButton>
             </children>
         </AnchorPane>
-      <JFXButton fx:id="btn_view_staff" layoutX="641.0" layoutY="524.0" onAction="#onActionEventButtonHandler" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="View Staff">
+      <JFXButton fx:id="btn_view_staff" layoutX="641.0" layoutY="524.0" onAction="#onActionEventButtonHandler" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="View Staff" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="52.0">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btn_cancel" layoutX="296.0" layoutY="524.0" onAction="#onActionEventButtonHandler" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="Cancel Job">
+      <JFXButton fx:id="btn_cancel" layoutX="296.0" layoutY="524.0" onAction="#onActionEventButtonHandler" prefHeight="39.0" prefWidth="162.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="Cancel Job" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="296.0">
          <font>
             <Font name="Arial Black" size="18.0" />
          </font>
       </JFXButton>
+        <JFXDrawer fx:id="drawer" defaultDrawerSize="186.0" direction="RIGHT" layoutX="662.0" layoutY="32.0" overLayVisible="false" prefHeight="559.0" prefWidth="0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0" />
     </children>
 </AnchorPane>

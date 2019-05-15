@@ -43,5 +43,6 @@
             <Label text="Starting hour" translateX="50.0" GridPane.rowIndex="3" />
          </children>
       </GridPane>
+      <Label fx:id="lbl_addjob" alignment="CENTER" layoutX="366.0" layoutY="297.0" text="" textFill="RED" AnchorPane.bottomAnchor="44.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="66.0" />
     </children>
 </AnchorPane>

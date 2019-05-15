@@ -24,6 +24,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.IOException;
+import java.security.spec.ECField;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -56,9 +57,13 @@ public class AdminScreenController {
     public static JobList jobList;
 
 
+    // buttons side bar left
+    @FXML
+    private JFXButton btn_users, btn_calendar, btn_nwreq;
+
     //User tab fields
     @FXML
-    private Label label;
+    private Label label, lbl_addjob;
     @FXML
     private TextField uname,fname,email,cellnumber;
     @FXML
@@ -68,9 +73,13 @@ public class AdminScreenController {
     @FXML
     private ChoiceBox<String> typeBox;
     @FXML
-    private TableColumn<User, String>  tbl_usertype,tbl_username,tbl_fullname;
+    private TableColumn<User, String>  tbl_usertype,tbl_username,tbl_fullname,tbl_mail,tbl_number;
     @FXML
-    private Button btn_new,btn_edit,btn_del,btn_create,btn_cancel;
+    private Button btn_create,btn_cancel;
+    @FXML
+    private JFXButton btn_new,btn_edit,btn_del;
+    @FXML
+    private AnchorPane anc_users;
 
     //Calendar tab fields
     private static Date dateSelectValue =new Date(1,0,1); //default
@@ -82,13 +91,17 @@ public class AdminScreenController {
     @FXML
     private TableColumn<Job,String> tbl_client,tbl_staff,tbl_start,tbl_event,tbl_loc;
     @FXML
-    private Button btn_newjob,btn_createjob,btn_canceljob,btn_add_staff_job,
-            btn_del_staff_job,btn_del_job, btn_staff_add_pop,btn_cancel_staff,
+    private Button btn_createjob,btn_canceljob,
+            btn_staff_add_pop,btn_cancel_staff,
             btn_cancel_staff2,btn_del_staff_pop;
+    @FXML
+    private JFXButton btn_newjob, btn_del_job, btn_add_staff_job, btn_del_staff_job;
     @FXML
     private ChoiceBox<String> clientBox,staffBox,staffBox2;
     @FXML
     private TextField tf_event,tf_loc,tf_time,tf_staff;
+    @FXML
+    private AnchorPane anc_calendar;
 
 
     //Request tab fields
@@ -97,7 +110,9 @@ public class AdminScreenController {
     @FXML
     private TableColumn<Job,String> tbl_client_req,tbl_staff_req,tbl_start_req,tbl_event_req,tbl_loc_req,tbl_date_req;
     @FXML
-    private Button btn_req_acc,btn_req_ref;
+    private JFXButton btn_req_acc, btn_req_ref;
+    @FXML
+    private AnchorPane anc_requests;
 
     // log out button
     @FXML
@@ -122,6 +137,9 @@ public class AdminScreenController {
         primaryStage.setTitle("Job Planner");
         primaryStage.getIcons().add(new Image("/images/logo.png"));
 
+        //anc_users.setVisible(true);
+        //anc_calendar.setVisible(false);
+        //anc_requests.setVisible(false);
 
         // application closes when this window closes
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
@@ -300,6 +318,8 @@ public class AdminScreenController {
         tbl_usertype.setCellValueFactory(new PropertyValueFactory<>("type"));
         tbl_username.setCellValueFactory(new PropertyValueFactory<>("username"));
         tbl_fullname.setCellValueFactory(new PropertyValueFactory<>("name"));
+        tbl_mail.setCellValueFactory(new PropertyValueFactory<>("mail"));
+        tbl_number.setCellValueFactory(new PropertyValueFactory<>("cell"));
         userView.setItems(userListxml);
 
     }
@@ -334,11 +354,16 @@ public class AdminScreenController {
             String startHour= tf_time.getText();
             int maxStaff = Integer.parseInt(tf_staff.getText());
             ArrayList<String> staffListUsername = new ArrayList<>();
-            Job newJob =new Job(dateSelectValue,client,eventName,location,startHour,maxStaff,staffListUsername);
-            jobList.addJobToList(newJob);
-            stage = (Stage) btn_createjob.getScene().getWindow();
-            popupInt =0; //set value back to homescreen after closing
-            stage.close();
+            if(client.contains(" ") || eventName.contains(" ") || location.contains(" ") || startHour.contains(" ")){
+                lbl_addjob.setText("Textfields may not contain spaces.");
+            }
+            else{
+                Job newJob =new Job(dateSelectValue,client,eventName,location,startHour,maxStaff,staffListUsername);
+                jobList.addJobToList(newJob);
+                stage = (Stage) btn_createjob.getScene().getWindow();
+                popupInt =0; //set value back to homescreen after closing
+                stage.close();
+            }
 
         }
         else if(event.getSource()== btn_canceljob){
@@ -490,6 +515,45 @@ public class AdminScreenController {
         else {
             drawer.setMaxSize(186, 559);
             drawer.open();
+        }
+    }
+
+    // when the Users button is pressed
+    @FXML
+    private void showUsers(){
+        anc_requests.setVisible(false);
+        anc_calendar.setVisible(false);
+        anc_users.setVisible(true);
+        try {
+            refresh();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    // when the Calendar button is pressed
+    @FXML
+    private void showCalendar(){
+        anc_users.setVisible(false);
+        anc_requests.setVisible(false);
+        anc_calendar.setVisible(true);
+        try{
+            calendarInit();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void showRequests(){
+        anc_users.setVisible(false);
+        anc_calendar.setVisible(false);
+        anc_requests.setVisible(true);
+        try{
+            refreshRequest();
+        } catch (Exception e){
+            e.printStackTrace();
         }
     }
 }

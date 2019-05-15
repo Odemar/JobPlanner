@@ -56,7 +56,7 @@ public class ClientScreenController {
     private TableColumn<Job, String> tbl_eventname, tbl_location, tbl_time, tbl_date, tbl_staff;
 
     @FXML
-    private  void initialize() throws IOException{
+    private void initialize() throws IOException{
         lb_result.setVisible(false);
         cb_start.setItems(times);
         cb_start.setValue("00:07");
@@ -116,9 +116,6 @@ public class ClientScreenController {
     }
     @FXML
     private void refreshJobs() throws IOException {
-
-
-
 
         // refresh the table
 
@@ -197,9 +194,14 @@ public class ClientScreenController {
             String location = txt_location.getText();
             String start = cb_start.getValue();
             int staffInt = Integer.parseInt(txt_mxstaff.getText());
-            Job job = new Job(date,client,eventname,location,start,staffInt,new ArrayList<>());
-            requestList.addJobToList(job);
-            lb_result.setVisible(true);
+            if (client.contains(" ") || eventname.contains(" ") || location.contains(" ") || start.contains(" ")){
+                lb_result.setText("Textfields may not contain spaces.");
+            }
+            else {
+                Job job = new Job(date,client,eventname,location,start,staffInt,new ArrayList<>());
+                requestList.addJobToList(job);
+                lb_result.setVisible(true);
+            }
 
         }
 
