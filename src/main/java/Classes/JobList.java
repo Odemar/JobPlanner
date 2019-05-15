@@ -63,7 +63,7 @@ public class JobList {
             bw.newLine();
 
         }
-        //System.out.println("Writing succesfull");
+        //System.out.println("Writing successful");
         bw.close();
     }
     public void addJobToList(Job job) throws IOException{

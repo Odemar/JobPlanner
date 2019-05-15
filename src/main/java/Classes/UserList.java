@@ -39,9 +39,11 @@ public class UserList {
             String username = input.next();
             String password = input.next();
             String name = input.next();
+            String mail = input.next();
+            String cell = input.next();
 
             // make a user with the read details
-            User user = new User(Integer.parseInt(type), username, password, name);
+            User user = new User(Integer.parseInt(type), username, password, name, mail, Integer.parseInt(cell));
 
             // add the user to the list
             userList.add(user);
