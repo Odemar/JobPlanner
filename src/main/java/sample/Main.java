@@ -28,7 +28,7 @@ public class Main extends Application {
         while(exitcode!=0) {
             // open a login window and receive the userType
             loginData = new LoginController().display();
-            System.out.print(loginData);
+            //System.out.print(loginData);
             int type = loginData.getType();
             //Parent login = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
             primaryStage.setTitle("Job Planner");

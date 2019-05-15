@@ -123,7 +123,7 @@ public class UserList {
     // debug method
     public void printList() {
         for (User user : userList) {
-            System.out.println(user.toString());
+           // System.out.println(user.toString());
         }
     }
 
