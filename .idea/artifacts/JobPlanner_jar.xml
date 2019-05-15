@@ -8,6 +8,8 @@
       <element id="module-output" name="JobPlanner" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/jfoenix/jfoenix/1.4.0/jfoenix-1.4.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/xerial/sqlite-jdbc/3.27.2/sqlite-jdbc-3.27.2.jar" path-in-jar="/" />
+      <element id="library" level="project" name="Maven: org.xerial:sqlite-jdbc:3.27.2" />
+      <element id="library" level="project" name="Maven: com.jfoenix:jfoenix:1.4.0" />
     </root>
   </artifact>
 </component>

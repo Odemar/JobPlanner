@@ -175,7 +175,7 @@ public class AdminScreenController {
      */
     @FXML
     private void handleButtonActionUser(ActionEvent event) throws IOException {
-        list = new UserList("src/main/resources/txtfiles/UserList.txt");
+        list = new UserList("txtfiles/UserList.txt");
         Parent popup;
         Stage stage = new Stage();
 
@@ -255,9 +255,6 @@ public class AdminScreenController {
             refresh();
            }
 
-
-
-
         }
 
 
@@ -275,7 +272,7 @@ public class AdminScreenController {
      */
     public void refreshCalendar() throws IOException{
         if(dateSelectValue!=null){
-            jobList = new JobList("src/main/resources/txtfiles/jobList.txt");
+            jobList = new JobList("txtfiles/jobList.txt");
 
             ObservableList<Job> jobListxml;
             tbl_client.setCellValueFactory(new PropertyValueFactory<>("client"));
@@ -291,7 +288,7 @@ public class AdminScreenController {
     }
 
     public void refresh() throws IOException {
-        list = new UserList("src/main/resources/txtfiles/UserList.txt");
+        list = new UserList("txtfiles/UserList.txt");
         // refresh the table
 
 
@@ -310,7 +307,7 @@ public class AdminScreenController {
 
     @FXML
     private void handleButtonActionCalendar(ActionEvent event) throws IOException{
-        jobList = new JobList("src/main/resources/txtfiles/jobList.txt");
+        jobList = new JobList("txtfiles/jobList.txt");
         jobList.readFile();
 
         Parent popup;
@@ -439,7 +436,7 @@ public class AdminScreenController {
     }
 
     public void refreshRequest() throws IOException{
-        jobList = new JobList("src/main/resources/txtfiles/requestList.txt");
+        jobList = new JobList("txtfiles/requestList.txt");
         // refresh the table
 
         ObservableList<Job> jobListxml;
@@ -457,8 +454,8 @@ public class AdminScreenController {
 
     @FXML
     private void handleButtonOnActionRequest(ActionEvent event)throws IOException{
-         JobList requestJobList = new JobList("src/main/resources/txtfiles/requestList.txt");
-         jobList = new JobList("src/main/resources/txtfiles/jobList.txt");
+         JobList requestJobList = new JobList("txtfiles/requestList.txt");
+         jobList = new JobList("txtfiles/jobList.txt");
          jobSelect = requestView.getSelectionModel().getSelectedItem();
          requestJobList.removeJob(jobSelect);
          //nothing selected
