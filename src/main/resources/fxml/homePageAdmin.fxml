@@ -57,7 +57,7 @@
                   <TableColumn fx:id="tbl_staff" prefWidth="75.0" text="Staff" />
               </columns>
             </TableView>
-            <DatePicker fx:id="dateSelect" layoutX="39.0" layoutY="487.0" minWidth="0.0" onAction="#handleButtonActionCalendar" prefHeight="39.0" prefWidth="25.0" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="590.0" />
+            <DatePicker fx:id="dateSelect" layoutX="39.0" layoutY="487.0" minWidth="0.0" onAction="#handleButtonActionCalendar" onHiding="#refreshCalendar" prefHeight="39.0" prefWidth="25.0" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="590.0" />
             <JFXButton fx:id="btn_newjob" layoutX="76.0" layoutY="487.0" onAction="#handleButtonActionCalendar" prefHeight="39.0" prefWidth="116.0" ripplerFill="BLACK" style="-fx-background-color: #f7a46c;" text="New Job" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="450.0">
                <font>
                   <Font name="Arial Black" size="14.0" />

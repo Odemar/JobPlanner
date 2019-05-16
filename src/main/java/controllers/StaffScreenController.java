@@ -62,9 +62,9 @@ public class StaffScreenController {
 
     /**
      * Method that displays the window with the rights of the staff.
-     * @param
-     * @return
-     * @throws IOException
+     *
+     * @return '1' when the window has been closed by the 'Log out' button
+     * @throws IOException when the requested files are not found
      */
     public int display() throws IOException {
 
