@@ -9,23 +9,41 @@ import java.sql.Date;
 public class Job {
 
     //<editor-fold desc="Class variables">
-    // date of the job
+    /**
+     * Date of the job.
+     */
     public Date date;
-    // client who ordered the job
+    /**
+     * Client who ordered the job.
+     */
     public String client;
-    // name of the job
+    /**
+     * Name of the job.
+     */
     public String eventName;
-    // location of the job
+    /**
+     * Location of the job.
+     */
     public String location;
-    // starting time of the job
+    /**
+     * Starting time of the job.
+     */
     public String start;
-    // amount of staff needed for the job (ex. 0/4)
+    /**
+     * Amount of staff needed for the job.
+     */
     public String staffString;
-    // date of the job
+    /**
+     * Date of the job, in String format.
+     */
     public String dateStringTable;
-    // integer to define if job is full
+    /**
+     * Integer to define if the job is full.
+     */
     private int maxStaff; // status = 0 for not accepted status = 1 for accepted
-    // arraylist to store all the users in that have applied for the job
+    /**
+     * Arraylist to store all the users in that have applied for the job.
+     */
     private ArrayList<String> staffListUserName;
     //</editor-fold>
 
@@ -49,14 +67,16 @@ public class Job {
         this.start = start;
         this.maxStaff = maxStaff;
         this.staffListUserName = staffListUserName;
-        updateStaff(); // to view current staff on table
+
+        // to view current staff on table
+        updateStaff();
 
     }
 
     /**
      * Returns a string used in the request table.
      *
-     * @return
+     * @return date in a String format
      */
     public String getDateStringTable() {
         dateStringTable = date.getDate() + "/" + date.getMonth() + "/" + (date.getYear() + 1900);
@@ -66,19 +86,18 @@ public class Job {
     /**
      * Method to add staff to the job.
      *
-     * @param username
+     * @param username username of the User to be added to the job
      */
     public void addStaff(String username) {
 
         staffListUserName.add(username);
         updateStaff();
-
     }
 
     /**
      * Method to remove a staff member from the job.
      *
-     * @param username
+     * @param username username of the staff User to be removed
      */
     public void removeStaff(String username) {
         staffListUserName.remove(username);
@@ -87,6 +106,8 @@ public class Job {
     /**
      * Method to create a string of the details of the job.
      * Used to print out to the jobList.txt file.
+     *
+     * @return String with the details of the job separated by spaces
      */
     @Override
     public String toString() {
@@ -102,7 +123,7 @@ public class Job {
     /**
      * Method to create a string of the date of the job. (ex. "12 4 119" would be the datestring of 12/04/2019)
      *
-     * @return
+     * @return String with the date of the job (day month year)
      */
     private String getDateString() {
         String string = date.getDate() + " " + date.getMonth() + " " + (date.getYear()); // date
@@ -113,9 +134,10 @@ public class Job {
      * Method to update the staffString. (ex. '0/4' becomes '1/4')
      */
     public void updateStaff() {
-        staffListUserName.remove(""); // adds an empty string for some reason each time? temporary fix
-        this.staffString = staffListUserName.size() + "/" + maxStaff;
+        // adds an empty string for some reason each time? temporary fix
+        staffListUserName.remove("");
 
+        this.staffString = staffListUserName.size() + "/" + maxStaff;
     }
 
     //<editor-fold desc="Get-methods used by tableview">
@@ -123,7 +145,7 @@ public class Job {
     /**
      * Returns the client that submitted the job.
      *
-     * @return
+     * @return the client that made the job
      */
     public String getClient() {
         return client;
@@ -132,7 +154,7 @@ public class Job {
     /**
      * Returns the maximum staff that can apply for the job.
      *
-     * @return
+     * @return the max amount of staff that can apply for the job
      */
     public int getMaxStaff() {
         return maxStaff;
@@ -141,7 +163,7 @@ public class Job {
     /**
      * Returns the name of the job.
      *
-     * @return
+     * @return name of the job
      */
     public String getEventName() {
         return eventName;
@@ -150,7 +172,7 @@ public class Job {
     /**
      * Returns the location of the job.
      *
-     * @return
+     * @return location of the job
      */
     public String getLocation() {
         return location;
@@ -159,7 +181,7 @@ public class Job {
     /**
      * Returns a string of the amount of staff that is currently assigned to the job (ex. '1/4').
      *
-     * @return
+     * @return String which shows how many staff members have already applied
      */
     public String getStaffString() {
         updateStaff();
@@ -169,7 +191,7 @@ public class Job {
     /**
      * Returns the starting time of the job.
      *
-     * @return
+     * @return starting time of the job
      */
     public String getStart() {
         return start;
@@ -178,7 +200,7 @@ public class Job {
     /**
      * Returns an arraylist of the staff that is currently assigned to the job.
      *
-     * @return
+     * @return ArrayList of usernames from the staff members that have applied for the job
      */
     public ArrayList<String> getStaff() {
         return staffListUserName;

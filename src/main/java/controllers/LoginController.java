@@ -56,6 +56,9 @@ public class LoginController {
     /**
      * Method to display a login window above all other windows.
      * There is no other option than to either log in or close this window and thus the application.
+     *
+     * @return User which has logged in
+     * @throws IOException
      */
     public User display() throws IOException {
 
