@@ -58,7 +58,7 @@ public class LoginController {
      * There is no other option than to either log in or close this window and thus the application.
      *
      * @return User which has logged in
-     * @throws IOException
+     * @throws IOException when the requested files are not found
      */
     public User display() throws IOException {
 
