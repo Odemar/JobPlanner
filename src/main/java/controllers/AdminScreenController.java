@@ -133,6 +133,7 @@ public class AdminScreenController {
 
     /**
      * Displays a new window with the home page of an admin User, and waits until {@link AdminScreenController#logOut()} closes it.
+     *
      * @return '1' when the window has been closed with the logOut button
      * @throws IOException when the requested files are not found
      */
@@ -207,7 +208,7 @@ public class AdminScreenController {
      */
     @FXML
     private void handleButtonActionUser(ActionEvent event) throws IOException {
-        list = new UserList("D:/JavaProject/JobPlanner/txtfiles/UserList.txt");
+        list = new UserList("txtfiles/UserList.txt");
         Parent popup;
         Stage stage = new Stage();
 
@@ -226,7 +227,6 @@ public class AdminScreenController {
 
         // get data from fields and add them into the arraylist and file
         else if (event.getSource() == btn_create) {
-
 
             String username = uname.getText();
             String password = pw.getText();
@@ -293,9 +293,11 @@ public class AdminScreenController {
 
     }
 
+    /**
+     * Add a way to show jobs for the current day when tab is loaded.
+     */
     public void calendarInit() {
         dateSelect.setShowWeekNumbers(true);
-        // Add a way to show jobs for the current day when tab is loaded
 
     }
 
@@ -306,7 +308,7 @@ public class AdminScreenController {
      */
     public void refreshCalendar() throws IOException {
         if (dateSelectValue != null) {
-            jobList = new JobList("D:/JavaProject/JobPlanner/txtfiles/jobList.txt");
+            jobList = new JobList("txtfiles/jobList.txt");
 
             ObservableList<Job> jobListxml;
             tbl_client.setCellValueFactory(new PropertyValueFactory<>("client"));
@@ -322,7 +324,7 @@ public class AdminScreenController {
     }
 
     public void refresh() throws IOException {
-        list = new UserList("D:/JavaProject/JobPlanner/txtfiles/UserList.txt");
+        list = new UserList("txtfiles/UserList.txt");
         // refresh the table
 
 
@@ -343,7 +345,7 @@ public class AdminScreenController {
 
     @FXML
     private void handleButtonActionCalendar(ActionEvent event) throws IOException {
-        jobList = new JobList("D:/JavaProject/JobPlanner/txtfiles/jobList.txt");
+        jobList = new JobList("txtfiles/jobList.txt");
         jobList.readFile();
 
         Parent popup;
@@ -468,7 +470,7 @@ public class AdminScreenController {
     }
 
     public void refreshRequest() throws IOException {
-        jobList = new JobList("D:/JavaProject/JobPlanner/txtfiles/requestList.txt");
+        jobList = new JobList("txtfiles/requestList.txt");
         // refresh the table
 
         ObservableList<Job> jobListxml;
@@ -487,8 +489,8 @@ public class AdminScreenController {
 
     @FXML
     private void handleButtonOnActionRequest(ActionEvent event) throws IOException {
-        JobList requestJobList = new JobList("D:/JavaProject/JobPlanner/txtfiles/requestList.txt");
-        jobList = new JobList("D:/JavaProject/JobPlanner/txtfiles/jobList.txt");
+        JobList requestJobList = new JobList("txtfiles/requestList.txt");
+        jobList = new JobList("txtfiles/jobList.txt");
         jobSelect = requestView.getSelectionModel().getSelectedItem();
         requestJobList.removeJob(jobSelect);
         //nothing selected
