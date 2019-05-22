@@ -55,23 +55,3 @@ Vanuit IntelliJ (of andere code editors als NetBeans) kan je een Scene Builder i
 .fxml bestanden mee te bewerken. Dit doe je door naar 'File -> Settings -> Languages & Frameworks -> JavaFX'
 te gaan en daar het pad van de executable in te geven. Nu kan je rechts klikken op een .fxml
 bestand en onderaan op 'Open in SceneBuilder' te klikken.
-
-### SQLite
-Er is een dependency toegevoegd die ervoor kan zorgen dat je met lokale databases kan werken,
-nl. SQLite JDBC.
-
-Primary key toevoegen:
-
-CREATE TABLE table (id INTEGER PRIMARY KEY AUTOINCREMENT, uname TEXT NOT NULL, pw TEXT NOT NULL);
-
-Bij het invoegen van waarden in een tabel met een autoincrement kolom, moet je wel de kolommen specifiëren:
-
-INSERT INTO table (uname, pw) VALUES ("testUname", "testPW");
-
-De id nummers beginnen vanaf 1.
-
-Tutorial: https://www.tutorialspoint.com/sqlite/sqlite_java.htm
-
-![Alt text](
-        /src/sample/resources/images/vicro.png
-      )

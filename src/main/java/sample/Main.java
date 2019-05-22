@@ -8,6 +8,8 @@ import controllers.StaffScreenController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class Main extends Application {
 
     /**
@@ -18,29 +20,25 @@ public class Main extends Application {
     int exitcode = 1;
 
     /**
+     * Opens a Log In window to retrieve the correct user data.
+     * Then, according to the data, the home page is opened in another window.
      *
-     * @param primaryStage
-     * @throws Exception
+     * @param primaryStage main window
+     * @throws Exception when the scene fxml files can't be found
      */
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws IOException {
 
         while(exitcode!=0) {
             // open a login window and receive the userType
             loginData = new LoginController().display();
-            //System.out.print(loginData);
             int type = loginData.getType();
-            //Parent login = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
+
             primaryStage.setTitle("Job Planner");
-
-
-            //Parent homePageClient = FXMLLoader.load(getClass().getResource("/fxml/homePageClient.fxml"));
 
             switch (type) {
                 case 0:
                     exitcode = new AdminScreenController().display();
-                    //primaryStage.setScene(new Scene(login, 822, 517));
-                    //primaryStage.show();
                     break;
 
                 case 1:
@@ -49,17 +47,12 @@ public class Main extends Application {
 
                 case 2:
                     exitcode = new StaffScreenController().display();
-                    //if (exitcode == 0)
-                    //    loginData = new LoginController().display();
                     break;
 
                 default:
-                    //primaryStage.setScene(new Scene(homePageAdmin));
-
                     break;
             }
         }
-
     }
 
     /**
@@ -71,6 +64,10 @@ public class Main extends Application {
         launch(args);
     }
 
+    /**
+     * Returns the logged in User.
+     * @return logged in user
+     */
     public User getUserData(){
         return loginData;
     }

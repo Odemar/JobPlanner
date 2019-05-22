@@ -133,6 +133,7 @@ public class AdminScreenController {
 
     /**
      * Displays a new window with the home page of an admin User, and waits until {@link AdminScreenController#logOut()} closes it.
+     *
      * @return '1' when the window has been closed with the logOut button
      * @throws IOException when the requested files are not found
      */
@@ -144,6 +145,7 @@ public class AdminScreenController {
         primaryStage.setScene(new Scene(homePageAdmin));
         primaryStage.setTitle("Job Planner");
         primaryStage.getIcons().add(new Image("/images/logo.png"));
+        primaryStage.setResizable(false);
 
         // application closes when this window closes
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
@@ -207,7 +209,7 @@ public class AdminScreenController {
      */
     @FXML
     private void handleButtonActionUser(ActionEvent event) throws IOException {
-        list = new UserList("D:/JavaProject/JobPlanner/txtfiles/UserList.txt");
+        list = new UserList("txtfiles/UserList.txt");
         Parent popup;
         Stage stage = new Stage();
 
@@ -226,7 +228,6 @@ public class AdminScreenController {
 
         // get data from fields and add them into the arraylist and file
         else if (event.getSource() == btn_create) {
-
 
             String username = uname.getText();
             String password = pw.getText();
@@ -293,9 +294,11 @@ public class AdminScreenController {
 
     }
 
+    /**
+     * Add a way to show jobs for the current day when tab is loaded.
+     */
     public void calendarInit() {
         dateSelect.setShowWeekNumbers(true);
-        // Add a way to show jobs for the current day when tab is loaded
 
     }
 
@@ -306,7 +309,7 @@ public class AdminScreenController {
      */
     public void refreshCalendar() throws IOException {
         if (dateSelectValue != null) {
-            jobList = new JobList("D:/JavaProject/JobPlanner/txtfiles/jobList.txt");
+            jobList = new JobList("txtfiles/jobList.txt");
 
             ObservableList<Job> jobListxml;
             tbl_client.setCellValueFactory(new PropertyValueFactory<>("client"));
@@ -322,7 +325,7 @@ public class AdminScreenController {
     }
 
     public void refresh() throws IOException {
-        list = new UserList("D:/JavaProject/JobPlanner/txtfiles/UserList.txt");
+        list = new UserList("txtfiles/UserList.txt");
         // refresh the table
 
 
@@ -340,10 +343,9 @@ public class AdminScreenController {
     /**
      * Handles all the button events from the Calendar tab
      */
-
     @FXML
     private void handleButtonActionCalendar(ActionEvent event) throws IOException {
-        jobList = new JobList("D:/JavaProject/JobPlanner/txtfiles/jobList.txt");
+        jobList = new JobList("txtfiles/jobList.txt");
         jobList.readFile();
 
         Parent popup;
@@ -358,6 +360,7 @@ public class AdminScreenController {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(btn_newjob.getScene().getWindow());
             stage.showAndWait();
+
         } else if (event.getSource() == btn_createjob) {
 
             String client = clientBox.getValue();
@@ -414,6 +417,7 @@ public class AdminScreenController {
 
             }
         }
+
         // add button for the popup window to add staff
         else if (event.getSource() == btn_staff_add_pop) {
             // get the job from joblist with the matching selected event, when there are duplicate eventnames this will take the first out of the list
@@ -421,10 +425,12 @@ public class AdminScreenController {
             stage = (Stage) btn_staff_add_pop.getScene().getWindow();
             popupInt = 0;
             stage.close();
+
         } else if (event.getSource() == jobView) {
             if (jobView.getSelectionModel().getSelectedItem() != null) {
                 jobSelect = jobView.getSelectionModel().getSelectedItem();
             }
+
         } else if (event.getSource() == btn_cancel_staff) {
             stage = (Stage) btn_cancel_staff.getScene().getWindow();
             popupInt = 0;
@@ -447,8 +453,8 @@ public class AdminScreenController {
                 stage.initOwner(btn_add_staff_job.getScene().getWindow());
                 stage.showAndWait();
 
-
             }
+
         } else if (event.getSource() == btn_del_staff_pop) {
             jobList.delStaffJob(staffBox2.getValue(), jobSelect.getEventName());
             stage = (Stage) btn_del_staff_pop.getScene().getWindow();
@@ -467,8 +473,13 @@ public class AdminScreenController {
         }
     }
 
+    /**
+     * Refreshes the requested jobs table.
+     *
+     * @throws IOException when the list of requested jobs isn't found
+     */
     public void refreshRequest() throws IOException {
-        jobList = new JobList("D:/JavaProject/JobPlanner/txtfiles/requestList.txt");
+        jobList = new JobList("txtfiles/requestList.txt");
         // refresh the table
 
         ObservableList<Job> jobListxml;
@@ -485,12 +496,22 @@ public class AdminScreenController {
         requestView.refresh();
     }
 
+    /**
+     * Acts according to the admins button press. If the admin selects a job ans denies it, the job is deleted from the requested
+     * job list. If the admin accepts the job, the job will also be deleted from the requested jobs, and added to the job list.
+     *
+     * @param event button press
+     * @throws IOException when either of the lists can't be found
+     */
     @FXML
     private void handleButtonOnActionRequest(ActionEvent event) throws IOException {
-        JobList requestJobList = new JobList("D:/JavaProject/JobPlanner/txtfiles/requestList.txt");
-        jobList = new JobList("D:/JavaProject/JobPlanner/txtfiles/jobList.txt");
+        JobList requestJobList = new JobList("txtfiles/requestList.txt");
+        jobList = new JobList("txtfiles/jobList.txt");
         jobSelect = requestView.getSelectionModel().getSelectedItem();
+
+        // job is removed either way
         requestJobList.removeJob(jobSelect);
+
         //nothing selected
         if (jobSelect != null && event.getSource() == btn_req_acc) {
             jobList.addJobToList(jobSelect);
@@ -498,6 +519,9 @@ public class AdminScreenController {
         refreshRequest();
     }
 
+    /**
+     * Closes the window and makes the Main class open the login window.
+     */
     @FXML
     private void logOut() {
         // gets the current open window and closes it
@@ -505,6 +529,13 @@ public class AdminScreenController {
         stage.close();
     }
 
+    /**
+     * When the admin clicks on the little profile icon, a side drawer slides in showing their information.
+     * The drawer needs to be resized to 0, otherwise the invisible plane at the place of the drawer block user input
+     * to buttons underneath.
+     *
+     * @throws IOException when the page isn't found
+     */
     @FXML
     private void showUserInfo() throws IOException {
 
@@ -522,7 +553,9 @@ public class AdminScreenController {
         }
     }
 
-    // when the Users button is pressed
+    /**
+     * When the Users button is pressed.
+     */
     @FXML
     private void showUsers() {
         anc_requests.setVisible(false);
@@ -535,7 +568,9 @@ public class AdminScreenController {
         }
     }
 
-    // when the Calendar button is pressed
+    /**
+     * When the Calendar button is pressed.
+     */
     @FXML
     private void showCalendar() {
         anc_users.setVisible(false);
@@ -548,6 +583,9 @@ public class AdminScreenController {
         }
     }
 
+    /**
+     * When the New Requests button is pressed.
+     */
     @FXML
     private void showRequests() {
         anc_users.setVisible(false);

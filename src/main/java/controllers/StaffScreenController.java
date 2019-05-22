@@ -2,11 +2,9 @@ package controllers;
 
 import Classes.Job;
 import Classes.JobList;
-import Classes.User;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -15,7 +13,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -32,8 +29,8 @@ import java.util.ArrayList;
 
 
 public class StaffScreenController {
-    private static Date dateSelectValue =new Date(1,0,1); //default
-    private static int tableSelect =0; // 0 for my jobs and 1 when looking for jobs
+    private static Date dateSelectValue = new Date(1, 0, 1); //default
+    private static int tableSelect = 0; // 0 for my jobs and 1 when looking for jobs
     public static JobList jobList;
     @FXML
     private JFXButton userInfo;
@@ -45,17 +42,14 @@ public class StaffScreenController {
     private DatePicker dateSelect;
 
     @FXML
-    private JFXButton logOut,btn_register;
+    private JFXButton logOut, btn_register;
 
     @FXML
-    private TableColumn<Job, String> tbl_client, tbl_eventname, tbl_location, tbl_time, tbl_date,tbl_staff;
+    private TableColumn<Job, String> tbl_client, tbl_eventname, tbl_location, tbl_time, tbl_date, tbl_staff;
 
     @FXML
-    public void initialize(){
+    public void initialize() {
     }
-
-    // currently logged in user
-    private User user;
 
     // stage of the window
     private Stage primaryStage = new Stage();
@@ -68,13 +62,12 @@ public class StaffScreenController {
      */
     public int display() throws IOException {
 
-
         Parent homePageStaff = FXMLLoader.load(getClass().getResource("/fxml/homePageStaff.fxml"));
 
         primaryStage.setScene(new Scene(homePageStaff));
         primaryStage.setTitle("Job Planner");
         primaryStage.getIcons().add(new Image("/images/logo.png"));
-
+        primaryStage.setResizable(false);
 
         // application closes when this window closes
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
@@ -89,15 +82,18 @@ public class StaffScreenController {
 
         return 1;
     }
+
+    /**
+     * Refreshes the table of jobs.
+     *
+     * @throws IOException when the joblist isn't found
+     */
     @FXML
-    public void refreshJobs() throws IOException{
+    public void refreshJobs() throws IOException {
 
-        jobList = new JobList("D:/JavaProject/JobPlanner/txtfiles/jobList.txt");
-
-
+        jobList = new JobList("txtfiles/jobList.txt");
 
         // refresh the table
-
         ObservableList<Job> jobListxml;
         tbl_client.setCellValueFactory(new PropertyValueFactory<>("client"));
         tbl_eventname.setCellValueFactory(new PropertyValueFactory<>("eventName"));
@@ -106,17 +102,20 @@ public class StaffScreenController {
         tbl_staff.setCellValueFactory(new PropertyValueFactory<>("staffString"));
         tbl_date.setCellValueFactory(new PropertyValueFactory<>("dateStringTable"));
 
-        if(tableSelect ==0){
-            jobListxml = jobList.getStaffJobs(Main.loginData);}
-        else{
+        // jobs that the staff member already signed up for
+        if (tableSelect == 0) {
+            jobListxml = jobList.getStaffJobs(Main.loginData);
+        }
+        // new jobs the staff member can find
+        else {
             ArrayList<Job> jobArray = new ArrayList<>();
             jobListxml = jobList.getJobsDate(dateSelectValue);
-            for(Job job :jobListxml){
-                if(job.getStaff().contains(Main.loginData.getUsername())){
+            for (Job job : jobListxml) {
+                if (job.getStaff().contains(Main.loginData.getUsername())) {
                     jobArray.add(job);
                 }
             }
-            for(Job job:jobArray){
+            for (Job job : jobArray) {
                 jobListxml.remove(job);
             }
         }
@@ -124,6 +123,11 @@ public class StaffScreenController {
         staffJobView.refresh();
     }
 
+    /**
+     * Shows the users info in a side drawer
+     *
+     * @throws IOException when the drawer isn't found
+     */
     @FXML
     private void showUserInfo() throws IOException {
 
@@ -131,45 +135,46 @@ public class StaffScreenController {
         drawer.setSidePane(anchorPane);
         drawer.setOverLayVisible(false);
 
-        if(drawer.isShown()){
+        if (drawer.isShown()) {
             drawer.close();
             drawer.setMaxSize(0, 559);
-        }
-        else {
+        } else {
             drawer.setMaxSize(186, 559);
             drawer.open();
         }
     }
 
     @FXML
-    private void logOut(){
+    private void logOut() {
         // gets the current open window and closes it
         Stage stage = (Stage) logOut.getScene().getWindow();
         stage.close();
     }
 
     @FXML
-    private void showJobs() throws IOException{
+    private void showJobs() throws IOException {
         tableSelect = 0;
         btn_register.setVisible(false);
         refreshJobs();
 
     }
+
     @FXML
-    private void showOpenJobs() throws IOException{
+    private void showOpenJobs() throws IOException {
         tableSelect = 1;
         btn_register.setVisible(true);
         refreshJobs();
     }
+
     @FXML
-    private void actionEventHandler(ActionEvent event)throws IOException{
-        if(event.getSource()==dateSelect){
+    private void actionEventHandler(ActionEvent event) throws IOException {
+        if (event.getSource() == dateSelect) {
             LocalDate localDate = (dateSelect.getValue());
-            dateSelectValue = new Date(localDate.getYear()-1900,localDate.getMonthValue(),localDate.getDayOfMonth());}
-        else if(event.getSource()==btn_register){
-            jobList.addStaffJob(Main.loginData.getUsername(),staffJobView.getSelectionModel().getSelectedItem().getEventName());
+            dateSelectValue = new Date(localDate.getYear() - 1900, localDate.getMonthValue(), localDate.getDayOfMonth());
+        } else if (event.getSource() == btn_register) {
+            jobList.addStaffJob(Main.loginData.getUsername(), staffJobView.getSelectionModel().getSelectedItem().getEventName());
             refreshJobs();
-            }
+        }
     }
 }
 

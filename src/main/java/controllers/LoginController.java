@@ -1,33 +1,22 @@
 package controllers;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import Classes.UserList;
 import Classes.User;
-import java.io.FileNotFoundException;
+
 import java.io.IOException;
-
-
-import java.awt.event.MouseEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
 
 /**
  * Class that controls the login window at the start of the application.
@@ -42,9 +31,14 @@ public class LoginController {
     @FXML
     private Label loginf;
 
-    // user that logs in; this user(data) will be transferred to the Main class for further use
+    /**
+     * User that logs in; this user(data) will be transferred to the Main class for further use.
+     */
     private static User loginUser;
-    // stage which displays the loginpage
+
+    /**
+     * Stage which displays the login scene.
+     */
     private Stage loginWindow = new Stage();
 
     /**
@@ -77,6 +71,8 @@ public class LoginController {
         // icon of the window
         loginWindow.getIcons().add(new Image("/images/logo.png"));
 
+        // make the user unable to resize the window
+        loginWindow.setResizable(false);
 
         // if the login window gets closed, the whole application closes
         loginWindow.setOnCloseRequest(new EventHandler<WindowEvent>() {
@@ -92,12 +88,12 @@ public class LoginController {
         return loginUser;
     }
 
-    @FXML
     /**
      * Method to handle the button to login.
      * In this method, the inputted credentials get checked with the details found in the database. If there's a match,
      * the user can log in.
      */
+    @FXML
     private void handleLoginButton() throws IOException {
 
         // stores the input username in a variable
@@ -105,12 +101,10 @@ public class LoginController {
         // stores the input password in a variable
         String password = pw.getText();
         // makes an UserList of all the users it can find in the txt file
-        final UserList userList = new UserList("D:/JavaProject/JobPlanner/txtfiles/UserList.txt");
+        final UserList userList = new UserList("txtfiles/UserList.txt");
 
         // if the passwords match, the window closes, else you get asked to try again
         if (userList.isValidPassword(username, password)) {
-            // debug stuff
-            //System.out.println("You're logged in!");
             loginUser = userList.getUser(username);
 
             // removes the text on screen about the wrong credentials (if visible anyways)
@@ -121,17 +115,8 @@ public class LoginController {
             stage.close();
 
         } else {
-            // debug stuff
-            //System.out.println("Password does not match." +
-            //        "\nTestPW: " + password);
-
-            // displays text on screen that the credentials are wrong
             loginf.setText("Wrong Password! Try again.");
         }
-
-        // debug stuff
-        //System.out.println("Username: " + uname.getText() + "\nPassword: " + pw.getText());
-
     }
 }
 
