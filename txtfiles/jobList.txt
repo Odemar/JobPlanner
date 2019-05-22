@@ -7,6 +7,6 @@
 11 5 119 TestClient3 request3 Knokke 09:00 18  s
 11 5 119 TestClient2 request1 Antwerpen 17:00 8 
 11 5 119 TestClien1 request2 Brussel 21:00 6 
-11 5 119 c Test5 Plopsaland 21:00 40 
 14 5 119 Krompany MeerKaas Antwerpen 14:00 4 
 16 5 119 c testjob Wilrijk 10:00 4  s
+1 0 1 Client1 test5 Hier 12:00 6 

@@ -145,6 +145,7 @@ public class AdminScreenController {
         primaryStage.setScene(new Scene(homePageAdmin));
         primaryStage.setTitle("Job Planner");
         primaryStage.getIcons().add(new Image("/images/logo.png"));
+        primaryStage.setResizable(false);
 
         // application closes when this window closes
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
