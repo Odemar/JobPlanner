@@ -13,19 +13,19 @@ public class User {
     /**
      * Username
      */
-    String username;
+    private String username;
     /**
      * Password
      */
-    String password;
+    private String password;
     /**
      * Name
      */
-    String name;
+    private String name;
     /**
      * Email
      */
-    String mail;
+    private String mail;
     /**
      * Cell phone number
      */
